@@ -1,11 +1,11 @@
-# == Class archlinux-workstation::service
+# == Class archlinux_workstation::service
 #
-# This class is meant to be called from archlinux-workstation
+# This class is meant to be called from archlinux_workstation
 # It ensure the service is running
 #
-class archlinux-workstation::service {
+class archlinux_workstation::service {
 
-  service { $archlinux-workstation::service_name:
+  service { $archlinux_workstation::service_name:
     ensure     => running,
     enable     => true,
     hasstatus  => true,

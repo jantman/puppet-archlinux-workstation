@@ -1,6 +1,6 @@
-# == Class archlinux-workstation::config
+# == Class archlinux_workstation::config
 #
-# This class is called from archlinux-workstation
+# This class is called from archlinux_workstation
 #
-class archlinux-workstation::config {
+class archlinux_workstation::config {
 }

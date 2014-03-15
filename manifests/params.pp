@@ -1,17 +1,17 @@
-# == Class archlinux-workstation::params
+# == Class archlinux_workstation::params
 #
-# This class is meant to be called from archlinux-workstation
+# This class is meant to be called from archlinux_workstation
 # It sets variables according to platform
 #
-class archlinux-workstation::params {
+class archlinux_workstation::params {
   case $::osfamily {
     'Debian': {
-      $package_name = 'archlinux-workstation'
-      $service_name = 'archlinux-workstation'
+      $package_name = 'archlinux_workstation'
+      $service_name = 'archlinux_workstation'
     }
     'RedHat', 'Amazon': {
-      $package_name = 'archlinux-workstation'
-      $service_name = 'archlinux-workstation'
+      $package_name = 'archlinux_workstation'
+      $service_name = 'archlinux_workstation'
     }
     default: {
       fail("${::operatingsystem} not supported")

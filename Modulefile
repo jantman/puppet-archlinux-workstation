@@ -1,10 +1,10 @@
-name          'jantman-archlinux-workstation'
+name          'jantman-archlinux_workstation'
 version       '0.0.1'
-source        'https://github.com/jantman/puppet-archlinux-workstation'
+source        'https://github.com/jantman/puppet-archlinux_workstation'
 author        'jantman'
 license       'Apache License, Version 2.0'
 summary       'Configure an Arch Linux workstation/desktop/laptop'
 description   'Provides many classes (and a sane default class/init.pp) for configuring an Arch Linux workstation/laptop/desktop for graphical use.'
-project_page  'https://github.com/jantman/puppet-archlinux-workstation'
+project_page  'https://github.com/jantman/puppet-archlinux_workstation'
 
 dependency 'puppetlabs/stdlib'

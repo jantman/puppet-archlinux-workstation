@@ -1,21 +1,21 @@
-# == Class: archlinux-workstation
+# == Class: archlinux_workstation
 #
-# Full description of class archlinux-workstation here.
+# Full description of class archlinux_workstation here.
 #
 # === Parameters
 #
 # [*sample_parameter*]
 #   Explanation of what this parameter affects and what it defaults to.
 #
-class archlinux-workstation (
-  $package_name = $archlinux-workstation::params::package_name,
-  $service_name = $archlinux-workstation::params::service_name,
-) inherits archlinux-workstation::params {
+class archlinux_workstation (
+  $package_name = $archlinux_workstation::params::package_name,
+  $service_name = $archlinux_workstation::params::service_name,
+) inherits archlinux_workstation::params {
 
   # validate parameters here
 
-  class { 'archlinux-workstation::install': } ->
-  class { 'archlinux-workstation::config': } ~>
-  class { 'archlinux-workstation::service': } ->
-  Class['archlinux-workstation']
+  class { 'archlinux_workstation::install': } ->
+  class { 'archlinux_workstation::config': } ~>
+  class { 'archlinux_workstation::service': } ->
+  Class['archlinux_workstation']
 }

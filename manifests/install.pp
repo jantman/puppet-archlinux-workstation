@@ -1,8 +1,8 @@
-# == Class archlinux-workstation::install
+# == Class archlinux_workstation::install
 #
-class archlinux-workstation::install {
+class archlinux_workstation::install {
 
-  package { $archlinux-workstation::package_name:
+  package { $archlinux_workstation::package_name:
     ensure => present,
   }
 }

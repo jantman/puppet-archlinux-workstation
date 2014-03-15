@@ -2,10 +2,10 @@
 
 1. [Overview](#overview)
 2. [Module Description - What the module does and why it is useful](#module-description)
-3. [Setup - The basics of getting started with archlinux-workstation](#setup)
-    * [What archlinux-workstation affects](#what-archlinux-workstation-affects)
+3. [Setup - The basics of getting started with archlinux_workstation](#setup)
+    * [What archlinux_workstation affects](#what-archlinux_workstation-affects)
     * [Setup requirements](#setup-requirements)
-    * [Beginning with archlinux-workstation](#beginning-with-archlinux-workstation)
+    * [Beginning with archlinux_workstation](#beginning-with-archlinux_workstation)
 4. [Usage - Configuration options and additional functionality](#usage)
 5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
 5. [Limitations - OS compatibility, etc.](#limitations)
@@ -31,7 +31,7 @@ as well as a private module ("privatepuppet") on GitHub for my sensitive/persona
 
 ##Setup
 
-###What archlinux-workstation affects
+###What archlinux_workstation affects
 
 * A list of files, packages, services, or operations that the module will alter, impact, or execute on the system it's installed on.
 
@@ -39,7 +39,7 @@ as well as a private module ("privatepuppet") on GitHub for my sensitive/persona
 
 If your module requires anything extra before setting up (pluginsync enabled, etc.), mention it here. 
 
-###Beginning with archlinux-workstation
+###Beginning with archlinux_workstation
 
 The very basic steps needed for a user to get the module up and running. 
 

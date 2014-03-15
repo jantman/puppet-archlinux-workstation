@@ -1,12 +1,12 @@
 require 'spec_helper_acceptance'
 
-describe 'archlinux-workstation class' do
+describe 'archlinux_workstation class' do
 
   context 'default parameters' do
     # Using puppet_apply as a helper
     it 'should work with no errors' do
       pp = <<-EOS
-      class { 'archlinux-workstation': }
+      class { 'archlinux_workstation': }
       EOS
 
       # Run it twice and test for idempotency
@@ -14,11 +14,11 @@ describe 'archlinux-workstation class' do
       expect(apply_manifest(pp).exit_code).to eq(0)
     end
 
-    describe package('archlinux-workstation') do
+    describe package('archlinux_workstation') do
       it { should be_installed }
     end
 
-    describe service('archlinux-workstation') do
+    describe service('archlinux_workstation') do
       it { should be_enabled }
       it { should be_running }
     end
