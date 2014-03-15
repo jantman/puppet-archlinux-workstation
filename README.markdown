@@ -13,21 +13,27 @@
 
 ##Overview
 
-A one-maybe-two sentence summary of what the module does/what problem it solves. This is your 30 second elevator pitch for your module. Consider including OS/Puppet version it works with.       
+Provides many classes (and a sane default class/init.pp) for configuring an Arch Linux workstation/laptop/desktop for graphical use.
 
 ##Module Description
 
-If applicable, this section should have a brief description of the technology the module integrates with and what that integration enables. This section should answer the questions: "What does this module *do*?" and "Why would I use it?"
+This is one of the modules that I use to keep my personal desktop and work laptop, both running Arch Linux, in sync, up to date,
+and easily rebuild-able. It's intended to do three main things:
 
-If your module has a range of functionality (installation, configuration, management, etc.) this is the time to mention it.
+1. Manage all installed packages, and all configuration outside of ``/home``, so I don't need to back up anything outside ``/home``.
+2. Keep my desktop and laptop perfectly in sync in terms of packages and global (non-user-specific) configuration.
+3. Allow me to quickly rebuild one of these machines if needed, to minimize downtime.
+
+This module is intended to be part of a whole. For me, that includes my workstation-bootstrap module ([GitHub](https://github.com/jantman/workstation-bootstrap))
+that uses [r10k](https://github.com/adrienthebo/r10k), a Puppetfile, and a few manifests to actually manage what's applied to my machines and install modules,
+as well as a private module ("privatepuppet") on GitHub for my sensitive/personal configuration, and a specific module for Arch Linux on my
+[MacBook Pro Retina](https://github.com/jantman/puppet-archlinux-macbookretina) that handles some things specific to that platform.
 
 ##Setup
 
 ###What archlinux-workstation affects
 
 * A list of files, packages, services, or operations that the module will alter, impact, or execute on the system it's installed on.
-* This is a great place to stick any warnings.
-* Can be in list or paragraph form. 
 
 ###Setup Requirements **OPTIONAL**
 
@@ -41,7 +47,10 @@ If your most recent release breaks compatibility or requires particular steps fo
 
 ##Usage
 
-Put the classes, types, and resources for customizing, configuring, and doing the fancy stuff with your module here. 
+Classes are parameterized where that makes sense. Right now, there are two methods of usage:
+
+1. Accept my current configuration, and just apply this module (as the ``archlinux_workstation`` class).
+2. 
 
 ##Reference
 
