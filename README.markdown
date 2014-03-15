@@ -1,6 +1,7 @@
 ####Table of Contents
 
 1. [Overview](#overview)
+    * [Module Status](#module-status)
 2. [Module Description - What the module does and why it is useful](#module-description)
 3. [Setup - The basics of getting started with archlinux_workstation](#setup)
     * [What archlinux_workstation affects](#what-archlinux_workstation-affects)
@@ -14,6 +15,12 @@
 ##Overview
 
 Provides many classes (and a sane default class/init.pp) for configuring an Arch Linux workstation/laptop/desktop for graphical use.
+
+###Module Status
+
+This module is currently at version 0.0.1. I'm trying to write this in a way that's usable by other people, and meets the current
+best practices for modules. However, I also need to get my new desktop up and running. While it's not best practice, this module
+doesn't really have any tests yet. I plan on circling back and writing initial tests once I have a minimally-usable machine.
 
 ##Module Description
 
@@ -33,7 +40,8 @@ as well as a private module ("privatepuppet") on GitHub for my sensitive/persona
 
 ###What archlinux_workstation affects
 
-* A list of files, packages, services, or operations that the module will alter, impact, or execute on the system it's installed on.
+See the [Reference](#reference) section below. In general, the goal is that it affects anything and everything you'd
+need to touch to take a base Arch Linux installation to a fully-usable, graphical workstation/laptop/desktop.
 
 ###Setup Requirements **OPTIONAL**
 
@@ -50,7 +58,11 @@ If your most recent release breaks compatibility or requires particular steps fo
 Classes are parameterized where that makes sense. Right now, there are two methods of usage:
 
 1. Accept my current configuration, and just apply this module (as the ``archlinux_workstation`` class).
-2. 
+2. Use this from another manifest or module (i.e. how I do in [workstation-bootstrap](https://github.com/jantman/workstation-bootstrap)),
+   requiring or defining just the classes that you need.
+
+If you stick to one of these two usage methods (instead of forking this module and hacking on the
+internals), you should be safe to pull in updates as they happen.
 
 ##Reference
 
@@ -58,12 +70,34 @@ Here, list the classes, types, providers, facts, etc contained in your module. T
 
 ##Limitations
 
-This is where you list OS compatibility, version compatibility, etc.
+This module is only usable with Arch Linux. Additionally, it's generally developed against whatever the current
+Puppet version is in [aur](https://aur.archlinux.org/packages/puppet), and whatever the current Ruby version is
+in the [Arch Extra repo](https://www.archlinux.org/packages/extra/x86_64/ruby/).
+
+It assumes that you have a relatively vanilla base install of Arch, such as the one I document in my [workstation-bootstrap module](https://github.com/jantman/workstation-bootstrap#arch-linux),
+pretty much the same as the [Arch Linux Installation Guide](https://wiki.archlinux.org/index.php/Installation_guide) documents.
 
 ##Development
 
-Since your module is awesome, other users will want to play with it. Let them know what the ground rules for contributing are.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for information about development and contributing.
 
-##Release Notes/Contributors/Etc **Optional**
+I'm developing and testing on Arch, with everything installed via the default repositories,
+or AUR (via Yaourt). At the moment, the package versions I'm using are:
 
-If you aren't using changelog, put your release notes here (though you should consider using changelog). You may also add any additional sections you feel are necessary or important to include here. Please use the `## ` header. 
+* augeas 1.2.0-1
+* libxml2 2.9.1-5
+* puppet 3.4.2-2
+* ruby 2.1.1-1
+* ruby-augeas 0.5.0-0
+* ruby-colored 1.2-2
+* ruby-cri 2.5.0-1
+* ruby-facter 1.7.5-1
+* ruby-hiera 1.3.2-1
+* ruby-hiera-json 0.4.0-3
+* ruby-json_pure 1.8.1-1
+* ruby-log4r 1.1.10-3
+* ruby-r10k 1.1.4-1
+* ruby-rgen 0.6.5-3
+* ruby-shadow 2.2.0-2
+* ruby-systemu-2.5 2.5.2-1
+* vim-runtime 7.4.135-2
