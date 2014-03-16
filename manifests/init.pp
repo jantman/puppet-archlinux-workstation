@@ -18,8 +18,4 @@ class archlinux_workstation (
 
   # validate parameters here
 
-  class { 'archlinux_workstation::install': } ->
-  class { 'archlinux_workstation::config': } ~>
-  class { 'archlinux_workstation::service': } ->
-  Class['archlinux_workstation']
 }
