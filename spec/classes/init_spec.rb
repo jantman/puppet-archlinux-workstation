@@ -12,10 +12,6 @@ describe 'archlinux_workstation' do
         it { should compile.with_all_deps }
 
         it { should contain_class('archlinux_workstation') }
-        #it { should contain_class('archlinux_workstation::install').that_comes_before('archlinux_workstation::config') }
-        #it { should contain_class('archlinux_workstation::service').that_subscribes_to('archlinux_workstation::config') }
-        #it { should contain_service('archlinux_workstation') }
-        #it { should contain_package('archlinux_workstation').with_ensure('present') }
       end
     end
   end

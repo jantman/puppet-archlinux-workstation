@@ -5,8 +5,6 @@
 2. [Module Description - What the module does and why it is useful](#module-description)
 3. [Setup - The basics of getting started with archlinux_workstation](#setup)
     * [What archlinux_workstation affects](#what-archlinux_workstation-affects)
-    * [Setup requirements](#setup-requirements)
-    * [Beginning with archlinux_workstation](#beginning-with-archlinux_workstation)
 4. [Usage - Configuration options and additional functionality](#usage)
 5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
 5. [Limitations - OS compatibility, etc.](#limitations)
@@ -42,16 +40,6 @@ as well as a private module ("privatepuppet") on GitHub for my sensitive/persona
 
 See the [Reference](#reference) section below. In general, the goal is that it affects anything and everything you'd
 need to touch to take a base Arch Linux installation to a fully-usable, graphical workstation/laptop/desktop.
-
-###Setup Requirements **OPTIONAL**
-
-If your module requires anything extra before setting up (pluginsync enabled, etc.), mention it here. 
-
-###Beginning with archlinux_workstation
-
-The very basic steps needed for a user to get the module up and running. 
-
-If your most recent release breaks compatibility or requires particular steps for upgrading, you may wish to include an additional section here: Upgrading (For an example, see http://forge.puppetlabs.com/puppetlabs/firewall).
 
 ##Usage
 
