@@ -13,14 +13,5 @@ describe 'archlinux_workstation class' do
       expect(apply_manifest(pp).exit_code).to_not eq(1)
       expect(apply_manifest(pp).exit_code).to eq(0)
     end
-
-    describe package('archlinux_workstation') do
-      it { should be_installed }
-    end
-
-    describe service('archlinux_workstation') do
-      it { should be_enabled }
-      it { should be_running }
-    end
   end
 end

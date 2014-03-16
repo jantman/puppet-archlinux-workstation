@@ -12,6 +12,10 @@ class archlinux_workstation (
   $service_name = $archlinux_workstation::params::service_name,
 ) inherits archlinux_workstation::params {
 
+  if $::osfamily != 'Archlinux' {
+    fail("${::operatingsystem} not supported")
+  }
+
   # validate parameters here
 
   class { 'archlinux_workstation::install': } ->
