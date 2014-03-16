@@ -7,4 +7,4 @@ summary       'Configure an Arch Linux workstation/desktop/laptop'
 description   'Provides many classes (and a sane default class/init.pp) for configuring an Arch Linux workstation/laptop/desktop for graphical use.'
 project_page  'https://github.com/jantman/puppet-archlinux-workstation'
 
-dependency 'puppetlabs/stdlib'
+dependency 'puppetlabs/stdlib', '>=4.1.0 <5.0.0'
