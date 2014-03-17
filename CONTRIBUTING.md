@@ -34,7 +34,7 @@ you must set an environment variable such as:
 
 Install the dependencies like so...
 
-    bundle install
+    bundle install --path vendor/bundle
 
 ## Syntax and style
 
