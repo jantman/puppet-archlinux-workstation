@@ -8,8 +8,7 @@
 #   Explanation of what this parameter affects and what it defaults to.
 #
 class archlinux_workstation (
-  $package_name = $archlinux_workstation::params::package_name,
-  $service_name = $archlinux_workstation::params::service_name,
+  $foo = 'bar',
 ) inherits archlinux_workstation::params {
 
   if $::osfamily != 'Archlinux' {
