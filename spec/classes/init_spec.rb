@@ -42,4 +42,19 @@ describe 'archlinux_workstation' do
       it { expect { should contain_class('archlinux_workstation') }.to raise_error(Puppet::Error, /debian not supported/) }
     end
   end
+
+  context 'parameters' do
+    let(:facts) {{
+      :osfamily => 'Archlinux',
+    }}
+
+    describe "username is undefined" do
+      let(:params) {{ }}
+
+      it { should compile.with_all_deps }
+
+      it { should_not contain_class('archlinux_workstation::user') }
+    end
+  end
+
 end
