@@ -45,9 +45,15 @@ need to touch to take a base Arch Linux installation to a fully-usable, graphica
 
 Classes are parameterized where that makes sense. Right now, there are two methods of usage:
 
-1. Accept my current configuration, and just apply this module (as the ``archlinux_workstation`` class).
-2. Use this from another manifest or module (i.e. how I do in [workstation-bootstrap](https://github.com/jantman/workstation-bootstrap)),
-   requiring or defining just the classes that you need.
+1. To accept the (hopefully sane) defaults that I have, simply declare the ``archlinux_workstation`` class
+   in a manifest, passing parameters as required (see [Reference](#reference) below for details on parameters).
+
+    class {'archlinux_workstation':
+      foo => bar,
+    }
+
+2. For advanced configuration, omit the main class and declare the other classes in this module, as required
+   to achieve the desired effect.
 
 If you stick to one of these two usage methods (instead of forking this module and hacking on the
 internals), you should be safe to pull in updates as they happen.
