@@ -60,7 +60,20 @@ internals), you should be safe to pull in updates as they happen.
 
 ##Reference
 
-Here, list the classes, types, providers, facts, etc contained in your module. This section should include all of the under-the-hood workings of your module so people know what the module is touching on their system but don't need to mess with things. (We are working on automating this section!)
+### archlinux_workstation
+
+Simply declares instances of all of the other classes, passing
+them the appropriate parameters. Assuming this is suitable for you,
+just declare this class, passing it the appropriate parameters.
+
+#### Parameters
+
+<fill in here>
+
+### define archlinux_workstation::user
+
+Defines a single user on the system, generates SSH keys,
+and adds them to the usual system groups.
 
 ##Limitations
 

@@ -55,6 +55,20 @@ describe 'archlinux_workstation' do
 
       it { should_not contain_class('archlinux_workstation::user') }
     end
+
+    describe "username is defined" do
+      let(:params) {{
+        'username' => 'foouser',
+      }}
+
+      it { should compile.with_all_deps }
+
+      it { should contain_archlinux_workstation__user('foouser').with({
+        'username' => 'foouser',
+        'homedir'  => '/home/foouser',
+      }) }
+    end
+
   end
 
 end

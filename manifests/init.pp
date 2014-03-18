@@ -39,6 +39,10 @@ class archlinux_workstation (
     $userhome = undef
   } else {
     $userhome = $user_home
+    archlinux_workstation::user { $username:
+      username => $username,
+      homedir  => $userhome,
+    }
   }
 
   notice("home=${userhome}")
