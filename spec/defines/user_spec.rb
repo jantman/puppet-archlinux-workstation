@@ -6,12 +6,12 @@ describe 'archlinux_workstation::user', :type => :define  do
     'foouser'
   end
 
-  context 'parameters' do
+  context 'defined with' do
     let(:facts) {{
       :osfamily => 'Archlinux',
     }}
 
-    describe "default" do
+    describe "default parameters" do
       let(:params) {{
         :username => 'foouser',
         :realname => 'Foo User',
@@ -35,7 +35,7 @@ describe 'archlinux_workstation::user', :type => :define  do
       }) }
 
       it { should contain_user('foouser').that_requires('Group[foouser]') }
-    end
+    end # describe "default parameters"
 
     describe "shell specified" do
       let(:params) {{
@@ -47,7 +47,7 @@ describe 'archlinux_workstation::user', :type => :define  do
       it { should contain_user('foouser').with({
         'shell'    => '/bin/zsh',
       }) }
-    end
+    end # describe "shell specified"
 
     describe "homedir specified" do
       let(:params) {{
@@ -59,36 +59,50 @@ describe 'archlinux_workstation::user', :type => :define  do
       it { should contain_user('foouser').with({
         'home'    => '/home/notfoo',
       }) }
-    end
+    end # describe "homedir specified"
 
     describe "groups specified" do
+      let(:title) { 'foouser' }
       let(:params) {{
-        :groups => ['one', 'two', 'three'],
+        'groups'  => ['one', 'two', 'three'],
+        :homedir => '/home/foouser',
       }}
 
       let :pre_condition do
         [
-          'group { "one": ensure => present, }',
-          'group { "two": ensure => present, }',
-          'group { "three": ensure => present, }'
+          'group { "one": ensure => present, provider => groupadd, }',
+          'group { "two": ensure => present, provider => groupadd, }',
+          'group { "three": ensure => present, provider => groupadd, }',
         ]
       end
 
       it { should compile.with_all_deps }
 
       it { should contain_user('foouser').with({
-        'groups'    => ['one', 'two', 'three'],
+        :groups    => ['one', 'two', 'three'],
       }) }
 
       it do
         should contain_user('foouser').that_requires('Group[one]')
         should contain_user('foouser').that_requires('Group[two]')
         should contain_user('foouser').that_requires('Group[three]')
+        should contain_user('foouser').that_requires('Group[foouser]')
       end
-        
 
-    end
+    end # describe "groups specified"
 
+    describe "groups not specified" do
+      let(:title) { 'foouser' }
+
+      it { should compile.with_all_deps }
+
+      it { should contain_user('foouser').without_groups }
+
+      it do
+        should contain_user('foouser').that_requires('Group[foouser]')
+      end
+
+    end # describe "groups not specified"
 
   end
 

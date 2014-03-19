@@ -48,7 +48,8 @@ define archlinux_workstation::user (
 
   if $groups {
     User[$username] {
-      require => [Group[$username], Group['one'], ],
+      groups  => $groups,
+      require => [Group[$username], Group[$groups], ],
     }
   } else {
     User[$username] {
