@@ -69,6 +69,20 @@ describe 'archlinux_workstation' do
       }) }
     end
 
+    describe "username and user_home are defined" do
+      let(:params) {{
+        'username'  => 'foouser',
+        'user_home' => '/tmp/notmyhome',
+      }}
+
+      it { should compile.with_all_deps }
+
+      it { should contain_archlinux_workstation__user('foouser').with({
+        'username' => 'foouser',
+        'homedir'  => '/tmp/notmyhome',
+      }) }
+    end
+
   end
 
 end

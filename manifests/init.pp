@@ -34,6 +34,9 @@ class archlinux_workstation (
     fail("${::operatingsystem} not supported")
   }
 
+  # validate parameters here
+  validate_absolute_path($user_home)
+
   # internal $userhome is undef if $username is undef
   if ! $username {
     $userhome = undef
@@ -44,8 +47,5 @@ class archlinux_workstation (
       homedir  => $userhome,
     }
   }
-
-  notice("home=${userhome}")
-  # validate parameters here
 
 }
