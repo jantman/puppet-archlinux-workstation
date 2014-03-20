@@ -15,6 +15,8 @@
 #
 # * [saz/sudo](https://github.com/saz/puppet-sudo) to manage sudoers
 #   and sudoers.d entries for root and your user
+# * [saz/ssh](http://forge.puppetlabs.com/saz/ssh) to configure sshd
+#   server
 #
 # === Parameters
 #
@@ -64,6 +66,16 @@ class archlinux_workstation (
   sudo::conf {"${username}-all":
     priority => 10,
     content  => "${username} ALL=(ALL) ALL",
+  }
+
+  # saz/ssh
+  class { 'ssh::server':
+    storeconfigs_enabled => false,
+    options              => {
+      'PasswordAuthentication' => 'no',
+      'PermitRootLogin'        => 'no',
+      'Port'                   => [22, 2222],
+    },
   }
 
 }

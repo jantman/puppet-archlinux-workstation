@@ -2,5 +2,6 @@ fixtures:
   repositories:
     stdlib: "git://github.com/puppetlabs/puppetlabs-stdlib.git"
     sudo: "https://github.com/saz/puppet-sudo.git"
+    ssh: "https://github.com/saz/puppet-ssh.git"
   symlinks:
     archlinux_workstation: "#{source_dir}"

@@ -103,15 +103,26 @@ describe 'archlinux_workstation' do
         'priority' => 0,
     }) }
 
-    it { should contain_sudo__conf('root-all').with({
-        'priority' => 2,
-        'content'  => 'root ALL=(ALL) ALL',
-    }) }
-
     it { should contain_sudo__conf('foouser-all').with({
         'priority' => 10,
         'content'  => 'foouser ALL=(ALL) ALL',
     }) }
+
+  end
+
+  context 'saz/ssh' do
+    let(:facts) {{
+      :osfamily        => 'Archlinux',
+      :operatingsystem => 'Archlinux',
+    }}
+
+    let(:params) {{
+      'username' => 'foouser',
+    }}
+
+    it { should compile.with_all_deps }
+
+    it { should contain_class('ssh') }
 
   end
 
