@@ -72,7 +72,7 @@ class archlinux_workstation (
   class { 'ssh::server':
     storeconfigs_enabled => false,
     options              => {
-      'AllowUsers'             => "${username}",
+      'AllowUsers'             => $username,
       'AuthorizedKeysFile'     => '.ssh/authorized_keys',
       'GSSAPIAuthentication'   => 'no',
       'KerberosAuthentication' => 'no',
