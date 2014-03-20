@@ -16,7 +16,7 @@
 # * [saz/sudo](https://github.com/saz/puppet-sudo) to manage sudoers
 #   and sudoers.d entries for root and your user
 # * [saz/ssh](http://forge.puppetlabs.com/saz/ssh) to configure sshd
-#   server
+#   server; access limited to $username only, pubkey/RSA
 #
 # === Parameters
 #
@@ -72,6 +72,7 @@ class archlinux_workstation (
   class { 'ssh::server':
     storeconfigs_enabled => false,
     options              => {
+      'AllowUsers'             => "${username}",
       'AuthorizedKeysFile'     => '.ssh/authorized_keys',
       'GSSAPIAuthentication'   => 'no',
       'KerberosAuthentication' => 'no',

@@ -44,6 +44,7 @@ This includes:
 
 * your login user, a primary group with the same name as the username, and their supplementary groups
 * sudoers file and sudoers.d entries for your user
+* sshd_config, including AllowUsers (your user only) and auth methods (pubkey/RSA only)
 
 ##Usage
 
@@ -72,6 +73,7 @@ just declare this class, passing it the appropriate parameters.
 
 In addition, declares instances of:
 * [saz/sudo](https://github.com/saz/puppet-sudo) to manage /etc/sudoers and sudoers.d entries for your user
+* [saz/ssh](https://github.com/saz/puppet-ssh) to manage sshd_config
 
 #### Parameters
 
