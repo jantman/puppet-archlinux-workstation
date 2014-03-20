@@ -122,7 +122,7 @@ describe 'archlinux_workstation' do
 
     it { should compile.with_all_deps }
 
-    it { should contain_class('ssh') }
+    it { should contain_class('ssh::server') }
 
   end
 
