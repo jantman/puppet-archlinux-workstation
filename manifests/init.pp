@@ -7,9 +7,14 @@
 #
 # See README.markdown for advanced usage.
 #
-# This class *only* declares other classes in this module with
+# This class declares other classes in this module with
 # appropriate parameters. For documentation on specific actions
 # taken, see the other classes.
+#
+# It also uses the following classes outside of this module:
+#
+# * [saz/sudo](https://github.com/saz/puppet-sudo) to manage sudoers
+#   and sudoers.d entries for root and your user
 #
 # === Parameters
 #

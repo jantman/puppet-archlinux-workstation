@@ -71,7 +71,7 @@ them the appropriate parameters. Assuming this is suitable for you,
 just declare this class, passing it the appropriate parameters.
 
 In addition, declares instances of:
-* [saz/sudo](https://github.com/saz/puppet-sudo) to manage sudoers
+* [saz/sudo](https://github.com/saz/puppet-sudo) to manage /etc/sudoers and sudoers.d entries for your user
 
 #### Parameters
 
@@ -83,6 +83,8 @@ Defines a single user on the system, generates SSH keys,
 and adds them to the usual system groups.
 
 #### Parameters
+
+<fill in here>
 
 ##Limitations
 
