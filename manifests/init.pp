@@ -72,9 +72,17 @@ class archlinux_workstation (
   class { 'ssh::server':
     storeconfigs_enabled => false,
     options              => {
+      'AuthorizedKeysFile'     => '.ssh/authorized_keys',
+      'GSSAPIAuthentication'   => 'no',
+      'KerberosAuthentication' => 'no',
       'PasswordAuthentication' => 'no',
       'PermitRootLogin'        => 'no',
       'Port'                   => [22],
+      'PubkeyAuthentication'   => 'yes',
+      'RSAAuthentication'      => 'yes',
+      'SyslogFacility'         => 'AUTH',
+      'UsePrivilegeSeparation' => 'sandbox', # "Default for new installations."
+      'X11Forwarding'          => 'no',
     },
   }
 
