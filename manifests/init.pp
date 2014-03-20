@@ -74,7 +74,7 @@ class archlinux_workstation (
     options              => {
       'PasswordAuthentication' => 'no',
       'PermitRootLogin'        => 'no',
-      'Port'                   => [22, 2222],
+      'Port'                   => [22],
     },
   }
 
