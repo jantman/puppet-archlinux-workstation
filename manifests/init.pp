@@ -48,4 +48,22 @@ class archlinux_workstation (
     }
   }
 
+  # saz/sudo; this purges the current config
+  class {'sudo': }
+
+  sudo::conf {'defaults-env_keep':
+    priority => 0,
+    content  => 'Defaults env_keep += "LANG LANGUAGE LINGUAS LC_* _XKB_CHARSET QTDIR KDEDIR XDG_SESSION_COOKIE"'
+  }
+
+  sudo::conf {'root-all':
+    priority => 2,
+    content  => 'root ALL=(ALL) ALL',
+  }
+
+  sudo::conf {"${username}-all":
+    priority => 10,
+    content  => "${username} ALL=(ALL) ALL",
+  }
+
 }

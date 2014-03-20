@@ -2,17 +2,16 @@ require 'spec_helper'
 
 describe 'archlinux_workstation' do
   context 'supported operating systems' do
-    ['Archlinux'].each do |osfamily|
-      describe "archlinux_workstation class without any parameters on #{osfamily}" do
-        let(:params) {{ }}
-        let(:facts) {{
-          :osfamily => osfamily,
-        }}
+    describe "archlinux_workstation class without any parameters on Archlinux" do
+      let(:params) {{ }}
+      let(:facts) {{
+        :osfamily        => 'Archlinux',
+        :operatingsystem => 'Archlinux',
+      }}
 
-        it { should compile.with_all_deps }
+      it { should compile.with_all_deps }
 
-        it { should contain_class('archlinux_workstation') }
-      end
+      it { should contain_class('archlinux_workstation') }
     end
   end
 
@@ -45,7 +44,8 @@ describe 'archlinux_workstation' do
 
   context 'parameters' do
     let(:facts) {{
-      :osfamily => 'Archlinux',
+      :osfamily        => 'Archlinux',
+      :operatingsystem => 'Archlinux',
     }}
 
     describe "username is undefined" do
@@ -82,6 +82,36 @@ describe 'archlinux_workstation' do
         'homedir'  => '/tmp/notmyhome',
       }) }
     end
+
+  end
+
+  context 'saz/sudo' do
+    let(:facts) {{
+      :osfamily        => 'Archlinux',
+      :operatingsystem => 'Archlinux',
+    }}
+
+    let(:params) {{
+      'username' => 'foouser',
+    }}
+
+    it { should compile.with_all_deps }
+
+    it { should contain_class('sudo') }
+
+    it { should contain_sudo__conf('defaults-env_keep').with({
+        'priority' => 0,
+    }) }
+
+    it { should contain_sudo__conf('root-all').with({
+        'priority' => 2,
+        'content'  => 'root ALL=(ALL) ALL',
+    }) }
+
+    it { should contain_sudo__conf('foouser-all').with({
+        'priority' => 10,
+        'content'  => 'foouser ALL=(ALL) ALL',
+    }) }
 
   end
 

@@ -38,8 +38,12 @@ as well as a private module ("privatepuppet") on GitHub for my sensitive/persona
 
 ###What archlinux_workstation affects
 
-See the [Reference](#reference) section below. In general, the goal is that it affects anything and everything you'd
+See the [Reference](#reference) section below for details. In general, the goal is that it affects anything and everything you'd
 need to touch to take a base Arch Linux installation to a fully-usable, graphical workstation/laptop/desktop.
+This includes:
+
+* your login user, a primary group with the same name as the username, and their supplementary groups
+* sudoers file and sudoers.d entries for your user
 
 ##Usage
 
@@ -66,6 +70,9 @@ Simply declares instances of all of the other classes, passing
 them the appropriate parameters. Assuming this is suitable for you,
 just declare this class, passing it the appropriate parameters.
 
+In addition, declares instances of:
+* [saz/sudo](https://github.com/saz/puppet-sudo) to manage sudoers
+
 #### Parameters
 
 <fill in here>
@@ -74,6 +81,8 @@ just declare this class, passing it the appropriate parameters.
 
 Defines a single user on the system, generates SSH keys,
 and adds them to the usual system groups.
+
+#### Parameters
 
 ##Limitations
 

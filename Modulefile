@@ -8,3 +8,4 @@ description   'Provides many classes (and a sane default class/init.pp) for conf
 project_page  'https://github.com/jantman/puppet-archlinux-workstation'
 
 dependency 'puppetlabs/stdlib', '>=4.1.0 <5.0.0'
+dependency 'saz/sudo', '>=3.0.3, <4.0.0'
