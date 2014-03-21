@@ -47,6 +47,9 @@ This includes:
 * sshd_config, including AllowUsers (your user only) and auth methods (pubkey/RSA only)
 * ``/etc/makepkg.conf``, set to compile and cache sources under ``/tmp`` (tmpfs), and specify -j${::processorcount} make flag.
 * installation of some common base packages (see ``archlinux_workstation::base_packages`` below)
+* use of the [puppetlabs/firewall](http://forge.puppetlabs.com/puppetlabs/firewall) module to manage iptables (note that
+  it's expected you setup the module elsewhere, as I do in [workstation_bootstrap](https://github.com/jantman/workstation-bootstrap) -
+  this module just adds rules for its services using the Firewall type).
 
 ##Usage
 
@@ -76,6 +79,7 @@ just declare this class, passing it the appropriate parameters.
 In addition, declares instances of:
 * [saz/sudo](https://github.com/saz/puppet-sudo) to manage /etc/sudoers and sudoers.d entries for your user
 * [saz/ssh](https://github.com/saz/puppet-ssh) to manage sshd_config
+* a Firewall type to allow ssh connections
 
 #### Parameters
 

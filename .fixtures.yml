@@ -5,5 +5,6 @@ fixtures:
     ssh:
       repo: "https://github.com/jantman/puppet-ssh.git"
       ref: "3af5933387f44a010892d40b7042cff7c7e321dd"
+    firewall: "https://github.com/puppetlabs/puppetlabs-firewall.git"
   symlinks:
     archlinux_workstation: "#{source_dir}"

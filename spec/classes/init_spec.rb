@@ -124,6 +124,11 @@ describe 'archlinux_workstation' do
 
     it { should contain_class('ssh::server') }
 
+    it { should contain_firewall('005 allow ssh').with({
+      'port'   => [22],
+      'proto'  => 'tcp',
+      'action' => 'accept',
+    }) }
   end
 
   context 'makepkg' do

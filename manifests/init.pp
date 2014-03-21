@@ -87,6 +87,13 @@ class archlinux_workstation (
     },
   }
 
+  # firewall rule for ssh
+  firewall { '005 allow ssh':
+    port   => [22],
+    proto  => tcp,
+    action => accept,
+  }
+
   class {'archlinux_workstation::makepkg': }
   class {'archlinux_workstation::base_packages': }
 
