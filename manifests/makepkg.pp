@@ -49,8 +49,8 @@ class archlinux_workstation::makepkg (
     source  => 'puppet:///modules/archlinux_workstation/maketmpdirs.service',
     require => File['/usr/local/bin/maketmpdirs.sh'],
   }
+  # this service runs at boot to create /tmp/sources
   service {'maketmpdirs':
-    ensure  => running,
     enable  => true,
     require => File['/etc/systemd/system/maketmpdirs.service'],
   }

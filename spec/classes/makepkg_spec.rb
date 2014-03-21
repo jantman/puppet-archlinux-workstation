@@ -18,8 +18,9 @@ describe 'archlinux_workstation::makepkg' do
       it { should contain_file('/usr/local/bin/maketmpdirs.sh') }
       it { should contain_file('/etc/systemd/system/maketmpdirs.service') }
       it { should contain_service('maketmpdirs').with({
-        'ensure' => 'running',
         'enable' => true,
+      }).without({
+        'ensure' => 'running',
       }).that_requires('File[/etc/systemd/system/maketmpdirs.service]') }
 
     end
