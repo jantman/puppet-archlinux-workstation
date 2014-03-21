@@ -45,6 +45,7 @@ This includes:
 * your login user, a primary group with the same name as the username, and their supplementary groups
 * sudoers file and sudoers.d entries for your user
 * sshd_config, including AllowUsers (your user only) and auth methods (pubkey/RSA only)
+* ``/etc/makepkg.conf``, set to compile and cache sources under ``/tmp`` (tmpfs), and specify -j${::processorcount} make flag.
 
 ##Usage
 
@@ -67,7 +68,7 @@ internals), you should be safe to pull in updates as they happen.
 
 ### archlinux_workstation
 
-Simply declares instances of all of the other classes, passing
+Simply declares instances of all of the other classes (below), passing
 them the appropriate parameters. Assuming this is suitable for you,
 just declare this class, passing it the appropriate parameters.
 
@@ -77,16 +78,44 @@ In addition, declares instances of:
 
 #### Parameters
 
-<fill in here>
+* __username__ - (string) Your login username. Used to create
+  your account, add you to certain groups, etc. Default: undef.
+  If left undefined, this module will not do anything to users
+  or groups, or anything that is user-specific.
+* __user_home__ - Path to $username's home directory. Used for
+  classes that put files in the user's home directory, and to
+  create SSH keys for the user. Default: "/home/${username}.
+  If set to undef, this module will not act on anything within
+  the user's home directory.
 
-### define archlinux_workstation::user
+### Define archlinux_workstation::user
 
 Defines a single user on the system, generates SSH keys,
 and adds them to the usual system groups.
 
 #### Parameters
 
-<fill in here>
+* __username__ - (string) The user's username.
+  Defaults to the resource title.
+* __realname__ - (string) The user's real name, to be used
+  in the passwd comment/GECOS field.
+* __homedir__ - (string) Path to $username's home directory.
+  Will be created if it does not exist.
+* __shell__ - (string) the user's login shell.
+  Default: '/bin/bash'
+* __groups__ - (array) list of supplementary groups that
+  this user should be a member of. Default: undef.
+
+### archlinux_workstation::makepkg
+
+Sets up ``/etc/makepkg.conf`` with sane Arch defaults, including compiling and caching sources
+under ``/tmp`` (tmpfs), and passing make the ``-j`` flag with an argument of the number of
+processors/cores on the machine, as retrieved from the "processorcount" fact.
+
+#### Parameters
+
+* __make_flags__ - (string) additional flags to pass to make via makepkg.conf.
+  default: "-j${::processorcount}"
 
 ##Limitations
 

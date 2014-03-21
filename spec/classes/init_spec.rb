@@ -126,4 +126,17 @@ describe 'archlinux_workstation' do
 
   end
 
+  context 'makepkg' do
+    let(:facts) {{
+      :osfamily        => 'Archlinux',
+      :operatingsystem => 'Archlinux',
+      :processorcount  => 8,
+    }}
+
+    it { should compile.with_all_deps }
+
+    it { should contain_class('archlinux_workstation::makepkg') }
+
+  end
+
 end
