@@ -46,6 +46,7 @@ This includes:
 * sudoers file and sudoers.d entries for your user
 * sshd_config, including AllowUsers (your user only) and auth methods (pubkey/RSA only)
 * ``/etc/makepkg.conf``, set to compile and cache sources under ``/tmp`` (tmpfs), and specify -j${::processorcount} make flag.
+* installation of some common base packages (see ``archlinux_workstation::base_packages`` below)
 
 ##Usage
 
@@ -88,6 +89,25 @@ In addition, declares instances of:
   If set to undef, this module will not act on anything within
   the user's home directory.
 
+### archlinux_workstation::base_packages
+
+Collection of base packages that we want installed on every system.
+
+* ensure Package lynx is absent
+* ensure Packages are present: links, lsb-release, dmidecode, ttf-dejavu,
+  vim, wget, dnsutils, net-tools, lsof
+
+### archlinux_workstation::makepkg
+
+Sets up ``/etc/makepkg.conf`` with sane Arch defaults, including compiling and caching sources
+under ``/tmp`` (tmpfs), and passing make the ``-j`` flag with an argument of the number of
+processors/cores on the machine, as retrieved from the "processorcount" fact.
+
+#### Parameters
+
+* __make_flags__ - (string) additional flags to pass to make via makepkg.conf.
+  default: "-j${::processorcount}"
+
 ### Define archlinux_workstation::user
 
 Defines a single user on the system, generates SSH keys,
@@ -105,17 +125,6 @@ and adds them to the usual system groups.
   Default: '/bin/bash'
 * __groups__ - (array) list of supplementary groups that
   this user should be a member of. Default: undef.
-
-### archlinux_workstation::makepkg
-
-Sets up ``/etc/makepkg.conf`` with sane Arch defaults, including compiling and caching sources
-under ``/tmp`` (tmpfs), and passing make the ``-j`` flag with an argument of the number of
-processors/cores on the machine, as retrieved from the "processorcount" fact.
-
-#### Parameters
-
-* __make_flags__ - (string) additional flags to pass to make via makepkg.conf.
-  default: "-j${::processorcount}"
 
 ##Limitations
 
