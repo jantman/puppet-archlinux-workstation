@@ -88,5 +88,6 @@ class archlinux_workstation (
   }
 
   class {'archlinux_workstation::makepkg': }
+  class {'archlinux_workstation::base_packages': }
 
 }

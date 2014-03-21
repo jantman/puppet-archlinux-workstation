@@ -139,4 +139,16 @@ describe 'archlinux_workstation' do
 
   end
 
+  context 'base_packages' do
+    let(:facts) {{
+      :osfamily        => 'Archlinux',
+      :operatingsystem => 'Archlinux',
+    }}
+
+    it { should compile.with_all_deps }
+
+    it { should contain_class('archlinux_workstation::base_packages') }
+
+  end
+
 end
