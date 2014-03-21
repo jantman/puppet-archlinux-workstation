@@ -50,6 +50,7 @@ This includes:
 * use of the [puppetlabs/firewall](http://forge.puppetlabs.com/puppetlabs/firewall) module to manage iptables (note that
   it's expected you setup the module elsewhere, as I do in [workstation_bootstrap](https://github.com/jantman/workstation-bootstrap) -
   this module just adds rules for its services using the Firewall type).
+* enable dkms support by installing the package and enabling the service
 
 ##Usage
 
@@ -100,6 +101,13 @@ Collection of base packages that we want installed on every system.
 * ensure Package lynx is absent
 * ensure Packages are present: links, lsb-release, dmidecode, ttf-dejavu,
   vim, wget, dnsutils, net-tools, lsof
+
+### archlinux_workstation::dkms
+
+Enable DMKS support
+
+* ensure Package dkms is present
+* ensure Service dkms is enabled and running
 
 ### archlinux_workstation::makepkg
 

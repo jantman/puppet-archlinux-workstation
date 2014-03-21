@@ -1,13 +1,15 @@
 require 'spec_helper'
 
 describe 'archlinux_workstation' do
+  let(:facts) {{
+    :osfamily        => 'Archlinux',
+    :operatingsystem => 'Archlinux',
+  }}
+
+
   context 'supported operating systems' do
     describe "archlinux_workstation class without any parameters on Archlinux" do
       let(:params) {{ }}
-      let(:facts) {{
-        :osfamily        => 'Archlinux',
-        :operatingsystem => 'Archlinux',
-      }}
 
       it { should compile.with_all_deps }
 
@@ -43,11 +45,6 @@ describe 'archlinux_workstation' do
   end
 
   context 'parameters' do
-    let(:facts) {{
-      :osfamily        => 'Archlinux',
-      :operatingsystem => 'Archlinux',
-    }}
-
     describe "username is undefined" do
       let(:params) {{ }}
 
@@ -86,11 +83,6 @@ describe 'archlinux_workstation' do
   end
 
   context 'saz/sudo' do
-    let(:facts) {{
-      :osfamily        => 'Archlinux',
-      :operatingsystem => 'Archlinux',
-    }}
-
     let(:params) {{
       'username' => 'foouser',
     }}
@@ -111,11 +103,6 @@ describe 'archlinux_workstation' do
   end
 
   context 'saz/ssh' do
-    let(:facts) {{
-      :osfamily        => 'Archlinux',
-      :operatingsystem => 'Archlinux',
-    }}
-
     let(:params) {{
       'username' => 'foouser',
     }}
@@ -145,15 +132,14 @@ describe 'archlinux_workstation' do
   end
 
   context 'base_packages' do
-    let(:facts) {{
-      :osfamily        => 'Archlinux',
-      :operatingsystem => 'Archlinux',
-    }}
-
     it { should compile.with_all_deps }
 
     it { should contain_class('archlinux_workstation::base_packages') }
 
+  end
+
+  context 'dkms' do
+    it { should contain_class('archlinux_workstation::dkms') }
   end
 
 end
