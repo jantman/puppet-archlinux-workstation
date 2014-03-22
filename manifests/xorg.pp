@@ -10,7 +10,12 @@
 #
 class archlinux_workstation::xorg {
 
-  $xorg_packages = ['xorg-server', 'xorg-apps', 'xorg-server-utils', 'xorg-xinit', 'mesa']
+  $xorg_packages = ['xorg-server',
+                    'xorg-apps',
+                    'xorg-server-utils',
+                    'xorg-xinit',
+                    'mesa',
+                    'xf86-video-vesa']
 
   package {$xorg_packages:
     ensure => present,

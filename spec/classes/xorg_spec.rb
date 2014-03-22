@@ -13,7 +13,8 @@ describe 'archlinux_workstation::xorg' do
                 'xorg-apps',
                 'xorg-server-utils',
                 'xorg-xinit',
-                'mesa'
+                'mesa',
+                'xf86-video-vesa'
                ]
 
     packages.each do |package|
