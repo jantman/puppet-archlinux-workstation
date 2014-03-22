@@ -58,6 +58,7 @@ This includes:
 * sets up the [Chrony](https://wiki.archlinux.org/index.php/Chrony) alternative NTP daemon
 * installs alsa-utils and does initial unmute of Master channel, for [ALSA](https://wiki.archlinux.org/index.php/Advanced_Linux_Sound_Architecture)
 * installs [Xorg](https://wiki.archlinux.org/index.php/Xorg) Xserver as well as related required and recommended/optional packages
+  (note - this currently only installs the default vesa driver. See archlinux_workstation::xorg below for more information)
 
 ##Usage
 
@@ -205,6 +206,11 @@ and adds them to the usual system groups.
 ### archlinux_workstation::xorg
 
 Install packages required for xorg X server, as well as some additional packages.
+
+Note - currently this just installs the default "xf86-video-vesa" driver.
+Need to write a fact to find video cards and choose the correct driver,
+per [Driver Installation](https://wiki.archlinux.org/index.php/Xorg#Driver_installation),
+or expose this option to the user as a parameter.
 
 ### archlinux_workstation::yaourt
 
