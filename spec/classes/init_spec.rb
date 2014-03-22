@@ -183,4 +183,8 @@ describe 'archlinux_workstation' do
     it { should contain_class('archlinux_workstation::yaourt') }
   end
 
+  context 'cups' do
+    it { should contain_class('archlinux_workstation::cups') }
+  end
+
 end

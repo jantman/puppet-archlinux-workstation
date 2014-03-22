@@ -54,6 +54,7 @@ This includes:
 * creates and uses a swapfile at a configurable path and of configurable size (by defaylt, 4G at ``/swapfile``),
   via an instance of ``archlinux_workstation::swapfile``.
 * sets up the [archlinuxfr](http://archlinux.fr/yaourt-en) and [multilib](https://wiki.archlinux.org/index.php/Multilib) pacman repositories, and installs [yaourt](http://archlinux.fr/yaourt-en)
+* sets up [CUPS](https://wiki.archlinux.org/index.php/Cups) printing
 
 ##Usage
 
@@ -104,6 +105,13 @@ Collection of base packages that we want installed on every system.
 * ensure Package lynx is absent
 * ensure Packages are present: links, lsb-release, dmidecode, ttf-dejavu,
   vim, wget, dnsutils, net-tools, lsof
+
+### archlinux_workstation::cups
+
+Installs [CUPS](https://wiki.archlinux.org/index.php/Cups) printing.
+
+* installs cups and a list of related packages
+* runs the cups service
 
 ### archlinux_workstation::dkms
 

@@ -114,5 +114,6 @@ class archlinux_workstation (
   }
 
   class {'archlinux_workstation::yaourt': }
+  class {'archlinux_workstation::cups': }
 
 }
