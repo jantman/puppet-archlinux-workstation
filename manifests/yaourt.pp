@@ -6,33 +6,38 @@
 #
 # === Actions:
 #   - Add [archlinuxfr](http://archlinux.fr/yaourt-en) repository so we can install yaourt via pacman
-#   - run ``pacman --sync --refresh yaourt`` when the repo file changes
 #   - enable the [multilib](https://wiki.archlinux.org/index.php/Multilib) repository
+#   - install the 'yaourt' Package
 #
 class archlinux_workstation::yaourt {
 
-#  file { '/etc/pacman.conf':
-#    ensure  => present,
-#    owner   => 'root',
-#    group   => 'root',
-#    mode    => '0644',
-#    source  => 'puppet:///modules/archlinux_workstation/pacman.conf',
-#  }
-
   ini_setting { 'pacman.conf-multilib':
     ensure  => present,
-    path    => '/tmp/pacman.conf',
+    path    => '/etc/pacman.conf',
     section => 'multilib',
     setting => 'Include',
     value   => '/etc/pacman.d/mirrorlist',
-#    notify  => Exec['pacman_sync_yaourt'],
   }
 
-#  exec {'pacman_sync_yaourt':
-#    refreshonly => 'true',
-#    user        => 'root',
-#    command     => '/usr/bin/pacman --noconfirm --sync --refresh yaourt',
-#    require     => File['/etc/pacman.d/archlinuxfr.conf'],
-#  }
+  ini_setting { 'pacman.conf-archlinuxfr-siglevel':
+    ensure  => present,
+    path    => '/etc/pacman.conf',
+    section => 'archlinuxfr',
+    setting => 'SigLevel',
+    value   => 'Never',
+  }
+
+  ini_setting { 'pacman.conf-archlinuxfr-server':
+    ensure  => present,
+    path    => '/etc/pacman.conf',
+    section => 'archlinuxfr',
+    setting => 'Server',
+    value   => 'http://repo.archlinux.fr/$arch',
+  }
+
+  package {'yaourt':
+    ensure  => present,
+    require => [Ini_setting['pacman.conf-archlinuxfr-server'], Ini_setting['pacman.conf-archlinuxfr-siglevel']],
+  }
 
 }
