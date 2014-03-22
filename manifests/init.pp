@@ -145,8 +145,7 @@ class archlinux_workstation (
 
   # user apps
   if $userapps == true {
-    class {'archlinux_workstation::userapps::googlechrome': }
-    class {'archlinux_workstation::userapps::virtualbox': }
+    class {'archlinux_workstation::userapps': }
   }
 
 }

@@ -126,8 +126,7 @@ describe 'archlinux_workstation' do
       }}
 
       it { should compile.with_all_deps }
-      it { should contain_class('archlinux_workstation::userapps::googlechrome') }
-      it { should contain_class('archlinux_workstation::userapps::virtualbox') }
+      it { should contain_class('archlinux_workstation::userapps') }
     end
 
     describe "userapps is false" do
@@ -136,8 +135,7 @@ describe 'archlinux_workstation' do
       }}
 
       it { should compile.with_all_deps }
-      it { should_not contain_class('archlinux_workstation::userapps::googlechrome') }
-      it { should_not contain_class('archlinux_workstation::userapps::virtualbox') }
+      it { should_not contain_class('archlinux_workstation::userapps') }
     end
 
   end # context 'parameters'
