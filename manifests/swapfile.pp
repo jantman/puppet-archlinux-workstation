@@ -12,7 +12,9 @@
 #
 # * __swapfile_size__ - (string) size of the swapfile, in format allowed by fallocate,
 #   i.e. a bare integer number of bytes, or an integer followed by K, M, G, T and so on
-#   for KiB, MiB, GiB, TiB, etc. Default: '4G'.
+#   for KiB, MiB, GiB, TiB, etc. Default: '4G'. NOTE that at this time, this module will
+#   *not* recreate swapfiles, so if you change this parameter, it will have no effect unless
+#   you swapoff and remove the old swapfile.
 #
 # === Size Calculation
 #
