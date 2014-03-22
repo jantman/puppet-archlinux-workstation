@@ -56,6 +56,7 @@ This includes:
 * sets up the [archlinuxfr](http://archlinux.fr/yaourt-en) and [multilib](https://wiki.archlinux.org/index.php/Multilib) pacman repositories, and installs [yaourt](http://archlinux.fr/yaourt-en)
 * sets up [CUPS](https://wiki.archlinux.org/index.php/Cups) printing
 * sets up the [Chrony](https://wiki.archlinux.org/index.php/Chrony) alternative NTP daemon
+* installs alsa-utils and does initial unmute of Master channel, for [ALSA](https://wiki.archlinux.org/index.php/Advanced_Linux_Sound_Architecture)
 
 ##Usage
 
@@ -105,6 +106,11 @@ In addition, declares instances of:
 * __gui__ - Install a graphical/desktop environment. Currently
   accepted values are "kde" or undef. Pull requests welcome for others.
   X will be installed either way.
+
+### archlinux_workstation::alsa
+
+Install alsa-utils package for [ALSA](https://wiki.archlinux.org/index.php/Advanced_Linux_Sound_Architecture),
+and do initial unmute of the master channel.
 
 ### archlinux_workstation::base_packages
 
