@@ -6,7 +6,6 @@ describe 'archlinux_workstation' do
     :operatingsystem => 'Archlinux',
   }}
 
-
   context 'supported operating systems' do
     describe "archlinux_workstation class without any parameters on Archlinux" do
       let(:params) {{ }}
@@ -80,7 +79,45 @@ describe 'archlinux_workstation' do
       }) }
     end
 
-  end
+    describe "gui is left default" do
+      let(:params) {{
+      }}
+
+      it { should compile.with_all_deps }
+      it { should contain_class('archlinux_workstation::kde') }
+    end
+
+    describe "gui is specified kde" do
+      let(:params) {{
+        'gui' => 'kde',
+      }}
+
+      it { should compile.with_all_deps }
+      it { should contain_class('archlinux_workstation::kde') }
+    end
+
+    # @TODO: how do we set 'gui' param to undef?
+#    describe "gui is set to undef" do
+#      let(:params) {{
+#      }}
+#
+#      it { should compile.with_all_deps }
+#      it { should_not contain_class('archlinux_workstation::kde') }
+#    end
+
+    describe "gui is an invalid string" do
+      let(:params) {{
+        'gui' => 'gnome'
+      }}
+
+      it do
+        expect {
+          should compile
+        }.to raise_error(RSpec::Expectations::ExpectationNotMetError, /"gnome" does not match "\^\(kde\)\$"/)
+      end
+    end
+
+  end # context 'parameters'
 
   context 'saz/sudo' do
     let(:params) {{
@@ -185,6 +222,20 @@ describe 'archlinux_workstation' do
 
   context 'cups' do
     it { should contain_class('archlinux_workstation::cups') }
+  end
+
+  context 'networkmanager' do
+    describe 'default gui' do
+      it { should contain_class('archlinux_workstation::networkmanager').with({
+        'gui' => 'kde',
+      }) }
+    end
+#    @TODO - need to figure out how to set param to undef
+#    describe 'gui is undef' do
+#      it { should contain_class('archlinux_workstation::networkmanager').with({
+#        'gui' => 'undef',
+#      }) }
+#    end
   end
 
 end

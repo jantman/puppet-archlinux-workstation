@@ -97,6 +97,13 @@ In addition, declares instances of:
   create SSH keys for the user. Default: "/home/${username}.
   If set to undef, this module will not act on anything within
   the user's home directory.
+* __swapfile_path__ - Path to create a swapfile at. Set to
+  undef to not create and use a swap file. Default: /swapfile.
+* __swapfile_size__ - If $swapfile_path is not undef, override
+  the default of this parameter in archlinux_workstation::swapfile.
+* __gui__ - Install a graphical/desktop environment. Currently
+  accepted values are "kde" or undef. Pull requests welcome for others.
+  X will be installed either way.
 
 ### archlinux_workstation::base_packages
 
@@ -130,6 +137,14 @@ processors/cores on the machine, as retrieved from the "processorcount" fact.
 
 * __make_flags__ - (string) additional flags to pass to make via makepkg.conf.
   default: "-j${::processorcount}"
+
+### archlinux_workstation::networkmanager
+
+Install and setup networkmanager its GUI components, and ensure dhcpcd is stopped and nm is running.
+
+#### Parameters:
+
+* __gui__ - the $gui value from archlinux_workstation. See that class for docs.
 
 ### Define archlinux_workstation::swapfile
 

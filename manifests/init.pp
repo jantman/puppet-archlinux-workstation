@@ -37,11 +37,16 @@
 # * __swapfile_size__ - If $swapfile_path is not undef, override
 #   the default of this parameter in archlinux_workstation::swapfile.
 #
+# * __gui__ - Install a graphical/desktop environment. Currently
+#   accepted values are "kde" or undef. Pull requests welcome for others.
+#   X will be installed either way.
+#
 class archlinux_workstation (
   $username        = undef,
   $user_home       = "/home/${username}",
   $swapfile_path   = '/swapfile',
   $swapfile_size   = undef,
+  $gui             = 'kde',
 ) inherits archlinux_workstation::params {
 
   # make sure we're on arch, otherwise fail
@@ -51,6 +56,9 @@ class archlinux_workstation (
 
   # validate parameters here
   validate_absolute_path($user_home)
+  if $gui != undef {
+    validate_re($gui, '^(kde)$')
+  }
 
   # internal $userhome is undef if $username is undef
   if ! $username {
@@ -115,5 +123,13 @@ class archlinux_workstation (
 
   class {'archlinux_workstation::yaourt': }
   class {'archlinux_workstation::cups': }
+
+  if $gui == 'kde' {
+    class {'archlinux_workstation::kde': }
+  }
+
+  class {'archlinux_workstation::networkmanager':
+    gui => $gui,
+  }
 
 }
