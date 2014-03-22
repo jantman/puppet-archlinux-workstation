@@ -17,6 +17,7 @@ class archlinux_workstation::yaourt {
     section => 'multilib',
     setting => 'Include',
     value   => '/etc/pacman.d/mirrorlist',
+    notify  => Exec['pacman-resync'],
   }
 
   ini_setting { 'pacman.conf-archlinuxfr-siglevel':
@@ -33,11 +34,18 @@ class archlinux_workstation::yaourt {
     section => 'archlinuxfr',
     setting => 'Server',
     value   => 'http://repo.archlinux.fr/$arch',
+    notify  => Exec['pacman-resync'],
+  }
+
+  exec {'pacman-resync':
+    refreshonly => true,
+    user        => 'root',
+    command     => '/usr/bin/pacman --noconfirm -Sy',
   }
 
   package {'yaourt':
     ensure  => present,
-    require => [Ini_setting['pacman.conf-archlinuxfr-server'], Ini_setting['pacman.conf-archlinuxfr-siglevel']],
+    require => [Ini_setting['pacman.conf-archlinuxfr-server'], Ini_setting['pacman.conf-archlinuxfr-siglevel'], Exec['pacman-resync']],
   }
 
 }

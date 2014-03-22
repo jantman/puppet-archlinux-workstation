@@ -4,6 +4,7 @@ describe 'archlinux_workstation::yaourt' do
   let(:facts) {{
     :osfamily        => 'Archlinux',
     :operatingsystem => 'Archlinux',
+    :id              => 'root',
   }}
 
   let(:params) {{ }}
@@ -16,7 +17,7 @@ describe 'archlinux_workstation::yaourt' do
     'section' => 'multilib',
     'setting' => 'Include',
     'value'   => '/etc/pacman.d/mirrorlist',
-  }) }
+  }).that_notifies('Exec[pacman-resync]') }
 
   it { should contain_ini_setting('pacman.conf-archlinuxfr-siglevel').with({
     'ensure'  => 'present',
@@ -32,11 +33,18 @@ describe 'archlinux_workstation::yaourt' do
     'section' => 'archlinuxfr',
     'setting' => 'Server',
     'value'   => 'http://repo.archlinux.fr/$arch',
+  }).that_notifies('Exec[pacman-resync]') }
+
+  it { should contain_exec('pacman-resync').with({
+    'refreshonly' => 'true',
+    'user'        => 'root',
+    'command'     => '/usr/bin/pacman --noconfirm -Sy',
   }) }
 
   it { should contain_package('yaourt').with({
     'ensure' => 'present',
   }).that_requires('Ini_setting[pacman.conf-archlinuxfr-server]') \
-  .that_requires('Ini_setting[pacman.conf-archlinuxfr-siglevel]') }
+  .that_requires('Ini_setting[pacman.conf-archlinuxfr-siglevel]') \
+  .that_requires('Exec[pacman-resync]') }
 
 end
