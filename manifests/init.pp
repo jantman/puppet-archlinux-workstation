@@ -113,4 +113,6 @@ class archlinux_workstation (
     }
   }
 
+  class {'archlinux_workstation::yaourt': }
+
 }

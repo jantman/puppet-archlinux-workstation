@@ -53,6 +53,7 @@ This includes:
 * enable dkms support by installing the package and enabling the service
 * creates and uses a swapfile at a configurable path and of configurable size (by defaylt, 4G at ``/swapfile``),
   via an instance of ``archlinux_workstation::swapfile``.
+* sets up the [archlinuxfr](http://archlinux.fr/yaourt-en) and [multilib](https://wiki.archlinux.org/index.php/Multilib) pacman repositories, and installs [yaourt](http://archlinux.fr/yaourt-en)
 
 ##Usage
 
@@ -157,6 +158,12 @@ and adds them to the usual system groups.
   Default: '/bin/bash'
 * __groups__ - (array) list of supplementary groups that
   this user should be a member of. Default: undef.
+
+### archlinux_workstation::yaourt
+
+Add the [archlinuxfr](http://archlinux.fr/yaourt-en) repo to pacman via an inisetting, install
+[yaourt](https://wiki.archlinux.org/index.php/Yaourt) so we can get packages from AUR.
+Also enable the [multilib](https://wiki.archlinux.org/index.php/Multilib) repository (also via inisetting).
 
 ##Limitations
 

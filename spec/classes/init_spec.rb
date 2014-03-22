@@ -142,37 +142,45 @@ describe 'archlinux_workstation' do
     it { should contain_class('archlinux_workstation::dkms') }
   end
 
-  context 'swapfile default' do
-    it { should contain_class('archlinux_workstation::swapfile').with({
-      'swapfile_path' => '/swapfile',
-    }) }
-  end
+  context 'swapfile' do
 
-  # @TODO: can't figure out how to get this to work...
-#  context 'swapfile undef' do
-#    let(:params) {{
-#      :swapfile_path => nil,
-#    }}
-#    it { should_not contain_class('archlinux_workstation::swapfile') }
-#  end
+    describe 'specified path' do
+      it { should contain_class('archlinux_workstation::swapfile').with({
+        'swapfile_path' => '/swapfile',
+      }) }
+    end
 
-  context 'swapfile_path specified' do
-    let(:params) {{
-      :swapfile_path => '/my/swap/file',
-    }}
-    it { should contain_class('archlinux_workstation::swapfile').with({
-      'swapfile_path' => '/my/swap/file',
-    }) }
-  end
+    # @TODO: can't figure out how to get this to work...
+    #describe 'swapfile undef' do
+    #    let(:params) {{
+    #      :swapfile_path => nil,
+    #    }}
+    #    it { should_not contain_class('archlinux_workstation::swapfile') }
+    #  end
 
-  context 'swapfile_size specified' do
-    let(:params) {{
-      :swapfile_size => '2M',
-    }}
-    it { should contain_class('archlinux_workstation::swapfile').with({
-      'swapfile_path' => '/swapfile',
-      'swapfile_size' => '2M',
-    }) }
+    describe 'swapfile_path specified' do
+      let(:params) {{
+        :swapfile_path => '/my/swap/file',
+      }}
+      it { should contain_class('archlinux_workstation::swapfile').with({
+        'swapfile_path' => '/my/swap/file',
+      }) }
+    end
+
+    describe 'swapfile_size specified' do
+      let(:params) {{
+        :swapfile_size => '2M',
+      }}
+      it { should contain_class('archlinux_workstation::swapfile').with({
+        'swapfile_path' => '/swapfile',
+        'swapfile_size' => '2M',
+      }) }
+    end
+
+  end # context 'swapfile'
+
+  context 'yaourt' do
+    it { should contain_class('archlinux_workstation::yaourt') }
   end
 
 end
