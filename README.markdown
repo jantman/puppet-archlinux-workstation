@@ -61,6 +61,7 @@ This includes:
   (note - this currently only installs the default vesa driver. See archlinux_workstation::xorg below for more information)
 * if the ``gui`` parameter is set to 'kde' (default), installs [KDE](https://wiki.archlinux.org/index.php/KDE)
   and installs and runs [KDM](https://wiki.archlinux.org/index.php/KDM)
+* if the ``userapps`` parameter is set to true (defailt), installs a base collection of some user apps (see the ``::userapps::`` classes below).
 
 ##Usage
 
@@ -110,6 +111,8 @@ In addition, declares instances of:
 * __gui__ - Install a graphical/desktop environment. Currently
   accepted values are "kde" or undef. Pull requests welcome for others.
   X will be installed either way.
+* __userapps__ - (boolean) if true, install the user apps specified
+  in the ``::userapp::`` classes. (Default: true)
 
 ### archlinux_workstation::alsa
 
@@ -212,6 +215,14 @@ and adds them to the usual system groups.
   Default: '/bin/bash'
 * __groups__ - (array) list of supplementary groups that
   this user should be a member of. Default: undef.
+
+### archlinux_workstation::userapps::googlechrome
+
+Install proprietary Google Chrome browser and Google TTF fonts from archlinuxfr repo.
+
+### archlinux_workstation::userapps::virtualbox
+
+Install and configure VirtualBox and Vagrant.
 
 ### archlinux_workstation::xorg
 

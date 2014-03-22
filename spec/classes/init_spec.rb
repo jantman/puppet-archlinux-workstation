@@ -120,6 +120,26 @@ describe 'archlinux_workstation' do
       end
     end
 
+    describe "userapps is default true" do
+      let(:params) {{
+        'userapps' => true,
+      }}
+
+      it { should compile.with_all_deps }
+      it { should contain_class('archlinux_workstation::userapps::googlechrome') }
+      it { should contain_class('archlinux_workstation::userapps::virtualbox') }
+    end
+
+    describe "userapps is false" do
+      let(:params) {{
+        'userapps' => false,
+      }}
+
+      it { should compile.with_all_deps }
+      it { should_not contain_class('archlinux_workstation::userapps::googlechrome') }
+      it { should_not contain_class('archlinux_workstation::userapps::virtualbox') }
+    end
+
   end # context 'parameters'
 
   context 'saz/sudo' do

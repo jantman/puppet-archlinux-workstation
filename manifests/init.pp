@@ -41,12 +41,16 @@
 #   accepted values are "kde" or undef. Pull requests welcome for others.
 #   X will be installed either way.
 #
+# * __userapps__ - (boolean) if true, install the user apps specified
+#   in the ``::userapp::`` classes. (Default: true)
+#
 class archlinux_workstation (
   $username        = undef,
   $user_home       = "/home/${username}",
   $swapfile_path   = '/swapfile',
   $swapfile_size   = undef,
   $gui             = 'kde',
+  $userapps        = true,
 ) inherits archlinux_workstation::params {
 
   # make sure we're on arch, otherwise fail
@@ -59,6 +63,7 @@ class archlinux_workstation (
   if $gui != undef {
     validate_re($gui, '^(kde)$')
   }
+  validate_bool($userapps)
 
   # internal $userhome is undef if $username is undef
   if ! $username {
@@ -137,5 +142,11 @@ class archlinux_workstation (
   class {'archlinux_workstation::alsa': }
 
   class {'archlinux_workstation::xorg': }
+
+  # user apps
+  if $userapps == true {
+    class {'archlinux_workstation::userapps::googlechrome': }
+    class {'archlinux_workstation::userapps::virtualbox': }
+  }
 
 }
