@@ -224,6 +224,10 @@ Installs emacs-nox
 
 Install proprietary Google Chrome browser and Google TTF fonts from archlinuxfr repo.
 
+### archlinux_workstation::userapps::rsnapshot
+
+Install rsync and rsnapshot for backups.
+
 ### archlinux_workstation::userapps::virtualbox
 
 Install and configure VirtualBox and Vagrant.

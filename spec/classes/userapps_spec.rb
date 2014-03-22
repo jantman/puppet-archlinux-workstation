@@ -50,6 +50,7 @@ describe 'archlinux_workstation::userapps' do
     it { should contain_class('archlinux_workstation::userapps::googlechrome') }
     it { should contain_class('archlinux_workstation::userapps::virtualbox') }
     it { should contain_class('archlinux_workstation::userapps::emacs') }
+    it { should contain_class('archlinux_workstation::userapps::rsnapshot') }
   end
 
 end
