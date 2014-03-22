@@ -152,6 +152,8 @@ Enable DMKS support
 
 ### archlinux_workstation::kde
 
+Perform a full installation of [KDE](https://wiki.archlinux.org/index.php/KDE) via the "kde" package group.
+
 ### archlinux_workstation::kdm
 
 Install and run [KDM](https://wiki.archlinux.org/index.php/KDM), the KDE desktop/login manager.
