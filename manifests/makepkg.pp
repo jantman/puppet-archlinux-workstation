@@ -45,7 +45,7 @@ class archlinux_workstation::makepkg (
     ensure  => present,
     owner   => 'root',
     group   => 'root',
-    mode    => '0755',
+    mode    => '0644',
     source  => 'puppet:///modules/archlinux_workstation/maketmpdirs.service',
     require => File['/usr/local/bin/maketmpdirs.sh'],
   }

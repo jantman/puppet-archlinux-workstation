@@ -16,7 +16,7 @@ describe 'archlinux_workstation::makepkg' do
       it { should contain_file('/etc/makepkg.conf').with_content(/MAKEFLAGS="-j8"/) }
       it { should contain_file('/tmp/sources') }
       it { should contain_file('/usr/local/bin/maketmpdirs.sh') }
-      it { should contain_file('/etc/systemd/system/maketmpdirs.service') }
+      it { should contain_file('/etc/systemd/system/maketmpdirs.service').with_mode('0644') }
       it { should contain_service('maketmpdirs').with({
         'enable' => true,
       }).without({
