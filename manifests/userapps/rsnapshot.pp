@@ -7,7 +7,7 @@
 #
 class archlinux_workstation::userapps::rsnapshot {
 
-  package {['rsync', 'rsnapshot]:
+  package {['rsync', 'rsnapshot']:
     ensure  => present,
   }
 
