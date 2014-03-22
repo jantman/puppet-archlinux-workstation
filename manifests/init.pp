@@ -31,9 +31,17 @@
 #   If set to undef, this module will not act on anything within
 #   the user's home directory.
 #
+# * __swapfile_path__ - Path to create a swapfile at. Set to
+#   undef to not create and use a swap file. Default: /swapfile.
+#
+# * __swapfile_size__ - If $swapfile_path is not undef, override
+#   the default of this parameter in archlinux_workstation::swapfile.
+#
 class archlinux_workstation (
   $username        = undef,
   $user_home       = "/home/${username}",
+  $swapfile_path   = '/swapfile',
+  $swapfile_size   = undef,
 ) inherits archlinux_workstation::params {
 
   # make sure we're on arch, otherwise fail
@@ -97,4 +105,12 @@ class archlinux_workstation (
   class {'archlinux_workstation::makepkg': }
   class {'archlinux_workstation::base_packages': }
   class {'archlinux_workstation::dkms': }
+
+  if $swapfile_path != undef {
+    class {'archlinux_workstation::swapfile':
+      swapfile_path => $swapfile_path,
+      swapfile_size => $swapfile_size,
+    }
+  }
+
 }

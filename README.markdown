@@ -51,6 +51,8 @@ This includes:
   it's expected you setup the module elsewhere, as I do in [workstation_bootstrap](https://github.com/jantman/workstation-bootstrap) -
   this module just adds rules for its services using the Firewall type).
 * enable dkms support by installing the package and enabling the service
+* creates and uses a swapfile at a configurable path and of configurable size (by defaylt, 4G at ``/swapfile``),
+  via an instance of ``archlinux_workstation::swapfile``.
 
 ##Usage
 
@@ -119,6 +121,22 @@ processors/cores on the machine, as retrieved from the "processorcount" fact.
 
 * __make_flags__ - (string) additional flags to pass to make via makepkg.conf.
   default: "-j${::processorcount}"
+
+### Define archlinux_workstation::swapfile
+
+Creates a swap file, makes swap, activates it and adds it to fstab
+
+This class uses some execs to create the swapfile, then execs swapon
+and uses Augeas to add the swapfile to /etc/fstab.
+
+#### Parameters
+
+* __swapfile_path__ - (string) path where the swapfile will be stored.
+  Default: '/swapfile'. Must be an absolute path.
+
+* __swapfile_size__ - (string) size of the swapfile, in format allowed by fallocate,
+  i.e. a bare integer number of bytes, or an integer followed by K, M, G, T and so on
+  for KiB, MiB, GiB, TiB, etc. Default: '4G'.
 
 ### Define archlinux_workstation::user
 
