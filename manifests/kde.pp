@@ -3,8 +3,8 @@
 # Install KDE and required/supplementary components.
 #
 # === Actions:
-#   - Install dkms package
-#   - Enable and run the dkms service
+#   - kdm
+#   - 
 #
 class archlinux_workstation::kde {
 

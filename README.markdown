@@ -59,6 +59,8 @@ This includes:
 * installs alsa-utils and does initial unmute of Master channel, for [ALSA](https://wiki.archlinux.org/index.php/Advanced_Linux_Sound_Architecture)
 * installs [Xorg](https://wiki.archlinux.org/index.php/Xorg) Xserver as well as related required and recommended/optional packages
   (note - this currently only installs the default vesa driver. See archlinux_workstation::xorg below for more information)
+* if the ``gui`` parameter is set to 'kde' (default), installs [KDE](https://wiki.archlinux.org/index.php/KDE)
+  and installs and runs [KDM](https://wiki.archlinux.org/index.php/KDM)
 
 ##Usage
 
@@ -147,6 +149,12 @@ Enable DMKS support
 
 * ensure Package dkms is present
 * ensure Service dkms is enabled and running
+
+### archlinux_workstation::kde
+
+### archlinux_workstation::kdm
+
+Install and run [KDM](https://wiki.archlinux.org/index.php/KDM), the KDE desktop/login manager.
 
 ### archlinux_workstation::makepkg
 

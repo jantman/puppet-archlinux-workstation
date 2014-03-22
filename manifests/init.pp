@@ -126,6 +126,7 @@ class archlinux_workstation (
 
   if $gui == 'kde' {
     class {'archlinux_workstation::kde': }
+    class {'archlinux_workstation::kdm': }
   }
 
   class {'archlinux_workstation::networkmanager':

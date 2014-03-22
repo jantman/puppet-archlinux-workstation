@@ -85,6 +85,7 @@ describe 'archlinux_workstation' do
 
       it { should compile.with_all_deps }
       it { should contain_class('archlinux_workstation::kde') }
+      it { should contain_class('archlinux_workstation::kdm') }
     end
 
     describe "gui is specified kde" do
@@ -94,6 +95,7 @@ describe 'archlinux_workstation' do
 
       it { should compile.with_all_deps }
       it { should contain_class('archlinux_workstation::kde') }
+      it { should contain_class('archlinux_workstation::kdm') }
     end
 
     # @TODO: how do we set 'gui' param to undef?
@@ -103,6 +105,7 @@ describe 'archlinux_workstation' do
 #
 #      it { should compile.with_all_deps }
 #      it { should_not contain_class('archlinux_workstation::kde') }
+#      it { should_not contain_class('archlinux_workstation::kdm') }
 #    end
 
     describe "gui is an invalid string" do
