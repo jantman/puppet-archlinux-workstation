@@ -29,6 +29,18 @@ describe 'archlinux_workstation::chrony' do
         .that_notifies('Service[chrony]') \
         .with_content('1 d83ja72.f83,8wHUW94')
       }
+
+      it { should contain_file('/etc/chrony.conf').with({
+        'ensure'  => 'present',
+        'owner'   => 'root',
+        'group'   => 'root',
+        'mode'    => '0644',
+        }) \
+        .that_requires('Package[chrony]') \
+        .that_notifies('Service[chrony]') \
+        .with_source('puppet:///modules/archlinux_workstation/chrony.conf')
+      }
+
     end
 
     describe "password specified" do
