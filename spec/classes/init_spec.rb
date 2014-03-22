@@ -238,4 +238,8 @@ describe 'archlinux_workstation' do
 #    end
   end
 
+  context 'chrony' do
+    it { should contain_class('archlinux_workstation::chrony') }
+  end
+
 end

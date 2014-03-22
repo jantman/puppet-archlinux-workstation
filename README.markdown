@@ -55,6 +55,7 @@ This includes:
   via an instance of ``archlinux_workstation::swapfile``.
 * sets up the [archlinuxfr](http://archlinux.fr/yaourt-en) and [multilib](https://wiki.archlinux.org/index.php/Multilib) pacman repositories, and installs [yaourt](http://archlinux.fr/yaourt-en)
 * sets up [CUPS](https://wiki.archlinux.org/index.php/Cups) printing
+* sets up the [Chrony](https://wiki.archlinux.org/index.php/Chrony) alternative NTP daemon
 
 ##Usage
 
@@ -112,6 +113,18 @@ Collection of base packages that we want installed on every system.
 * ensure Package lynx is absent
 * ensure Packages are present: links, lsb-release, dmidecode, ttf-dejavu,
   vim, wget, dnsutils, net-tools, lsof
+
+### archlinux_workstation::chrony
+
+Install and configure [chrony](https://wiki.archlinux.org/index.php/Chrony), a roaming/laptop friendly NTP client,
+as well as the networkmanager-dispatcher-chrony script for it.
+
+#### Parameters
+
+* __chrony_password__ - The password that other clients will use to
+  connect to chrony. Our configuration only has chrony listening on
+  localhost/127.0.0.1, so this shouldn't be important.
+  Default: 'd83ja72.f83,8wHUW94'
 
 ### archlinux_workstation::cups
 

@@ -132,4 +132,6 @@ class archlinux_workstation (
     gui => $gui,
   }
 
+  class {'archlinux_workstation::chrony': }
+
 }
