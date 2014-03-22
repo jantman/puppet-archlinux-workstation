@@ -216,6 +216,10 @@ and adds them to the usual system groups.
 * __groups__ - (array) list of supplementary groups that
   this user should be a member of. Default: undef.
 
+### archlinux_workstation::userapps::emacs
+
+Installs emacs-nox
+
 ### archlinux_workstation::userapps::googlechrome
 
 Install proprietary Google Chrome browser and Google TTF fonts from archlinuxfr repo.

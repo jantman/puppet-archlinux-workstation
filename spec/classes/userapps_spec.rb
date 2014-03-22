@@ -49,6 +49,7 @@ describe 'archlinux_workstation::userapps' do
     it { should compile.with_all_deps }
     it { should contain_class('archlinux_workstation::userapps::googlechrome') }
     it { should contain_class('archlinux_workstation::userapps::virtualbox') }
+    it { should contain_class('archlinux_workstation::userapps::emacs') }
   end
 
 end
