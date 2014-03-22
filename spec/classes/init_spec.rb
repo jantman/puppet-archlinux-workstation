@@ -246,4 +246,8 @@ describe 'archlinux_workstation' do
     it { should contain_class('archlinux_workstation::alsa') }
   end
 
+  context 'xorg' do
+    it { should contain_class('archlinux_workstation::xorg') }
+  end
+
 end

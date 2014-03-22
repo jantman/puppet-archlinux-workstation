@@ -57,6 +57,7 @@ This includes:
 * sets up [CUPS](https://wiki.archlinux.org/index.php/Cups) printing
 * sets up the [Chrony](https://wiki.archlinux.org/index.php/Chrony) alternative NTP daemon
 * installs alsa-utils and does initial unmute of Master channel, for [ALSA](https://wiki.archlinux.org/index.php/Advanced_Linux_Sound_Architecture)
+* installs [Xorg](https://wiki.archlinux.org/index.php/Xorg) Xserver as well as related required and recommended/optional packages
 
 ##Usage
 
@@ -200,6 +201,10 @@ and adds them to the usual system groups.
   Default: '/bin/bash'
 * __groups__ - (array) list of supplementary groups that
   this user should be a member of. Default: undef.
+
+### archlinux_workstation::xorg
+
+Install packages required for xorg X server, as well as some additional packages.
 
 ### archlinux_workstation::yaourt
 
