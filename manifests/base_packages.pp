@@ -5,7 +5,7 @@
 # Actions:
 #   - ensure Package lynx is absent
 #   - ensure Packages are present: links, lsb-release, dmidecode, ttf-dejavu,
-#     vim, wget, dnsutils, net-tools, lsof
+#     vim, wget, dnsutils, net-tools, lsof, screen
 #
 class archlinux_workstation::base_packages {
   package {'links': ensure => present, }
@@ -18,4 +18,5 @@ class archlinux_workstation::base_packages {
   package {'dnsutils': ensure => present, }
   package {'net-tools': ensure => present, }
   package {'lsof': ensure => present, }
+  package {'screen': ensure => present, }
 }

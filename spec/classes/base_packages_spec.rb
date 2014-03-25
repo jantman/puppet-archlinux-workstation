@@ -18,6 +18,7 @@ describe 'archlinux_workstation::base_packages' do
                 'dnsutils',
                 'net-tools',
                 'lsof',
+                'screen',
                ]
 
     packages.each do |package|
