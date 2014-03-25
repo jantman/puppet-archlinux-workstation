@@ -17,5 +17,6 @@ class archlinux_workstation::userapps {
   class {'archlinux_workstation::userapps::virtualbox': }
   class {'archlinux_workstation::userapps::emacs': }
   class {'archlinux_workstation::userapps::rsnapshot': }
+  class {'archlinux_workstation::userapps::firefox': }
 
 }

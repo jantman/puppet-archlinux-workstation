@@ -220,6 +220,10 @@ and adds them to the usual system groups.
 
 Installs emacs-nox
 
+### archlinux_workstation::userapps::firefox
+
+Installs Firefox
+
 ### archlinux_workstation::userapps::googlechrome
 
 Install proprietary Google Chrome browser and Google TTF fonts from archlinuxfr repo.
