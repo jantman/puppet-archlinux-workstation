@@ -8,8 +8,9 @@
 class archlinux_workstation::kde {
 
   # this is really a package group not a package
-  package {'kde':
-    ensure => present,
-  }
+# @TODO: this is a package group, so it reinstalls every time...
+#  package {'kde':
+#    ensure => present,
+#  }
 
 }
