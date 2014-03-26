@@ -17,6 +17,10 @@
 #
 class archlinux_workstation::userapps::mozilla_profilemanager {
 
+  Exec {
+    path => '/usr/bin',
+  }
+
   staging::file { 'profilemanager.linux64.tar.gz':
     source => 'ftp://ftp.mozilla.org/pub/mozilla.org/utilities/profilemanager/1.0/profilemanager.linux64.tar.gz',
   }
