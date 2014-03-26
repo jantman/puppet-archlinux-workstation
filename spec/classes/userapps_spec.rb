@@ -52,6 +52,8 @@ describe 'archlinux_workstation::userapps' do
     it { should contain_class('archlinux_workstation::userapps::emacs') }
     it { should contain_class('archlinux_workstation::userapps::rsnapshot') }
     it { should contain_class('archlinux_workstation::userapps::firefox') }
+    it { should contain_class('archlinux_workstation::userapps::mozilla_profilemanager') }
+    it { should contain_class('archlinux_workstation::userapps::irssi') }
   end
 
 end

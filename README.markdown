@@ -228,6 +228,10 @@ Installs Firefox
 
 Install proprietary Google Chrome browser and Google TTF fonts from archlinuxfr repo.
 
+### archlinux_workstation::userapps::irssi
+
+Installs irssi
+
 ### archlinux_workstation::userapps::rsnapshot
 
 Install rsync and rsnapshot for backups.
