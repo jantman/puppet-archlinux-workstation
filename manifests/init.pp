@@ -150,8 +150,8 @@ class archlinux_workstation (
 
   # single-user RVM installation
   if $userapps == true and $username != undef {
-    single_user_rvm::install { $username: }
-    single_user_rvm::install_ruby { ['ruby-1.8.7', 'ruby-1.9.3', 'ruby-2.0.0']: user => $username, }
+    #single_user_rvm::install { $username: }
+    #single_user_rvm::install_ruby { ['ruby-1.8.7', 'ruby-1.9.3', 'ruby-2.0.0']: user => $username, }
   }
 
 }
