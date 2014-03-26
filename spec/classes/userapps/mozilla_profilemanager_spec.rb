@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'archlinux_workstation::userapps::googlechrome' do
+describe 'archlinux_workstation::userapps::mozilla_profilemanager' do
   context 'parameters' do
     let(:facts) {{
       :osfamily        => 'Archlinux',
