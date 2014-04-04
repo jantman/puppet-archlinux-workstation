@@ -33,6 +33,8 @@ class archlinux_workstation::userapps(
   class {'archlinux_workstation::userapps::irssi': }
   class {'archlinux_workstation::userapps::geppetto': }
 
-  archlinux_workstation::userapps::rvm {$username: userhome => $userhome, }
+  archlinux_workstation::userapps::rvm { $username:
+    userhome => $userhome,
+  }
 
 }
