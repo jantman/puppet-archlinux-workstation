@@ -226,7 +226,8 @@ Installs Firefox
 
 ### archlinux_workstation::userapps::geppetto
 
-Installs [Geppetto](http://docs.puppetlabs.com/geppetto/latest/index.html) Eclipse-based Puppet IDE.
+Installs [Geppetto](http://docs.puppetlabs.com/geppetto/latest/index.html) Eclipse-based Puppet IDE
+via AUR package, and [puppet-lint](http://puppet-lint.com/) via gem.
 
 ### archlinux_workstation::userapps::googlechrome
 

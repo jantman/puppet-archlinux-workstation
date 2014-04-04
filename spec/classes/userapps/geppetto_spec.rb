@@ -13,6 +13,7 @@ describe 'archlinux_workstation::userapps::geppetto' do
       it { should compile.with_all_deps }
 
       it { should contain_package('geppetto') }
+      it { should contain_package('puppet-lint').with_provider('gem') }
 
     end
 
