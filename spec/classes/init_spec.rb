@@ -123,10 +123,11 @@ describe 'archlinux_workstation' do
     describe "userapps is default true" do
       let(:params) {{
         'userapps' => true,
+        'username' => 'foouser',
       }}
 
       it { should compile.with_all_deps }
-      it { should contain_class('archlinux_workstation::userapps') }
+      it { should contain_class('archlinux_workstation::userapps').with_username('foouser').with_userhome('/home/foouser') }
     end
 
     describe "userapps is false" do
@@ -136,26 +137,6 @@ describe 'archlinux_workstation' do
 
       it { should compile.with_all_deps }
       it { should_not contain_class('archlinux_workstation::userapps') }
-    end
-
-    describe "username is defined and userapps is true" do
-      let(:params) {{
-        'userapps' => true,
-        'username' => 'foouser',
-      }}
-
-      #it { should contain_single_user_rvm__install('foouser') }
-
-      rubies = ['ruby-1.8.7',
-                'ruby-1.9.3',
-                'ruby-2.0.0',
-                ]
-
-      #rubies.each do |ruby|
-      #  describe "rvm ruby #{ruby}" do
-      #    it { should contain_single_user_rvm__install_ruby(ruby).with({ 'user' => 'foouser',}) }
-      #  end
-      #end
     end
 
   end # context 'parameters'

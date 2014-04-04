@@ -147,7 +147,7 @@ class archlinux_workstation (
   if $userapps == true {
     class {'archlinux_workstation::userapps':
       username => $username,
-      userhome => $user_home,
+      userhome => $userhome,
     }
   }
 
