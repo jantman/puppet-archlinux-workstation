@@ -224,6 +224,10 @@ Installs emacs-nox
 
 Installs Firefox
 
+### archlinux_workstation::userapps::geppetto
+
+Installs [Geppetto](http://docs.puppetlabs.com/geppetto/latest/index.html) Eclipse-based Puppet IDE.
+
 ### archlinux_workstation::userapps::googlechrome
 
 Install proprietary Google Chrome browser and Google TTF fonts from archlinuxfr repo.

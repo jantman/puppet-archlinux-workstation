@@ -20,5 +20,6 @@ class archlinux_workstation::userapps {
   class {'archlinux_workstation::userapps::firefox': }
   class {'archlinux_workstation::userapps::mozilla_profilemanager': }
   class {'archlinux_workstation::userapps::irssi': }
+  class {'archlinux_workstation::userapps::geppetto': }
 
 }
