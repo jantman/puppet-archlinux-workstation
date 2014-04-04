@@ -24,6 +24,7 @@ describe 'archlinux_workstation::userapps::rvm', :type => :define  do
         'creates'  => '/home/foouser/.rvm',
         'user'     => 'foouser',
         'cwd'      => '/home/foouser',
+        'path'     => '/usr/bin:/bin',
       }) }
 
     end # describe "default parameters"
@@ -40,6 +41,7 @@ describe 'archlinux_workstation::userapps::rvm', :type => :define  do
         'creates'  => '/not/usual/home/.rvm',
         'user'     => 'foouser',
         'cwd'      => '/not/usual/home',
+        'path'     => '/usr/bin:/bin',
       }) }
 
     end # describe "shell specified"
