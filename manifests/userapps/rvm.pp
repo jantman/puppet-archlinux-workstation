@@ -24,6 +24,7 @@ define archlinux_workstation::userapps::rvm (
     creates => "${userhome}/.rvm",
     user    => $user,
     cwd     => $userhome,
+    path    => '/usr/bin:/bin',
   }
 
 }
