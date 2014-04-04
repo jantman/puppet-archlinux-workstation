@@ -14,9 +14,9 @@
 #   classes that put files in the user's home directory.
 #   Default: "/home/${username}.
 #
-class archlinux_workstation::userapps(
-  $username => undef,
-  $userhome => undef,
+class archlinux_workstation::userapps (
+  $username = undef,
+  $userhome = undef,
 ) {
 
   # make sure we're on arch, otherwise fail
