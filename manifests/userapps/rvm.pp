@@ -20,11 +20,12 @@ define archlinux_workstation::userapps::rvm (
 ) {
 
   exec {"rvm-install-${user}":
-    command => "curl -sSL https://get.rvm.io | bash -s -- --ignore-dotfiles",
-    creates => "${userhome}/.rvm",
-    user    => $user,
-    cwd     => $userhome,
-    path    => '/usr/bin:/bin',
+    command     => "curl -sSL https://get.rvm.io | bash -s -- --ignore-dotfiles",
+    creates     => "${userhome}/.rvm",
+    user        => $user,
+    cwd         => $userhome,
+    path        => '/usr/bin:/bin',
+    environment => "HOME=${userhome}",
   }
 
 }
