@@ -6,7 +6,18 @@
 #
 # Declare instances of all archlinux_workstation::userapps:: classes
 #
-class archlinux_workstation::userapps {
+# === Parameters
+#
+# * __username__ - (string) Username for per-user apps.
+#
+# * __userhome__ - Path to $username's home directory. Used for
+#   classes that put files in the user's home directory.
+#   Default: "/home/${username}.
+#
+class archlinux_workstation::userapps(
+  $username => undef,
+  $userhome => undef,
+) {
 
   # make sure we're on arch, otherwise fail
   if $::osfamily != 'Archlinux' {
@@ -21,5 +32,7 @@ class archlinux_workstation::userapps {
   class {'archlinux_workstation::userapps::mozilla_profilemanager': }
   class {'archlinux_workstation::userapps::irssi': }
   class {'archlinux_workstation::userapps::geppetto': }
+
+  archlinux_workstation::userapps::rvm {$username: userhome => $userhome, }
 
 }

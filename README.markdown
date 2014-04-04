@@ -241,6 +241,10 @@ Installs irssi
 
 Install rsync and rsnapshot for backups.
 
+### archlinux_workstation::userapps::rvm
+
+Define to install [rvm](https://rvm.io/) for a single user in their home directory.
+
 ### archlinux_workstation::userapps::virtualbox
 
 Install and configure VirtualBox and Vagrant.

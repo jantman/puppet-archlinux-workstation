@@ -8,6 +8,11 @@ describe 'archlinux_workstation::userapps' do
 
   let(:pre_condition) { "class {'archlinux_workstation::yaourt': }" }
 
+  let(:params) {{
+    'username' => 'foo',
+    'userhome' => '/nothome/foo',
+  }}
+
   context 'supported operating systems' do
     describe "Archlinux" do
       let(:params) {{ }}
@@ -55,6 +60,9 @@ describe 'archlinux_workstation::userapps' do
     it { should contain_class('archlinux_workstation::userapps::mozilla_profilemanager') }
     it { should contain_class('archlinux_workstation::userapps::irssi') }
     it { should contain_class('archlinux_workstation::userapps::geppetto') }
+    it { should contain_archlinux_workstation__userapps__rvm('foo').with({{
+      'userhome' => '/nothome/foo',
+    }}) }
   end
 
 end
