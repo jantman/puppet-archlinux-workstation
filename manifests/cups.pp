@@ -10,6 +10,7 @@ class archlinux_workstation::cups {
 
   $cups_packages = ['libcups',
                     'cups',
+                    'cups-filters',
                     'ghostscript',
                     'gsfonts',
                     'gutenprint',
