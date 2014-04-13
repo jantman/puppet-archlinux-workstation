@@ -237,6 +237,10 @@ Install proprietary Google Chrome browser and Google TTF fonts from archlinuxfr 
 
 Installs irssi
 
+### archlinux_workstation::userapps::libreoffice
+
+Installs libreoffice
+
 ### archlinux_workstation::userapps::rsnapshot
 
 Install rsync and rsnapshot for backups.
