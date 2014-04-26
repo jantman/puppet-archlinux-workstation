@@ -25,7 +25,7 @@ class archlinux_workstation::userapps::virtualbox {
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
-    content => '# managed by puppet\nvboxdrv\nvboxnetadp\nvboxnetflt\nvboxpci',
+    content => "# managed by puppet module ${module_name}\nvboxdrv\nvboxnetadp\nvboxnetflt\nvboxpci",
   }
 
 }

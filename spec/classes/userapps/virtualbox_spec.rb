@@ -27,7 +27,7 @@ describe 'archlinux_workstation::userapps::virtualbox' do
       end
 
       it { should contain_file('/etc/modules-load.d/virtualbox.conf') \
-           .with_content(/vboxdrv/)
+           .with_content(/vboxdrv/m)
       }
 
     end
