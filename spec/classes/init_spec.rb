@@ -264,6 +264,10 @@ describe 'archlinux_workstation' do
     it { should contain_class('archlinux_workstation::chrony') }
   end
 
+  context 'cronie' do
+    it { should contain_class('archlinux_workstation::cronie') }
+  end
+
   context 'alsa' do
     it { should contain_class('archlinux_workstation::alsa') }
   end

@@ -132,6 +132,11 @@ Collection of base packages that we want installed on every system.
 Install and configure [chrony](https://wiki.archlinux.org/index.php/Chrony), a roaming/laptop friendly NTP client,
 as well as the networkmanager-dispatcher-chrony script for it.
 
+### archlinux_workstation::cronie
+
+Install and run the [cronie](https://fedorahosted.org/cronie/) cron daemon. Per the [Arch wiki cron entry](https://wiki.archlinux.org/index.php/cron),
+no cron daemon comes default with Arch.
+
 #### Parameters
 
 * __chrony_password__ - The password that other clients will use to

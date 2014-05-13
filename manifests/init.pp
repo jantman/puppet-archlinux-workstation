@@ -139,6 +139,7 @@ class archlinux_workstation (
   }
 
   class {'archlinux_workstation::chrony': }
+  class {'archlinux_workstation::cronie': }
   class {'archlinux_workstation::alsa': }
 
   class {'archlinux_workstation::xorg': }
