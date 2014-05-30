@@ -18,5 +18,6 @@ class archlinux_workstation::base_packages {
   package {'dnsutils': ensure => present, }
   package {'net-tools': ensure => present, }
   package {'lsof': ensure => present, }
+  package {'lsscsi': ensure => present, }
   package {'screen': ensure => present, }
 }
