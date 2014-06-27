@@ -14,6 +14,7 @@ class archlinux_workstation::userapps::virtualbox {
               'virtualbox-host-dkms',
               'virtualbox-guest-iso',
               'virtualbox-ext-oracle',
+              'vagrant',
               ]
 
   package {$packages:

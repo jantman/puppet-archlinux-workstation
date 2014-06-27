@@ -18,6 +18,7 @@ describe 'archlinux_workstation::userapps::virtualbox' do
                   'virtualbox-host-modules',
                   'virtualbox-guest-iso',
                   'virtualbox-ext-oracle',
+                  'vagrant',
                  ]
 
       packages.each do |package|
