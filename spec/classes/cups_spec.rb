@@ -13,11 +13,11 @@ describe 'archlinux_workstation::cups' do
 
     packages = ['libcups',
                 'cups',
+                'cups-filters',
                 'ghostscript',
                 'gsfonts',
                 'gutenprint',
                 'foomatic-db',
-                'foomatic-filters',
                 'hplip',
                 'cups-pdf'
                ]
