@@ -15,10 +15,8 @@ class archlinux_workstation::cups {
                     'gsfonts',
                     'gutenprint',
                     'foomatic-db',
-# @TODO: this is a package group, so it reinstalls on every run
-                    'foomatic-filters',
-		    'foomatic-db-engine',
-		    'foomatic-db-nonfree',
+                    'foomatic-db-engine',
+                    'foomatic-db-nonfree',
                     'hplip',
                     'cups-pdf'
                     ]
