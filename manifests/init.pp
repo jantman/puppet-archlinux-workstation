@@ -105,7 +105,7 @@ class archlinux_workstation (
       'RSAAuthentication'      => 'yes',
       'SyslogFacility'         => 'AUTH',
       'UsePrivilegeSeparation' => 'sandbox', # "Default for new installations."
-      'X11Forwarding'          => 'no',
+      'X11Forwarding'          => 'yes',
     },
   }
 
