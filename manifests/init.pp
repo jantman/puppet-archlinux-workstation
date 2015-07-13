@@ -93,6 +93,7 @@ class archlinux_workstation (
   class { 'ssh::server':
     storeconfigs_enabled => false,
     options              => {
+      'AcceptEnv'              => ['LANG', 'LC_*', 'DISPLAY'],
       'AllowUsers'             => $username,
       'AuthorizedKeysFile'     => '.ssh/authorized_keys',
       'GSSAPIAuthentication'   => 'no',
