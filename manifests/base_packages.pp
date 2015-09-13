@@ -15,7 +15,7 @@ class archlinux_workstation::base_packages {
   package {'vim': ensure => present, }
   package {'ttf-dejavu': ensure => present, }
   package {'wget': ensure => present, }
-  package {'dnsutils': ensure => present, }
+  #package {'dnsutils': ensure => present, }
   package {'net-tools': ensure => present, }
   package {'lsof': ensure => present, }
   package {'lsscsi': ensure => present, }

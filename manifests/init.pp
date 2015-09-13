@@ -127,21 +127,21 @@ class archlinux_workstation (
     }
   }
 
-  class {'archlinux_workstation::yaourt': }
-  class {'archlinux_workstation::cups': }
+  #class {'archlinux_workstation::yaourt': }
+  #class {'archlinux_workstation::cups': }
 
   if $gui == 'kde' {
     class {'archlinux_workstation::kde': }
     class {'archlinux_workstation::kdm': }
   }
 
-  class {'archlinux_workstation::networkmanager':
-    gui => $gui,
-  }
+  #class {'archlinux_workstation::networkmanager':
+  #  gui => $gui,
+  #}
 
-  class {'archlinux_workstation::chrony': }
+  #class {'archlinux_workstation::chrony': }
   class {'archlinux_workstation::cronie': }
-  class {'archlinux_workstation::alsa': }
+  #class {'archlinux_workstation::alsa': }
 
   class {'archlinux_workstation::xorg': }
 

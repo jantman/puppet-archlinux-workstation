@@ -24,15 +24,15 @@ class archlinux_workstation::userapps (
     fail("${::operatingsystem} not supported")
   }
 
-  class {'archlinux_workstation::userapps::googlechrome': }
+  #class {'archlinux_workstation::userapps::googlechrome': }
   class {'archlinux_workstation::userapps::virtualbox': }
   class {'archlinux_workstation::userapps::emacs': }
   class {'archlinux_workstation::userapps::rsnapshot': }
   class {'archlinux_workstation::userapps::firefox': }
-  class {'archlinux_workstation::userapps::mozilla_profilemanager': }
+  #class {'archlinux_workstation::userapps::mozilla_profilemanager': }
   class {'archlinux_workstation::userapps::irssi': }
-  class {'archlinux_workstation::userapps::geppetto': }
-  class {'archlinux_workstation::userapps::libreoffice': }
+  #class {'archlinux_workstation::userapps::geppetto': }
+  #class {'archlinux_workstation::userapps::libreoffice': }
 
   archlinux_workstation::userapps::rvm { $username:
     userhome => $userhome,
