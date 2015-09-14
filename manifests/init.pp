@@ -27,7 +27,7 @@ class archlinux_workstation (
     fail("${::operatingsystem} not supported")
   }
 
-  validate_slength($username, 99, 1)
+  validate_re($username, '^.+$', 'Parameter username must be a string for class archlinux_workstation')
   validate_absolute_path($user_home)
 
   archlinux_workstation::user { $username:

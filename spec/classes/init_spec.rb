@@ -7,8 +7,10 @@ describe 'archlinux_workstation' do
   }}
 
   context 'supported operating systems' do
-    describe "archlinux_workstation class without any parameters on Archlinux" do
-      let(:params) {{ }}
+    describe "archlinux_workstation class with username parameter on Archlinux" do
+      let(:params) {{
+        'username' => 'foouser',
+      }}
 
       it { should compile.with_all_deps }
 
@@ -47,9 +49,7 @@ describe 'archlinux_workstation' do
     describe "username is undefined" do
       let(:params) {{ }}
 
-      it { should compile.with_all_deps }
-
-      it { should_not contain_class('archlinux_workstation::user') }
+      it { expect { should contain_class('archlinux_workstation') }.to raise_error(Puppet::Error, /Parameter username must be a string/) }
     end
 
     describe "username is defined" do
@@ -79,201 +79,6 @@ describe 'archlinux_workstation' do
       }) }
     end
 
-    describe "gui is left default" do
-      let(:params) {{
-      }}
-
-      it { should compile.with_all_deps }
-      it { should contain_class('archlinux_workstation::kde') }
-      it { should contain_class('archlinux_workstation::kdm') }
-    end
-
-    describe "gui is specified kde" do
-      let(:params) {{
-        'gui' => 'kde',
-      }}
-
-      it { should compile.with_all_deps }
-      it { should contain_class('archlinux_workstation::kde') }
-      it { should contain_class('archlinux_workstation::kdm') }
-    end
-
-    # @TODO: how do we set 'gui' param to undef?
-#    describe "gui is set to undef" do
-#      let(:params) {{
-#      }}
-#
-#      it { should compile.with_all_deps }
-#      it { should_not contain_class('archlinux_workstation::kde') }
-#      it { should_not contain_class('archlinux_workstation::kdm') }
-#    end
-
-    describe "gui is an invalid string" do
-      let(:params) {{
-        'gui' => 'gnome'
-      }}
-
-      it do
-        expect {
-          should compile
-        }.to raise_error(RSpec::Expectations::ExpectationNotMetError, /"gnome" does not match "\^\(kde\)\$"/)
-      end
-    end
-
-    describe "userapps is default true" do
-      let(:params) {{
-        'userapps' => true,
-        'username' => 'foouser',
-      }}
-
-      it { should compile.with_all_deps }
-      it { should contain_class('archlinux_workstation::userapps').with_username('foouser').with_userhome('/home/foouser') }
-    end
-
-    describe "userapps is false" do
-      let(:params) {{
-        'userapps' => false,
-      }}
-
-      it { should compile.with_all_deps }
-      it { should_not contain_class('archlinux_workstation::userapps') }
-    end
-
   end # context 'parameters'
-
-  context 'saz/sudo' do
-    let(:params) {{
-      'username' => 'foouser',
-    }}
-
-    it { should compile.with_all_deps }
-
-    it { should contain_class('sudo') }
-
-    it { should contain_sudo__conf('defaults-env_keep').with({
-        'priority' => 0,
-    }) }
-
-    it { should contain_sudo__conf('foouser-all').with({
-        'priority' => 10,
-        'content'  => 'foouser ALL=(ALL) ALL',
-    }) }
-
-  end
-
-  context 'saz/ssh' do
-    let(:params) {{
-      'username' => 'foouser',
-    }}
-
-    it { should compile.with_all_deps }
-
-    it { should contain_class('ssh::server') }
-
-    it { should contain_firewall('005 allow ssh').with({
-      'port'   => [22],
-      'proto'  => 'tcp',
-      'action' => 'accept',
-    }) }
-  end
-
-  context 'makepkg' do
-    let(:facts) {{
-      :osfamily        => 'Archlinux',
-      :operatingsystem => 'Archlinux',
-      :processorcount  => 8,
-    }}
-
-    it { should compile.with_all_deps }
-
-    it { should contain_class('archlinux_workstation::makepkg') }
-
-  end
-
-  context 'base_packages' do
-    it { should compile.with_all_deps }
-
-    it { should contain_class('archlinux_workstation::base_packages') }
-
-  end
-
-  context 'dkms' do
-    it { should contain_class('archlinux_workstation::dkms') }
-  end
-
-  context 'swapfile' do
-
-    describe 'specified path' do
-      it { should contain_class('archlinux_workstation::swapfile').with({
-        'swapfile_path' => '/swapfile',
-      }) }
-    end
-
-    # @TODO: can't figure out how to get this to work...
-    #describe 'swapfile undef' do
-    #    let(:params) {{
-    #      :swapfile_path => nil,
-    #    }}
-    #    it { should_not contain_class('archlinux_workstation::swapfile') }
-    #  end
-
-    describe 'swapfile_path specified' do
-      let(:params) {{
-        :swapfile_path => '/my/swap/file',
-      }}
-      it { should contain_class('archlinux_workstation::swapfile').with({
-        'swapfile_path' => '/my/swap/file',
-      }) }
-    end
-
-    describe 'swapfile_size specified' do
-      let(:params) {{
-        :swapfile_size => '2M',
-      }}
-      it { should contain_class('archlinux_workstation::swapfile').with({
-        'swapfile_path' => '/swapfile',
-        'swapfile_size' => '2M',
-      }) }
-    end
-
-  end # context 'swapfile'
-
-  context 'yaourt' do
-    it { should contain_class('archlinux_workstation::yaourt') }
-  end
-
-  context 'cups' do
-    it { should contain_class('archlinux_workstation::cups') }
-  end
-
-  context 'networkmanager' do
-    describe 'default gui' do
-      it { should contain_class('archlinux_workstation::networkmanager').with({
-        'gui' => 'kde',
-      }) }
-    end
-#    @TODO - need to figure out how to set param to undef
-#    describe 'gui is undef' do
-#      it { should contain_class('archlinux_workstation::networkmanager').with({
-#        'gui' => 'undef',
-#      }) }
-#    end
-  end
-
-  context 'chrony' do
-    it { should contain_class('archlinux_workstation::chrony') }
-  end
-
-  context 'cronie' do
-    it { should contain_class('archlinux_workstation::cronie') }
-  end
-
-  context 'alsa' do
-    it { should contain_class('archlinux_workstation::alsa') }
-  end
-
-  context 'xorg' do
-    it { should contain_class('archlinux_workstation::xorg') }
-  end
 
 end
