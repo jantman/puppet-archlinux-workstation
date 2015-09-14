@@ -17,6 +17,10 @@
       "name": "saz/ssh",
       "version_requirement": "2.8.9999"
     },
+     {
+      "name": "puppetlabs/concat",
+      "version_requirement": ">= 1.0.0"
+    }
   ],
   "operatingsystem_support": [
     {

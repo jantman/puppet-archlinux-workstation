@@ -10,5 +10,6 @@ fixtures:
     inifile: "https://github.com/puppetlabs/puppetlabs-inifile.git"
     staging: "https://github.com/nanliu/puppet-staging.git"
     single_user_rvm: "https://github.com/eirc/puppet-single_user_rvm.git"
+    concat: "https://github.com/puppetlabs/puppetlabs-concat.git"
   symlinks:
     archlinux_workstation: "#{source_dir}"
