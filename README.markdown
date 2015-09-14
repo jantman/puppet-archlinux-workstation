@@ -1,7 +1,6 @@
 ####Table of Contents
 
 1. [Overview](#overview)
-    * [Module Status](#module-status)
 2. [Module Description - What the module does and why it is useful](#module-description)
 3. [Setup - The basics of getting started with archlinux_workstation](#setup)
     * [What archlinux_workstation affects](#what-archlinux_workstation-affects)
@@ -14,13 +13,7 @@
 
 [![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/0.1.0/active.svg)](http://www.repostatus.org/#active)
 
-Provides many classes (and a sane default class/init.pp) for configuring an Arch Linux workstation/laptop/desktop for graphical use.
-
-###Module Status
-
-This module is currently at version 0.0.1. I'm trying to write this in a way that's usable by other people, and meets the current
-best practices for modules. However, I also need to get my new desktop up and running. While it's not best practice, this module
-doesn't really have any tests yet. I plan on circling back and writing initial tests once I have a minimally-usable machine.
+Provides many classes for configuring an Arch Linux workstation/laptop/desktop for graphical use and installing common software.
 
 ##Module Description
 
@@ -45,6 +38,10 @@ need to touch to take a base Arch Linux installation to a fully-usable, graphica
 This includes:
 
 * your login user, a primary group with the same name as the username, and their supplementary groups
+* add a Firewall rule to allow SSH access
+
+Optionally:
+
 * sudoers file and sudoers.d entries for your user
 * sshd_config, including AllowUsers (your user only) and auth methods (pubkey/RSA only)
 * ``/etc/makepkg.conf``, set to compile and cache sources under ``/tmp`` (tmpfs), and specify -j${::processorcount} make flag.
@@ -63,58 +60,38 @@ This includes:
   (note - this currently only installs the default vesa driver. See archlinux_workstation::xorg below for more information)
 * if the ``gui`` parameter is set to 'kde' (default), installs [KDE](https://wiki.archlinux.org/index.php/KDE)
   and installs and runs [KDM](https://wiki.archlinux.org/index.php/KDM)
-* if the ``userapps`` parameter is set to true (defailt), installs a base collection of some user apps (see the ``::userapps::`` classes below).
+* installation of a number of different user applications (see ``archlinux_workstation::userapps::`` classes below)
 
 ##Usage
 
 Classes are parameterized where that makes sense. Right now, there are two methods of usage:
 
-1. To accept the (hopefully sane) defaults that I have, simply declare the ``archlinux_workstation`` class
-   in a manifest, passing parameters as required (see [Reference](#reference) below for details on parameters).
+1. To install and setup _everything_ this module is capable of, declare an instance of ``archlinux_workstation`` passing the ``username`` parameter for the name of your user, and an instance of ``archlinux_workstation::all`` to do _everything_.
 
     class {'archlinux_workstation':
       foo => bar,
     }
+    
+    class {'archlinux_workstation::all': }
 
-2. For advanced configuration, omit the main class and declare the other classes in this module, as required
-   to achieve the desired effect.
+2. To pick and choose which parts you use, declare ``archlinux_workstation`` as shown above, and in place of ``archlinux_workstation::all``, declare the classes that you want.
 
-If you stick to one of these two usage methods (instead of forking this module and hacking on the
-internals), you should be safe to pull in updates as they happen.
+If you stick to one of these two usage methods (instead of forking this module and hacking on the internals), you should be safe to pull in updates as they happen.
 
 ##Reference
 
 ### archlinux_workstation
 
-Simply declares instances of all of the other classes (below), passing
-them the appropriate parameters. Assuming this is suitable for you,
-just declare this class, passing it the appropriate parameters.
-
-In addition, declares instances of:
-* [saz/sudo](https://github.com/saz/puppet-sudo) to manage /etc/sudoers and sudoers.d entries for your user
-* [saz/ssh](https://github.com/saz/puppet-ssh) to manage sshd_config
-* a Firewall type to allow ssh connections
+Declares your user and group, and sets a few variables used by other classes. Also adds a Firewall
+rule to allow SSH access.
 
 #### Parameters
 
 * __username__ - (string) Your login username. Used to create
   your account, add you to certain groups, etc. Default: undef.
-  If left undefined, this module will not do anything to users
-  or groups, or anything that is user-specific.
 * __user_home__ - Path to $username's home directory. Used for
   classes that put files in the user's home directory, and to
   create SSH keys for the user. Default: "/home/${username}.
-  If set to undef, this module will not act on anything within
-  the user's home directory.
-* __swapfile_path__ - Path to create a swapfile at. Set to
-  undef to not create and use a swap file. Default: /swapfile.
-* __swapfile_size__ - If $swapfile_path is not undef, override
-  the default of this parameter in archlinux_workstation::swapfile.
-* __gui__ - Install a graphical/desktop environment. Currently
-  accepted values are "kde" or undef. Pull requests welcome for others.
-  X will be installed either way.
-* __userapps__ - (boolean) if true, install the user apps specified
-  in the ``::userapp::`` classes. (Default: true)
 
 ### archlinux_workstation::alsa
 
