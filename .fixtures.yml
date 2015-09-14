@@ -4,7 +4,7 @@ fixtures:
     sudo: "https://github.com/saz/puppet-sudo.git"
     ssh:
       repo: "https://github.com/jantman/puppet-ssh.git"
-      ref: "3af5933387f44a010892d40b7042cff7c7e321dd"
+      ref: "arch_puppet4"
     firewall: "https://github.com/puppetlabs/puppetlabs-firewall.git"
     inifile: "https://github.com/puppetlabs/puppetlabs-inifile.git"
     staging: "https://github.com/nanliu/puppet-staging.git"
