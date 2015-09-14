@@ -14,6 +14,10 @@ class archlinux_workstation::makepkg (
   $make_flags = "-j${::processorcount}",
 ){
 
+  if ! defined(Class['archlinux_workstation']) {
+    fail('You must include the base archlinux_workstation class before using any subclasses')
+  }
+
   # base config files
   # Template Uses:
   # - $make_flags
@@ -41,6 +45,7 @@ class archlinux_workstation::makepkg (
     mode   => '0755',
     source => 'puppet:///modules/archlinux_workstation/maketmpdirs.sh',
   }
+
   file {'/etc/systemd/system/maketmpdirs.service':
     ensure  => present,
     owner   => 'root',
@@ -49,6 +54,7 @@ class archlinux_workstation::makepkg (
     source  => 'puppet:///modules/archlinux_workstation/maketmpdirs.service',
     require => File['/usr/local/bin/maketmpdirs.sh'],
   }
+
   # this service runs at boot to create /tmp/sources
   service {'maketmpdirs':
     enable  => true,
