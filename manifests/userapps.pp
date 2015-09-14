@@ -34,8 +34,8 @@ class archlinux_workstation::userapps (
   #class {'archlinux_workstation::userapps::geppetto': }
   #class {'archlinux_workstation::userapps::libreoffice': }
 
-  archlinux_workstation::userapps::rvm { $username:
-    userhome => $userhome,
-  }
+  #archlinux_workstation::userapps::rvm { $username:
+  #  userhome => $userhome,
+  #}
 
 }
