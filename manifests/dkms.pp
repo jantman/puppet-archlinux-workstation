@@ -10,6 +10,10 @@
 #
 class archlinux_workstation::dkms {
 
+  if ! defined(Class['archlinux_workstation']) {
+    fail('You must include the base archlinux_workstation class before using any subclasses')
+  }
+
   package {'dkms':
     ensure => present,
   }

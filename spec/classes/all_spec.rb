@@ -32,6 +32,7 @@ describe 'archlinux_workstation::all' do
       it { should contain_class('archlinux_workstation::base_packages') }
       it { should contain_class('archlinux_workstation::chrony') }
       it { should contain_class('archlinux_workstation::cronie') }
+      it { should contain_class('archlinux_workstation::dkms') }
       it { should contain_class('archlinux_workstation::ssh') }
       it { should contain_class('archlinux_workstation::sudo') }
       
