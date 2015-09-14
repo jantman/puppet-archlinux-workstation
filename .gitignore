@@ -1,9 +1,9 @@
-.*.sw?
-pkg
-spec/fixtures
-.rspec_system
-.vagrant
-.bundle
-vendor
+pkg/
 Gemfile.lock
-/metadata.json
+vendor/
+spec/fixtures/
+.vagrant/
+.bundle/
+coverage/
+.idea/
+*.iml
