@@ -170,10 +170,7 @@ processors/cores on the machine, as retrieved from the "processorcount" fact.
 ### archlinux_workstation::networkmanager
 
 Install and setup networkmanager its GUI components, and ensure dhcpcd is stopped and nm is running.
-
-#### Parameters:
-
-* __gui__ - the $gui value from archlinux_workstation. See that class for docs.
+If archlinux_workstation::kde is defined, install kdeplasma-applets-networkmanagement.
 
 ### archlinux_workstation::ssh
 

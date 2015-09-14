@@ -8,19 +8,21 @@
 #
 # === Actions:
 #   - Install networkmanager
-#   - if $gui == 'kde', install kdeplasma-applets-networkmanagement
+#   - if archlinux_workstation::kde is defined, install kdeplasma-applets-networkmanagement
 #   - Ensure NetworkManager service is running and enabled
 #   - Ensure dhcpcd service is stopped and disabled
 #
-class archlinux_workstation::networkmanager (
-  $gui = undef,
-) {
+class archlinux_workstation::networkmanager {
+
+  if ! defined(Class['archlinux_workstation']) {
+    fail('You must include the base archlinux_workstation class before using any subclasses')
+  }
 
   package {'networkmanager':
     ensure => present,
   }
 
-  if $gui == 'kde' {
+  if defined(Class['archlinux_workstation::kde']) {
     package {'kdeplasma-applets-networkmanagement':
       ensure  => present,
       require => Package['networkmanager'],
