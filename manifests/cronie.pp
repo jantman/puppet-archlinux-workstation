@@ -12,6 +12,10 @@
 #
 class archlinux_workstation::cronie {
 
+  if ! defined(Class['archlinux_workstation']) {
+    fail('You must include the base archlinux_workstation class before using any subclasses')
+  }
+
   package {'cronie':
     ensure => present,
   }

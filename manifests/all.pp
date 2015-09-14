@@ -19,6 +19,7 @@ class archlinux_workstation::all {
   # ALL classes in archlinux_workstation module
   include archlinux_workstation::base_packages
   include archlinux_workstation::chrony
+  include archlinux_workstation::cronie
   include archlinux_workstation::ssh
   include archlinux_workstation::sudo
 
