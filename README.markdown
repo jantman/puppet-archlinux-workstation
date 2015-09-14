@@ -8,6 +8,7 @@
 5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
 5. [Limitations - OS compatibility, etc.](#limitations)
 6. [Development - Guide for contributing to the module](#development)
+    * [Adding Classes](#adding-classes)
 
 ##Overview
 
@@ -265,23 +266,16 @@ pretty much the same as the [Arch Linux Installation Guide](https://wiki.archlin
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for information about development and contributing.
 
-I'm developing and testing on Arch, with everything installed via the default repositories,
-or AUR (via Yaourt). At the moment, the package versions I'm using are:
+This module currently just has spec tests; run them with:
 
-* augeas 1.2.0-1
-* libxml2 2.9.1-5
-* puppet 3.4.2-2
-* ruby 2.1.1-1
-* ruby-augeas 0.5.0-0
-* ruby-colored 1.2-2
-* ruby-cri 2.5.0-1
-* ruby-facter 1.7.5-1
-* ruby-hiera 1.3.2-1
-* ruby-hiera-json 0.4.0-3
-* ruby-json_pure 1.8.1-1
-* ruby-log4r 1.1.10-3
-* ruby-r10k 1.1.4-1
-* ruby-rgen 0.6.5-3
-* ruby-shadow 2.2.0-2
-* ruby-systemu-2.5 2.5.2-1
-* vim-runtime 7.4.135-2
+    bundle install --path vendor
+    bundle exec rake spec
+
+###Adding Classes
+
+To add a class:
+
+1. Add the class itself, using the template: ``sed 's/CLASSNAME/name_of_class/g' manifests/template.txt > manifests/name_of_class.pp``
+2. Add spec tests, using the template: ``sed 's/CLASSNAME/name_of_class/g' spec/classes/template.txt > spec/classes/name_of_class.pp``
+3. Add the class to the [Reference](#reference) section above
+4. Add the class to the ``archlinux_workstation::all`` (``manifests/all.pp``) class.
