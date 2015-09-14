@@ -37,6 +37,7 @@ describe 'archlinux_workstation::all' do
       it { should contain_class('archlinux_workstation::networkmanager') }
       it { should contain_class('archlinux_workstation::ssh') }
       it { should contain_class('archlinux_workstation::sudo') }
+      it { should contain_class('archlinux_workstation::xorg') }
       
     end
   end

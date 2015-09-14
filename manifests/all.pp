@@ -25,5 +25,6 @@ class archlinux_workstation::all {
   include archlinux_workstation::networkmanager
   include archlinux_workstation::ssh
   include archlinux_workstation::sudo
+  include archlinux_workstation::xorg
 
 }

@@ -15,9 +15,12 @@
 #
 class archlinux_workstation::xorg {
 
+  if ! defined(Class['archlinux_workstation']) {
+    fail('You must include the base archlinux_workstation class before using any subclasses')
+  }
+
   $xorg_packages = ['xorg-server',
-# @TODO: this is a package group, so it reinstalls on every run
-#                    'xorg-apps',
+                    'xorg-apps',
                     'xorg-server-utils',
                     'xorg-xinit',
                     'mesa',
