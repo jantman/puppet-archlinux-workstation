@@ -7,7 +7,20 @@
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
-      "version_requirement": "\u003e\u003d4.1.0 \u003c5.0.0"
+      "version_requirement": ">=4.1.0 <5.0.0"
+    },
+    {
+      "name": "saz/sudo",
+      "version_requirement": ">=3.0.0 <4.0.0"
+    },
+    {
+      "name": "saz/ssh",
+      "version_requirement": "2.8.9999"
+    },
+  ],
+  "operatingsystem_support": [
+    {
+        "operatingsystem": "ArchLinux"
     }
   ],
   "types": [],

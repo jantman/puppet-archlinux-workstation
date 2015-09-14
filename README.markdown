@@ -4,10 +4,11 @@
 2. [Module Description - What the module does and why it is useful](#module-description)
 3. [Setup - The basics of getting started with archlinux_workstation](#setup)
     * [What archlinux_workstation affects](#what-archlinux_workstation-affects)
-4. [Usage - Configuration options and additional functionality](#usage)
-5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
-5. [Limitations - OS compatibility, etc.](#limitations)
-6. [Development - Guide for contributing to the module](#development)
+4. [Requirements](#requirements)
+5. [Usage - Configuration options and additional functionality](#usage)
+6. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
+7. [Limitations - OS compatibility, etc.](#limitations)
+8. [Development - Guide for contributing to the module](#development)
     * [Adding Classes](#adding-classes)
 
 ##Overview
@@ -65,6 +66,12 @@ Optionally:
 * if the ``gui`` parameter is set to 'kde' (default), installs [KDE](https://wiki.archlinux.org/index.php/KDE)
   and installs and runs [KDM](https://wiki.archlinux.org/index.php/KDM)
 * installation of a number of different user applications (see ``archlinux_workstation::userapps::`` classes below)
+
+##Requirements
+
+TODO - document other requirements
+
+* [my fork](https://github.com/jantman/puppet-ssh/tree/arch_puppet4) of [saz/ssh](https://github.com/saz/puppet-ssh) until [my pull request](https://github.com/saz/puppet-ssh/pull/149) is merged.
 
 ##Usage
 
