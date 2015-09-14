@@ -30,6 +30,9 @@ that uses [r10k](https://github.com/adrienthebo/r10k), a Puppetfile, and a few m
 as well as a private module ("privatepuppet") on GitHub for my sensitive/personal configuration, and a specific module for Arch Linux on my
 [MacBook Pro Retina](https://github.com/jantman/puppet-archlinux-macbookretina) that handles some things specific to that platform.
 
+__Note:__ this module is quite opinionated; it is how _I_ setup _my_ machines, and may not be exactly what you want. Pull requests are
+welcome to add parameters for more control over its behavior.
+
 ##Setup
 
 ###What archlinux_workstation affects
