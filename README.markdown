@@ -175,6 +175,16 @@ Install and setup networkmanager its GUI components, and ensure dhcpcd is stoppe
 
 * __gui__ - the $gui value from archlinux_workstation. See that class for docs.
 
+### archlinux_workstation::ssh
+
+Wrapper around [saz/ssh](https://forge.puppetlabs.com/saz/ssh) to configure SSH server.
+
+#### Parameters
+
+* __allow_users__ - Array of usernames to allow to login via SSH. If left default (``undef``),
+  ``[$archlinux_workstation::username]`` will be used. If ``$::virtual`` == ``virtualbox``,
+  "vagrant" will be appended to the list.
+
 ### Define archlinux_workstation::swapfile
 
 Creates a swap file, makes swap, activates it and adds it to fstab
