@@ -115,7 +115,7 @@ Collection of base packages that we want installed on every system.
 
 * ensure Package lynx is absent
 * ensure Packages are present: links, lsb-release, dmidecode, ttf-dejavu,
-  vim, wget, dnsutils, net-tools, lsof, screen
+  vim, wget, bind-tools, net-tools, lsof, screen
 
 ### archlinux_workstation::chrony
 
