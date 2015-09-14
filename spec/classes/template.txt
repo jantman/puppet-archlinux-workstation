@@ -1,16 +1,15 @@
 require 'spec_helper'
 
-describe 'archlinux_workstation::all' do
+describe 'archlinux_workstation::CLASSNAME' do
   let(:facts) {{
     :osfamily        => 'Archlinux',
     :operatingsystem => 'Archlinux',
-    :concat_basedir  => '/tmp',
   }}
 
   context 'parent class' do
     context 'without archlinux_workstation defined' do
       describe "raises error" do
-        it { expect { should contain_class('archlinux_workstation::all') }.to raise_error(Puppet::Error, /You must include the base/) }
+        it { expect { should contain_class('archlinux_workstation::CLASSNAME') }.to raise_error(Puppet::Error, /You must include the base/) }
       end
     end
 
@@ -21,17 +20,14 @@ describe 'archlinux_workstation::all' do
         it { should compile.with_all_deps }
         
         it { should contain_class('archlinux_workstation') }
-        it { should contain_class('archlinux_workstation::all') } 
+        it { should contain_class('archlinux_workstation::CLASSNAME') } 
       end
     end
   end # end context 'parent class'
 
-  context 'child classes' do
-    describe 'classes included in all' do
-      it { should contain_class('archlinux_workstation::ssh') }
-      it { should contain_class('archlinux_workstation::sudo') }
-      
-    end
+  # add class-specific specs here
+  context 'foo' do
+
   end
 
 end

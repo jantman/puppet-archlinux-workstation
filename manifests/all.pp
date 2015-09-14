@@ -18,5 +18,6 @@ class archlinux_workstation::all {
 
   # ALL classes in archlinux_workstation module
   include archlinux_workstation::ssh
+  include archlinux_workstation::sudo
 
 }

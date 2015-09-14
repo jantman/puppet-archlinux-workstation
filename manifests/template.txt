@@ -1,0 +1,16 @@
+# == Class: archlinux_workstation::CLASSNAME
+#
+# Description of what the class does.
+#
+class archlinux_workstation::CLASSNAME {
+
+  if ! defined(Class['archlinux_workstation']) {
+    fail('You must include the base archlinux_workstation class before using any subclasses')
+  }
+
+  # variable access
+  include archlinux_workstation
+
+  # Class content here
+
+}

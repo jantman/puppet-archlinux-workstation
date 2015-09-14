@@ -185,6 +185,10 @@ Wrapper around [saz/ssh](https://forge.puppetlabs.com/saz/ssh) to configure SSH 
   ``[$archlinux_workstation::username]`` will be used. If ``$::virtual`` == ``virtualbox``,
   "vagrant" will be appended to the list.
 
+### archlinux_workstation::sudo
+
+Sets up sudo, global defaults, and permissions for your user. This class simply wraps [saz/sudo](https://forge.puppetlabs.com/saz/sudo).
+
 ### Define archlinux_workstation::swapfile
 
 Creates a swap file, makes swap, activates it and adds it to fstab
