@@ -21,6 +21,10 @@ class archlinux_workstation::chrony (
   $chrony_password = 'd83ja72.f83,8wHUW94',
 ) {
 
+  if ! defined(Class['archlinux_workstation']) {
+    fail('You must include the base archlinux_workstation class before using any subclasses')
+  }
+
   package {'chrony':
     ensure => present,
   }
