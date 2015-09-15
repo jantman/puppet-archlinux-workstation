@@ -22,6 +22,11 @@
 # * __groups__ - (array) list of supplementary groups that
 #   this user should be a member of. Default: undef.
 #
+# * __user_require__ - (array) list of resource references to add
+#   to this user's ``require`` parameter. This should be the Group
+#   resources for any puppet-managed Groups passed to $groups, or
+#   the resources (most likely Packages) that create other users.
+#
 # === Actions
 #
 # * ensure the user exists, via the built-in [User](http://docs.puppetlabs.com/references/latest/type.html#user) type
@@ -33,8 +38,11 @@ define archlinux_workstation::user (
   $realname        = $title,
   $homedir         = "/home/${username}",
   $shell           = '/bin/bash',
-  $groups          = undef,
+  $groups          = [],
+  $user_require    = [],
 ) {
+
+  $real_require = $user_require + [ Group[$username] ]
 
   user { $username:
     ensure     => present,
@@ -44,17 +52,8 @@ define archlinux_workstation::user (
     home       => $homedir,
     managehome => true,
     shell      => $shell,
-  }
-
-  if $groups {
-    User[$username] {
-      groups  => $groups,
-      require => [Group[$username], Group[$groups], ],
-    }
-  } else {
-    User[$username] {
-      require => Group[$username],
-    }
+    groups     => $groups,
+    require    => $real_require,
   }
 
   group { $username:

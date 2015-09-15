@@ -20,12 +20,13 @@ describe 'archlinux_workstation::user', :type => :define  do
       it { should compile.with_all_deps }
 
       it { should contain_user('foouser').with({
-        'name'     => 'foouser',
-        'ensure'   => 'present',
-        'comment'  => 'Foo User',
-        'gid'      => 'foouser',
-        'home'     => '/home/foouser',
+        'name'       => 'foouser',
+        'ensure'     => 'present',
+        'comment'    => 'Foo User',
+        'gid'        => 'foouser',
+        'home'       => '/home/foouser',
         'managehome' => true,
+        'groups'     => [],
       }) }
 
       it { should contain_group('foouser').with({
@@ -68,14 +69,6 @@ describe 'archlinux_workstation::user', :type => :define  do
         :homedir => '/home/foouser',
       }}
 
-      let :pre_condition do
-        [
-          'group { "one": ensure => present, provider => groupadd, }',
-          'group { "two": ensure => present, provider => groupadd, }',
-          'group { "three": ensure => present, provider => groupadd, }',
-        ]
-      end
-
       it { should compile.with_all_deps }
 
       it { should contain_user('foouser').with({
@@ -83,9 +76,6 @@ describe 'archlinux_workstation::user', :type => :define  do
       }) }
 
       it do
-        should contain_user('foouser').that_requires('Group[one]')
-        should contain_user('foouser').that_requires('Group[two]')
-        should contain_user('foouser').that_requires('Group[three]')
         should contain_user('foouser').that_requires('Group[foouser]')
       end
 
@@ -96,7 +86,7 @@ describe 'archlinux_workstation::user', :type => :define  do
 
       it { should compile.with_all_deps }
 
-      it { should contain_user('foouser').without_groups }
+      it { should contain_user('foouser').with_groups([]) }
 
       it do
         should contain_user('foouser').that_requires('Group[foouser]')

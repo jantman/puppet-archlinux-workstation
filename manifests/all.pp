@@ -16,6 +16,9 @@ class archlinux_workstation::all {
   # variable access
   include archlinux_workstation
 
+  # repos
+  include archlinux_workstation::repos::jantman
+
   # ALL classes in archlinux_workstation module
   include archlinux_workstation::base_packages
   include archlinux_workstation::chrony

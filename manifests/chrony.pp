@@ -30,8 +30,10 @@ class archlinux_workstation::chrony (
   }
 
   # nm hooks to tell chrony when we're on/offline
+  # this is an AUR package, which is in my repo
   package {'networkmanager-dispatcher-chrony':
-    ensure => present,
+    ensure  => present,
+    require => Class['archlinux_workstation::repos::jantman'],
   }
 
   file {'/etc/chrony.conf':

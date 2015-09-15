@@ -16,7 +16,7 @@ describe 'archlinux_workstation::chrony' do
 
     context 'with archlinux_workstation defined' do
       describe 'compiles correctly' do
-        let(:pre_condition) { "class {'archlinux_workstation': username => 'myuser' }" }
+        let(:pre_condition) { "class {'archlinux_workstation': username => 'myuser' } -> class {'archlinux_workstation::repos::jantman': }" }
 
         it { should compile.with_all_deps }
         
@@ -27,7 +27,7 @@ describe 'archlinux_workstation::chrony' do
   end # end context 'parent class'
   
   context 'parameters' do
-    let(:pre_condition) { "class {'archlinux_workstation': username => 'myuser' }" }
+    let(:pre_condition) { "class {'archlinux_workstation': username => 'myuser' } -> class {'archlinux_workstation::repos::jantman': }" }
 
     describe "default" do
       let(:params) {{ }}
@@ -35,7 +35,10 @@ describe 'archlinux_workstation::chrony' do
       it { should compile.with_all_deps }
 
       it { should contain_package('chrony').with({ 'ensure' => 'present' }) }
-      it { should contain_package('networkmanager-dispatcher-chrony').with({ 'ensure' => 'present' }) }
+      it { should contain_package('networkmanager-dispatcher-chrony')
+                   .with({ 'ensure' => 'present' })
+                   .that_requires('Class[archlinux_workstation::repos::jantman]')
+      }
       it { should contain_service('chrony').with({
         'enable' => true,
         'ensure' => 'running',

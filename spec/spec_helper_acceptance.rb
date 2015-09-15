@@ -17,8 +17,11 @@ RSpec.configure do |c|
   c.before :suite do
     # Install module and dependencies
     puppet_module_install(:source => proj_root, :module_name => 'archlinux_workstation', :target_module_path => '/etc/puppetlabs/code/modules')
-    hosts.each do |host|
-      on host, puppet('module', 'install', 'puppetlabs-stdlib'), { :acceptable_exit_codes => [0,1] }
+    moddir = 'spec/fixtures/modules/*'
+    Dir.glob(moddir).select {|f| File.directory?(f) and not File.symlink?(f)}.each do |dirname|
+      dirpath = File.join(proj_root, dirname)
+      modname = File.basename(dirname)
+      puppet_module_install(:source => dirpath, :module_name => modname, :target_module_path => '/etc/puppetlabs/code/modules')
     end
   end
 end

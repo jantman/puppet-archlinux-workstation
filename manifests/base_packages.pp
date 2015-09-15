@@ -13,16 +13,24 @@ class archlinux_workstation::base_packages {
     fail('You must include the base archlinux_workstation class before using any subclasses')
   }
 
-  package {'links': ensure => present, }
-  package {'lynx': ensure => absent, }
-  package {'lsb-release': ensure => present, }
-  package {'dmidecode': ensure => present, }
-  package {'vim': ensure => present, }
-  package {'ttf-dejavu': ensure => present, }
-  package {'wget': ensure => present, }
-  package {'bind-tools': ensure => present, }
-  package {'net-tools': ensure => present, }
-  package {'lsof': ensure => present, }
-  package {'lsscsi': ensure => present, }
-  package {'screen': ensure => present, }
+  $packages_absent = [
+                      'lynx',
+                      ]
+
+  $packages_present = [
+                       'bind-tools',
+                       'dmidecode',
+                       'links',
+                       'lsb-release',
+                       'lsof',
+                       'lsscsi',
+                       'net-tools',
+                       'screen',
+                       'ttf-dejavu',
+                       'vim',
+                       'wget',
+                       ]
+
+  package {$packages_present : ensure => present, }
+  package {$packages_absent : ensure => absent, }
 }
