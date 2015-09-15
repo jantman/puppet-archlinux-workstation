@@ -6,7 +6,7 @@ describe 'archlinux_workstation class' do
     # Using puppet_apply as a helper
     it 'should work with no errors' do
       pp = <<-EOS
-      class { 'archlinux_workstation': }
+      class { 'archlinux_workstation': username => 'myuser',}
       EOS
 
       # Run it twice and test for idempotency

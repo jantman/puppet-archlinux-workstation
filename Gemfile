@@ -20,9 +20,7 @@ group :development, :unit_tests do
 end
 
 group :system_tests do
-  if beaker_version = ENV['BEAKER_VERSION']
-    gem 'beaker', *location_for(beaker_version)
-  end
+  gem 'beaker', :git => 'https://github.com/jantman/beaker.git', :branch => 'archlinux'
   if beaker_rspec_version = ENV['BEAKER_RSPEC_VERSION']
     gem 'beaker-rspec', *location_for(beaker_rspec_version)
   else

@@ -3,7 +3,7 @@ require 'beaker-rspec/helpers/serverspec'
 
 hosts.each do |host|
   # Install Puppet
-  install_puppet
+  install_puppet, opts={:version => '4.2.2'}
 end
 
 RSpec.configure do |c|
