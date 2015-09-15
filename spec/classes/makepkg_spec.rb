@@ -34,10 +34,46 @@ describe 'archlinux_workstation::makepkg' do
 
       it { should compile.with_all_deps }
 
-      it { should contain_file('/etc/makepkg.conf').with_content(/MAKEFLAGS="-j8"/) }
-      it { should contain_file('/tmp/sources') }
-      it { should contain_file('/usr/local/bin/maketmpdirs.sh') }
-      it { should contain_file('/etc/systemd/system/maketmpdirs.service').with_mode('0644') }
+      it { should contain_file('/etc/makepkg.conf')
+                   .with_ensure('present')
+                   .with_owner('root')
+                   .with_group('root')
+                   .with_mode('0644')
+                   .with_content(/MAKEFLAGS="-j8"/)
+      }
+
+      it { should contain_file('/tmp/sources')
+                   .with_ensure('directory')
+                   .with_owner('myuser')
+                   .with_mode('0775')
+      }
+
+      it { should contain_file('/tmp/makepkg')
+                   .with_ensure('directory')
+                   .with_owner('myuser')
+                   .with_mode('0775')
+      }
+
+      it { should contain_file('/tmp/makepkglogs')
+                   .with_ensure('directory')
+                   .with_owner('myuser')
+                   .with_mode('0775')
+      }
+
+      it { should contain_file('/usr/local/bin/maketmpdirs.sh')
+                   .with_ensure('present')
+                   .with_mode('0755')
+                   .with_content(%r"ARCHUSER=myuser")
+                   .with_content(%r"for x in sources makepkg makepkglogs; do mkdir /tmp/\$x ; chown \${ARCHUSER}:wheel /tmp/\$x ; chmod 0775 /tmp/\$x; done")
+      }
+
+      it { should contain_file('/etc/systemd/system/maketmpdirs.service')
+                   .with_ensure('present')
+                   .with_mode('0644')
+                   .with_source('puppet:///modules/archlinux_workstation/maketmpdirs.service')
+                   .with_require('File[/usr/local/bin/maketmpdirs.sh]')
+      }
+
       it { should contain_service('maketmpdirs').with({
         'enable' => true,
       }).that_requires('File[/etc/systemd/system/maketmpdirs.service]') }

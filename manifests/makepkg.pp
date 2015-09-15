@@ -18,6 +18,11 @@ class archlinux_workstation::makepkg (
     fail('You must include the base archlinux_workstation class before using any subclasses')
   }
 
+  # variable access
+  include archlinux_workstation
+
+  $makepkg_user = $::archlinux_workstation::username
+
   # base config files
   # Template Uses:
   # - $make_flags
@@ -32,18 +37,34 @@ class archlinux_workstation::makepkg (
   # these are needed for compiling packages under /tmp using makepkg
   file {'/tmp/sources':
     ensure => directory,
-    owner  => 'root',
+    owner  => $archlinux_workstation::username,
+    group  => 'wheel',
+    mode   => '0775',
+  }
+
+  file {'/tmp/makepkg':
+    ensure => directory,
+    owner  => $archlinux_workstation::username,
+    group  => 'wheel',
+    mode   => '0775',
+  }
+
+  file {'/tmp/makepkglogs':
+    ensure => directory,
+    owner  => $archlinux_workstation::username,
     group  => 'wheel',
     mode   => '0775',
   }
 
   # the following ensures that /tmp/sources is created at boot, even if puppet isnt run
+  # Template Uses:
+  # - $makepkg_user
   file {'/usr/local/bin/maketmpdirs.sh':
-    ensure => present,
-    owner  => 'root',
-    group  => 'root',
-    mode   => '0755',
-    source => 'puppet:///modules/archlinux_workstation/maketmpdirs.sh',
+    ensure  => present,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0755',
+    content => template('archlinux_workstation/maketmpdirs.sh.erb'),
   }
 
   file {'/etc/systemd/system/maketmpdirs.service':
