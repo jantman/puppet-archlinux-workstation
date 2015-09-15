@@ -36,8 +36,7 @@ define archlinux_workstation::pacman_repo (
     setting => 'SigLevel',
     value   => $siglevel,
     notify  => Exec['pacman_repo-Sy'],
-  }
-
+  } ->
   ini_setting { "archlinux_workstation-pacman_repo-${title}-server":
     ensure  => present,
     path    => '/etc/pacman.conf',
