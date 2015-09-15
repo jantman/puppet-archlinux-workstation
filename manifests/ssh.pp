@@ -34,6 +34,7 @@ class archlinux_workstation::ssh (
 
   # add 'vagrant' to allow users if on virtualbox
   if $::virtual == 'virtualbox' {
+    notify {'adding vagrant to list of SSH allowed users, per $::virtual fact': }
     $real_allow_users = $tmp_users + ['vagrant']
   } else {
     $real_allow_users = $tmp_users

@@ -1,7 +1,8 @@
 # == Class: archlinux_workstation::sudo
 #
 # Sets up sudo, global defaults, and permissions for your user. This class
-# simply wraps saz/sudo.
+# simply wraps saz/sudo. If $::virtual == 'virtualbox', "vagrant" will
+# also be given  sudo permissions.
 #
 class archlinux_workstation::sudo {
 
@@ -24,6 +25,14 @@ class archlinux_workstation::sudo {
   sudo::conf {"${archlinux_workstation::username}-all":
     priority => 10,
     content  => "${archlinux_workstation::username} ALL=(ALL) ALL",
+  }
+
+  if $::virtual == 'virtualbox' {
+    notify {'adding vagrant to sudoers users, per $::virtual fact': }
+    sudo::conf {'vagrant-all':
+      priority => 11,
+      content  => 'vagrant ALL=(ALL) NOPASSWD: ALL',
+    }
   }
 
 }
