@@ -77,6 +77,30 @@ describe 'archlinux_workstation::ssh' do
                                                     })
       }
     end
+    describe 'with permit_root true' do
+      let(:params) {{ :permit_root => true }}
+      let(:pre_condition) { "class {'archlinux_workstation': username => 'myuser' }" }
+
+      it { should contain_class('ssh::server').with({
+                                                      :storeconfigs_enabled => false,
+                                                      :options              => {
+                                                        'AcceptEnv'              => ['LANG', 'LC_*', 'DISPLAY'],
+                                                        'AllowUsers'             => ['myuser'],
+                                                        'AuthorizedKeysFile'     => '.ssh/authorized_keys',
+                                                        'GSSAPIAuthentication'   => 'no',
+                                                        'KerberosAuthentication' => 'no',
+                                                        'PasswordAuthentication' => 'no',
+                                                        'PermitRootLogin'        => 'yes',
+                                                        'Port'                   => [22],
+                                                        'PubkeyAuthentication'   => 'yes',
+                                                        'RSAAuthentication'      => 'yes',
+                                                        'SyslogFacility'         => 'AUTH',
+                                                        'UsePrivilegeSeparation' => 'sandbox',
+                                                        'X11Forwarding'          => 'yes',
+                                                      }
+                                                    })
+      }
+    end
   end
 
   context 'on virtualbox' do
@@ -126,6 +150,30 @@ describe 'archlinux_workstation::ssh' do
                                                         'KerberosAuthentication' => 'no',
                                                         'PasswordAuthentication' => 'no',
                                                         'PermitRootLogin'        => 'no',
+                                                        'Port'                   => [22],
+                                                        'PubkeyAuthentication'   => 'yes',
+                                                        'RSAAuthentication'      => 'yes',
+                                                        'SyslogFacility'         => 'AUTH',
+                                                        'UsePrivilegeSeparation' => 'sandbox',
+                                                        'X11Forwarding'          => 'yes',
+                                                      }
+                                                    })
+      }
+    end
+    describe 'with permit_root true' do
+      let(:params) {{ :permit_root => true }}
+      let(:pre_condition) { "class {'archlinux_workstation': username => 'myuser' }" }
+
+      it { should contain_class('ssh::server').with({
+                                                      :storeconfigs_enabled => false,
+                                                      :options              => {
+                                                        'AcceptEnv'              => ['LANG', 'LC_*', 'DISPLAY'],
+                                                        'AllowUsers'             => ['myuser', 'vagrant'],
+                                                        'AuthorizedKeysFile'     => '.ssh/authorized_keys',
+                                                        'GSSAPIAuthentication'   => 'no',
+                                                        'KerberosAuthentication' => 'no',
+                                                        'PasswordAuthentication' => 'no',
+                                                        'PermitRootLogin'        => 'yes',
                                                         'Port'                   => [22],
                                                         'PubkeyAuthentication'   => 'yes',
                                                         'RSAAuthentication'      => 'yes',

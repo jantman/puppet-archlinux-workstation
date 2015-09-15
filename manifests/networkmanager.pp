@@ -35,10 +35,14 @@ class archlinux_workstation::networkmanager {
     require => Package['networkmanager'],
   }
 
-  service {'dhcpcd':
-    ensure  => stopped,
-    enable  => false,
-    require => Service['NetworkManager'],
+  $ifs = split($::interfaces, ',')
+
+  $ifs.each |String $ifname| {
+    service {"dhcpcd@${ifname}":
+      ensure  => stopped,
+      enable  => false,
+      require => Service['NetworkManager'],
+    }
   }
 
 }

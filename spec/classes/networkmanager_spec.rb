@@ -5,6 +5,7 @@ describe 'archlinux_workstation::networkmanager' do
     :osfamily        => 'Archlinux',
     :operatingsystem => 'Archlinux',
     :concat_basedir  => '/tmp',
+    :interfaces      => 'eth0,eth1,lo',
   }}
 
   context 'parent class' do
@@ -35,14 +36,37 @@ describe 'archlinux_workstation::networkmanager' do
 
       it { should contain_package('networkmanager') }
       it { should_not contain_package('kdeplasma-applets-networkmanagement') }
-      it { should contain_service('NetworkManager').with({
-        'enable' => true,
-        'ensure' => 'running',
-      }).that_requires('Package[networkmanager]') }
-      it { should contain_service('dhcpcd').with({
-        'enable' => false,
-        'ensure' => 'stopped',
-      }).that_requires('Service[NetworkManager]') }
+      it { should contain_service('NetworkManager')
+                   .with({
+                           'enable' => true,
+                           'ensure' => 'running',
+                         })
+                   .that_requires('Package[networkmanager]')
+      }
+      
+      it { should contain_service('dhcpcd@eth0')
+                   .with({
+                           'enable' => false,
+                           'ensure' => 'stopped',
+                         })
+                   .that_requires('Service[NetworkManager]')
+      }
+
+      it { should contain_service('dhcpcd@eth1')
+                   .with({
+                           'enable' => false,
+                           'ensure' => 'stopped',
+                         })
+                   .that_requires('Service[NetworkManager]')
+      }
+
+      it { should contain_service('dhcpcd@lo')
+                   .with({
+                           'enable' => false,
+                           'ensure' => 'stopped',
+                         })
+                   .that_requires('Service[NetworkManager]')
+      }
     end
 
     describe "gui kde" do
@@ -54,14 +78,37 @@ describe 'archlinux_workstation::networkmanager' do
       it { should contain_package('networkmanager') }
       it { should contain_package('kdeplasma-applets-networkmanagement')\
         .that_requires('Package[networkmanager]') }
-      it { should contain_service('NetworkManager').with({
-        'enable' => true,
-        'ensure' => 'running',
-      }).that_requires('Package[networkmanager]') }
-      it { should contain_service('dhcpcd').with({
-        'enable' => false,
-        'ensure' => 'stopped',
-      }).that_requires('Service[NetworkManager]') }
+      it { should contain_service('NetworkManager')
+                   .with({
+                           'enable' => true,
+                           'ensure' => 'running',
+                         })
+                   .that_requires('Package[networkmanager]')
+      }
+
+      it { should contain_service('dhcpcd@eth0')
+                   .with({
+                           'enable' => false,
+                           'ensure' => 'stopped',
+                         })
+                   .that_requires('Service[NetworkManager]')
+      }
+
+      it { should contain_service('dhcpcd@eth1')
+                   .with({
+                           'enable' => false,
+                           'ensure' => 'stopped',
+                         })
+                   .that_requires('Service[NetworkManager]')
+      }
+
+      it { should contain_service('dhcpcd@lo')
+                   .with({
+                           'enable' => false,
+                           'ensure' => 'stopped',
+                         })
+                   .that_requires('Service[NetworkManager]')
+      }
     end
 
   end

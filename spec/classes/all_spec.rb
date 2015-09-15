@@ -2,10 +2,12 @@ require 'spec_helper'
 
 describe 'archlinux_workstation::all' do
   let(:facts) {{
-    :osfamily        => 'Archlinux',
-    :operatingsystem => 'Archlinux',
-    :concat_basedir  => '/tmp',
-  }}
+                 :osfamily        => 'Archlinux',
+                 :operatingsystem => 'Archlinux',
+                 :concat_basedir  => '/tmp',
+                 # for networkmanager
+                 :interfaces      => 'eth0,eth1,lo',
+               }}
 
   context 'parent class' do
     context 'without archlinux_workstation defined' do

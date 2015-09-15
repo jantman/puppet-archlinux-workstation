@@ -10,8 +10,13 @@
 #  [$archlinux_workstation::username] will be used. If $::virtual == 'virtualbox',
 #  "vagrant" will be appended to the list.
 #
+# [*permit_root*]
+#
+# Boolean; whether or not to permit root login. Defaults to false.
+#
 class archlinux_workstation::ssh (
-  $allow_users = undef
+  $allow_users = undef,
+  $permit_root = false
 ){
 
   if ! defined(Class['archlinux_workstation']) {
@@ -34,6 +39,12 @@ class archlinux_workstation::ssh (
     $real_allow_users = $tmp_users
   }
 
+  if $permit_root {
+    $allow_root = 'yes'
+  } else {
+    $allow_root = 'no'
+  }
+
   # saz/ssh
   class { 'ssh::server':
     storeconfigs_enabled => false,
@@ -44,7 +55,7 @@ class archlinux_workstation::ssh (
       'GSSAPIAuthentication'   => 'no',
       'KerberosAuthentication' => 'no',
       'PasswordAuthentication' => 'no',
-      'PermitRootLogin'        => 'no',
+      'PermitRootLogin'        => $allow_root,
       'Port'                   => [22],
       'PubkeyAuthentication'   => 'yes',
       'RSAAuthentication'      => 'yes',
