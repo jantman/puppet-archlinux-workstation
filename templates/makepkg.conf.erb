@@ -27,6 +27,13 @@ DLAGENTS=('ftp::/usr/bin/curl -fC - --ftp-pasv --retry 3 --retry-delay 3 -o %o %
 # /usr/bin/lftpget -c
 # /usr/bin/wget
 
+#-- The package required by makepkg to download VCS sources
+#  Format: 'protocol::package'
+VCSCLIENTS=('bzr::bzr'
+            'git::git'
+            'hg::mercurial'
+            'svn::subversion')
+
 #########################################################################
 # ARCHITECTURE, COMPILE FLAGS
 #########################################################################
@@ -88,7 +95,7 @@ BUILDDIR=/tmp/makepkg
 #-- upx:        Compress binary executable files using UPX
 #-- debug:      Add debugging flags as specified in DEBUG_* variables
 #
-OPTIONS=(strip docs libtool staticlibs emptydirs zipman purge !upx !debug)
+OPTIONS=(strip docs !libtool !staticlibs emptydirs zipman purge !upx !debug)
 
 #-- File integrity checks to use. Valid: md5, sha1, sha256, sha384, sha512
 INTEGRITY_CHECK=(md5)
