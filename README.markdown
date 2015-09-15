@@ -298,5 +298,6 @@ To add a class:
 
 1. Add the class itself, using the template: ``sed 's/CLASSNAME/name_of_class/g' manifests/template.txt > manifests/name_of_class.pp``
 2. Add spec tests, using the template: ``sed 's/CLASSNAME/name_of_class/g' spec/classes/template.txt > spec/classes/name_of_class.pp``
-3. Add the class to the [Reference](#reference) section above
-4. Add the class to the ``archlinux_workstation::all`` (``manifests/all.pp``) class.
+3. Add acceptance tests.
+4. Add the class to the [Reference](#reference) section above
+5. Add the class to the ``archlinux_workstation::all`` (``manifests/all.pp``) class.
