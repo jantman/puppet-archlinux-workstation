@@ -43,7 +43,8 @@ describe 'archlinux_workstation::all' do
       it { should contain_class('archlinux_workstation::xorg').that_comes_before('Class[archlinux_workstation::kde]') }
       it { should contain_class('archlinux_workstation::kde').that_comes_before('Class[archlinux_workstation::sddm]') }
       it { should contain_class('archlinux_workstation::sddm') }
-      
+
+      it { should contain_archlinux_workstation__userapps__rvm('myuser') }
     end
   end
 

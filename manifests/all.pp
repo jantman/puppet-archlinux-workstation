@@ -33,4 +33,6 @@ class archlinux_workstation::all {
   class {'archlinux_workstation::kde': } ->
   class {'archlinux_workstation::sddm': }
 
+  # userapps
+  archlinux_workstation::userapps::rvm { $archlinux_workstation::username : }
 }
