@@ -1,3 +1,6 @@
+2015-09-16 Release 0.1.0
+- major ground-up rewrite of module to be more reusable, and targeted at puppet4
+
 2014-03-15 Release 0.0.1
 - initial module creation
 - migration of a bunch of stuff from https://github.com/jantman/puppet-archlinux-macbookretina
