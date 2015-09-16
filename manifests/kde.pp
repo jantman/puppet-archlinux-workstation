@@ -7,10 +7,13 @@
 #
 class archlinux_workstation::kde {
 
+  if ! defined(Class['archlinux_workstation']) {
+    fail('You must include the base archlinux_workstation class before using any subclasses')
+  }
+
   # this is really a package group not a package
-# @TODO: this is a package group, so it reinstalls every time...
-#  package {'kde':
-#    ensure => present,
-#  }
+  package {['plasma-meta', 'kde-applications-meta']:
+    ensure => present,
+  }
 
 }

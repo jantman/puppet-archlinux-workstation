@@ -21,6 +21,7 @@ describe 'archlinux_workstation::xorg class' do
       'xorg-xinit',
       'mesa',
       'xf86-video-vesa',
+      'xterm',
       # xorg-apps is a package group
       'xorg-xauth',
       'xorg-xrandr',
@@ -31,6 +32,10 @@ describe 'archlinux_workstation::xorg class' do
       describe package(pkgname) do
         it { should be_installed }
       end
+    end
+
+    describe command('timeout 10 startx') do
+      its(:exit_status) { should eq 124 }
     end
   end
 end

@@ -63,8 +63,8 @@ Optionally:
 * installs alsa-utils and does initial unmute of Master channel, for [ALSA](https://wiki.archlinux.org/index.php/Advanced_Linux_Sound_Architecture)
 * installs [Xorg](https://wiki.archlinux.org/index.php/Xorg) Xserver as well as related required and recommended/optional packages
   (note - this currently only installs the default vesa driver. See archlinux_workstation::xorg below for more information)
-* if the ``gui`` parameter is set to 'kde' (default), installs [KDE](https://wiki.archlinux.org/index.php/KDE)
-  and installs and runs [KDM](https://wiki.archlinux.org/index.php/KDM)
+* if the ``gui`` parameter is set to 'kde' (default), installs [KDE Plasma](https://wiki.archlinux.org/index.php/KDE)
+  and installs and runs [SDDM](https://wiki.archlinux.org/index.php/SDDM)
 * installation of a number of different user applications (see ``archlinux_workstation::userapps::`` classes below)
 
 ##Requirements
@@ -152,10 +152,6 @@ Enable DMKS support
 
 Perform a full installation of [KDE](https://wiki.archlinux.org/index.php/KDE) via the "kde" package group.
 
-### archlinux_workstation::kdm
-
-Install and run [KDM](https://wiki.archlinux.org/index.php/KDM), the KDE desktop/login manager.
-
 ### archlinux_workstation::makepkg
 
 Sets up ``/etc/makepkg.conf`` with sane Arch defaults, including compiling and caching sources
@@ -171,6 +167,10 @@ processors/cores on the machine, as retrieved from the "processorcount" fact.
 
 Install and setup networkmanager its GUI components, and ensure dhcpcd is stopped and nm is running.
 If archlinux_workstation::kde is defined, install kdeplasma-applets-networkmanagement.
+
+### archlinux_workstation::sddm
+
+Install and run [SDDM](https://wiki.archlinux.org/index.php/SDDM) desktop manager.
 
 ### archlinux_workstation::ssh
 

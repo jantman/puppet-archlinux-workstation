@@ -24,7 +24,9 @@ class archlinux_workstation::xorg {
                     'xorg-server-utils',
                     'xorg-xinit',
                     'mesa',
-                    'xf86-video-vesa']
+                    'xf86-video-vesa',
+                    # we need xterm for 'startx'
+                    'xterm']
 
   package {$xorg_packages:
     ensure => present,
