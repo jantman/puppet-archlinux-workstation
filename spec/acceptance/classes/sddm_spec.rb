@@ -19,20 +19,25 @@ describe 'archlinux_workstation::sddm class' do
       it { should be_installed }
     end
 
+    # we need to wait a bit before these processes are running
+    describe command('sleep 10') do
+      its(:exit_status) { should eq 0 }
+    end
+    
     describe service('sddm') do
       it { should be_enabled }
       it { should be_running }
     end
 
-    describe process('/usr/bin/sddm') do
+    describe process('sddm') do
       it { should be_running }
     end
 
-    describe process('/usr/lib/xorg-server/Xorg') do
+    describe process('Xorg') do
       it { should be_running }
     end
 
-    describe process('/usr/bin/sddm-greeter') do
+    describe process('sddm-greeter') do
       it { should be_running }
     end
   end
