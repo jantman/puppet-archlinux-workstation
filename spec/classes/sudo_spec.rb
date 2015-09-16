@@ -65,8 +65,8 @@ describe 'archlinux_workstation::sudo' do
                    .with_content('myuser ALL=(ALL) ALL')
       }
       it { should contain_sudo__conf('vagrant-all')
-                   .with_priority(10)
-                   .with_content('vagrant ALL=(ALL) ALL')
+                   .with_priority(11)
+                   .with_content('vagrant ALL=(ALL) NOPASSWD: ALL')
       }
     end
   end
