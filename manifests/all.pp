@@ -23,6 +23,7 @@ class archlinux_workstation::all {
   include archlinux_workstation::base_packages
   include archlinux_workstation::chrony
   include archlinux_workstation::cronie
+  include archlinux_workstation::cups
   include archlinux_workstation::dkms
   include archlinux_workstation::makepkg
   include archlinux_workstation::networkmanager
