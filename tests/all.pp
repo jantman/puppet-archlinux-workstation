@@ -10,4 +10,4 @@
 # http://docs.puppetlabs.com/guides/tests_smoke.html
 #
 class {'archlinux_workstation': username => 'myuser' }
-
+include archlinux_workstation::all
