@@ -11,9 +11,20 @@ class archlinux_workstation::kde {
     fail('You must include the base archlinux_workstation class before using any subclasses')
   }
 
-  # this is really a package group not a package
   package {['plasma-meta', 'kde-applications-meta']:
     ensure => present,
   }
 
+  # phonon/vlc audio; we install both backends
+  $phonon_packages = [
+                      'phonon-qt4',
+                      'phonon-qt4-gstreamer',
+                      'phonon-qt4-vlc',
+                      'phonon-qt5',
+                      'phonon-qt5-gstreamer',
+                      'phonon-qt5-vlc',
+                      ]
+  package { $phonon_packages:
+    ensure => present,
+  }
 }

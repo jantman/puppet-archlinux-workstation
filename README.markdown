@@ -60,7 +60,6 @@ Optionally:
 * sets up the [archlinuxfr](http://archlinux.fr/yaourt-en) and [multilib](https://wiki.archlinux.org/index.php/Multilib) pacman repositories, and installs [yaourt](http://archlinux.fr/yaourt-en)
 * sets up [CUPS](https://wiki.archlinux.org/index.php/Cups) printing
 * sets up the [Chrony](https://wiki.archlinux.org/index.php/Chrony) alternative NTP daemon
-* installs alsa-utils and does initial unmute of Master channel, for [ALSA](https://wiki.archlinux.org/index.php/Advanced_Linux_Sound_Architecture)
 * installs [Xorg](https://wiki.archlinux.org/index.php/Xorg) Xserver as well as related required and recommended/optional packages
   (note - this currently only installs the default vesa driver. See archlinux_workstation::xorg below for more information)
 * if the ``gui`` parameter is set to 'kde' (default), installs [KDE Plasma](https://wiki.archlinux.org/index.php/KDE)
@@ -104,11 +103,6 @@ rule to allow SSH access.
   classes that put files in the user's home directory, and to
   create SSH keys for the user. Default: "/home/${username}.
 
-### archlinux_workstation::alsa
-
-Install alsa-utils package for [ALSA](https://wiki.archlinux.org/index.php/Advanced_Linux_Sound_Architecture),
-and do initial unmute of the master channel.
-
 ### archlinux_workstation::base_packages
 
 Collection of base packages that we want installed on every system.
@@ -150,7 +144,8 @@ Enable DMKS support
 
 ### archlinux_workstation::kde
 
-Perform a full installation of [KDE](https://wiki.archlinux.org/index.php/KDE) via the "kde" package group.
+Perform a full installation of [KDE/Plasma](https://wiki.archlinux.org/index.php/KDE) via the
+"plasma-meta" and "kde-applications-meta" package groups, as well as [Phonon](https://wiki.archlinux.org/index.php/KDE#Phonon).
 
 ### archlinux_workstation::makepkg
 

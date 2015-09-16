@@ -33,8 +33,21 @@ describe 'archlinux_workstation::kde' do
 
       it { should compile.with_all_deps }
 
-      it { should contain_package('plasma-meta') }
-      it { should contain_package('kde-applications-meta') }
+      it { should contain_package('plasma-meta').with_ensure('present') }
+      it { should contain_package('kde-applications-meta').with_ensure('present') }
+
+      $phonon_packages = [
+        'phonon-qt4',
+        'phonon-qt4-gstreamer',
+        'phonon-qt4-vlc',
+        'phonon-qt5',
+        'phonon-qt5-gstreamer',
+        'phonon-qt5-vlc',
+      ]
+      
+      $phonon_packages.each do |pkgname|
+        it { should contain_package(pkgname).with_ensure('present') }
+      end
     end
 
   end
