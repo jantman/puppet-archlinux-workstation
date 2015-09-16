@@ -17,6 +17,7 @@ describe 'archlinux_workstation class' do
     describe user('myuser') do
       it { should exist }
       it { should belong_to_group 'myuser' }
+      it { should belong_to_group 'sys' }
       it { should have_home_directory '/home/myuser' }
       it { should have_login_shell '/bin/bash' }
     end

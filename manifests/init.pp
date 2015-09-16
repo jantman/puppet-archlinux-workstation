@@ -18,8 +18,9 @@
 #   create SSH keys for the user. Default: "/home/${username}.
 #
 class archlinux_workstation (
-  $username        = undef,
-  $user_home       = "/home/${username}",
+  $username    = undef,
+  $user_home   = "/home/${username}",
+  $user_groups = ['sys'],
 ) {
 
   # make sure we're on arch, otherwise fail
@@ -33,6 +34,7 @@ class archlinux_workstation (
   archlinux_workstation::user { $username:
     username => $username,
     homedir  => $user_home,
+    groups   => $user_groups,
   }
 
 }

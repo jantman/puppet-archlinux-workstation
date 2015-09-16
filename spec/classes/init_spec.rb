@@ -62,6 +62,22 @@ describe 'archlinux_workstation' do
       it { should contain_archlinux_workstation__user('foouser').with({
         'username' => 'foouser',
         'homedir'  => '/home/foouser',
+        'groups'   => ['sys'],
+      }) }
+    end
+
+    describe "username and user_groups are defined" do
+      let(:params) {{
+                      'username'    => 'foouser',
+                      'user_groups' => ['foo', 'bar'],
+      }}
+
+      it { should compile.with_all_deps }
+
+      it { should contain_archlinux_workstation__user('foouser').with({
+        'username' => 'foouser',
+        'homedir'  => '/home/foouser',
+        'groups'   => ['foo', 'bar'],
       }) }
     end
 
@@ -76,6 +92,7 @@ describe 'archlinux_workstation' do
       it { should contain_archlinux_workstation__user('foouser').with({
         'username' => 'foouser',
         'homedir'  => '/tmp/notmyhome',
+        'groups'   => ['sys'],
       }) }
     end
 
