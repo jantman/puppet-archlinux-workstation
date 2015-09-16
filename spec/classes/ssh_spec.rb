@@ -85,7 +85,32 @@ describe 'archlinux_workstation::ssh' do
                                                       :storeconfigs_enabled => false,
                                                       :options              => {
                                                         'AcceptEnv'              => ['LANG', 'LC_*', 'DISPLAY'],
-                                                        'AllowUsers'             => ['myuser'],
+                                                        'AllowUsers'             => ['myuser', 'root'],
+                                                        'AuthorizedKeysFile'     => '.ssh/authorized_keys',
+                                                        'GSSAPIAuthentication'   => 'no',
+                                                        'KerberosAuthentication' => 'no',
+                                                        'PasswordAuthentication' => 'no',
+                                                        'PermitRootLogin'        => 'yes',
+                                                        'Port'                   => [22],
+                                                        'PubkeyAuthentication'   => 'yes',
+                                                        'RSAAuthentication'      => 'yes',
+                                                        'SyslogFacility'         => 'AUTH',
+                                                        'UsePrivilegeSeparation' => 'sandbox',
+                                                        'X11Forwarding'          => 'yes',
+                                                      }
+                                                    })
+      }
+    end
+
+    describe 'with permit_root true and allow_users' do
+      let(:params) {{ :permit_root => true, :allow_users => ['foo', 'bar'] }}
+      let(:pre_condition) { "class {'archlinux_workstation': username => 'myuser' }" }
+
+      it { should contain_class('ssh::server').with({
+                                                      :storeconfigs_enabled => false,
+                                                      :options              => {
+                                                        'AcceptEnv'              => ['LANG', 'LC_*', 'DISPLAY'],
+                                                        'AllowUsers'             => ['foo', 'bar', 'root'],
                                                         'AuthorizedKeysFile'     => '.ssh/authorized_keys',
                                                         'GSSAPIAuthentication'   => 'no',
                                                         'KerberosAuthentication' => 'no',
@@ -168,7 +193,7 @@ describe 'archlinux_workstation::ssh' do
                                                       :storeconfigs_enabled => false,
                                                       :options              => {
                                                         'AcceptEnv'              => ['LANG', 'LC_*', 'DISPLAY'],
-                                                        'AllowUsers'             => ['myuser', 'vagrant'],
+                                                        'AllowUsers'             => ['myuser', 'root', 'vagrant'],
                                                         'AuthorizedKeysFile'     => '.ssh/authorized_keys',
                                                         'GSSAPIAuthentication'   => 'no',
                                                         'KerberosAuthentication' => 'no',

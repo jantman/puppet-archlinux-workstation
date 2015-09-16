@@ -32,6 +32,7 @@ describe 'archlinux_workstation::ssh class' do
       it { should be_file }
       its(:content) { should match /AllowUsers myuser/ }
       its(:content) { should match /AllowUsers vagrant/ }
+      its(:content) { should match /AllowUsers root/ }
       its(:content) { should match /GSSAPIAuthentication no/ }
       its(:content) { should match /KerberosAuthentication no/ }
       its(:content) { should match /PasswordAuthentication no/ }

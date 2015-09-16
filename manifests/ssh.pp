@@ -32,18 +32,20 @@ class archlinux_workstation::ssh (
     $tmp_users = [$archlinux_workstation::username]
   }
 
+  if $permit_root {
+    $allow_root = 'yes'
+    $tmp_users2 = $tmp_users + ['root']
+  } else {
+    $allow_root = 'no'
+    $tmp_users2 = $tmp_users
+  }
+
   # add 'vagrant' to allow users if on virtualbox
   if $::virtual == 'virtualbox' {
     notify {'adding vagrant to list of SSH allowed users, per $::virtual fact': }
-    $real_allow_users = $tmp_users + ['vagrant']
+    $real_allow_users = $tmp_users2 + ['vagrant']
   } else {
-    $real_allow_users = $tmp_users
-  }
-
-  if $permit_root {
-    $allow_root = 'yes'
-  } else {
-    $allow_root = 'no'
+    $real_allow_users = $tmp_users2
   }
 
   # saz/ssh
