@@ -28,6 +28,6 @@ RSpec.configure do |c|
       puppet_module_install(:source => dirpath, :module_name => modname, :target_module_path => '/etc/puppetlabs/code/modules')
     end
     # helper for spec/acceptance/classes/userapps/rvm_spec.rb
-    scp_to(hosts, File.join(proj_root, 'spec', 'fixtures', 'test_rvm.sh'), '/tmp/test_rvm.sh')
+    scp_to(hosts, File.join(proj_root, 'spec', 'test_rvm.sh'), '/tmp/test_rvm.sh')
   end
 end
