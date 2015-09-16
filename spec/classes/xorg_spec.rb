@@ -36,7 +36,8 @@ describe 'archlinux_workstation::xorg' do
                 'xorg-server-utils',
                 'xorg-xinit',
                 'mesa',
-                'xf86-video-vesa'
+                'xf86-video-vesa',
+                'xterm'
                ]
 
     packages.each do |package|
