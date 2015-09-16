@@ -48,7 +48,7 @@ define archlinux_workstation::pacman_repo (
 
   if ! defined(Exec['pacman_repo-Sy']) {
     exec { 'pacman_repo-Sy':
-      command => '/usr/bin/pacman -Sy',
+      command     => '/usr/bin/pacman -Sy',
       refreshonly => true,
     }
   }
