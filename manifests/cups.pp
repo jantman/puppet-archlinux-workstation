@@ -8,24 +8,25 @@
 #
 class archlinux_workstation::cups {
 
-  $cups_packages = ['libcups',
+  $cups_packages = [
                     'cups',
                     'cups-filters',
-                    'ghostscript',
-                    'gsfonts',
-                    'gutenprint',
+                    'cups-pdf',
                     'foomatic-db',
                     'foomatic-db-engine',
                     'foomatic-db-nonfree',
+                    'ghostscript',
+                    'gsfonts',
+                    'gutenprint',
                     'hplip',
-                    'cups-pdf'
+                    'libcups',
                     ]
 
   package {$cups_packages:
     ensure => present,
   }
 
-  service {'cups':
+  service {'org.cups.cupsd':
     ensure  => running,
     enable  => true,
     require => Package['cups'],

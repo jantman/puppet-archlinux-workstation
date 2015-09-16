@@ -11,24 +11,27 @@ describe 'archlinux_workstation::cups' do
 
     it { should compile.with_all_deps }
 
-    packages = ['libcups',
-                'cups',
-                'cups-filters',
-                'ghostscript',
-                'gsfonts',
-                'gutenprint',
-                'foomatic-db',
-                'hplip',
-                'cups-pdf'
-               ]
+    cups_packages = [
+      'cups',
+      'cups-filters',
+      'cups-pdf',
+      'foomatic-db',
+      'foomatic-db-engine',
+      'foomatic-db-nonfree',
+      'ghostscript',
+      'gsfonts',
+      'gutenprint',
+      'hplip',
+      'libcups',
+    ]
 
-    packages.each do |package|
-      describe "package #{package}" do
-        it { should contain_package(package).with_ensure('present') }
+    cups_packages.each do |pkgname|
+      describe "package #{pkgname}" do
+        it { should contain_package(pkgname).with_ensure('present') }
       end
     end
 
-    it { should contain_service('cups').with({
+    it { should contain_service('org.cups.cupsd').with({
       'enable' => true,
       'ensure' => 'running',
     }).that_requires('Package[cups]') }
