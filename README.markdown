@@ -57,13 +57,13 @@ Optionally:
 * enable dkms support by installing the package and enabling the service
 * creates and uses a swapfile at a configurable path and of configurable size (by defaylt, 4G at ``/swapfile``),
   via an instance of ``archlinux_workstation::swapfile``.
-* sets up the [archlinuxfr](http://archlinux.fr/yaourt-en) and [multilib](https://wiki.archlinux.org/index.php/Multilib) pacman repositories, and installs [yaourt](http://archlinux.fr/yaourt-en)
 * sets up [CUPS](https://wiki.archlinux.org/index.php/Cups) printing
 * sets up the [Chrony](https://wiki.archlinux.org/index.php/Chrony) alternative NTP daemon
 * installs [Xorg](https://wiki.archlinux.org/index.php/Xorg) Xserver as well as related required and recommended/optional packages
   (note - this currently only installs the default vesa driver. See archlinux_workstation::xorg below for more information)
 * if the ``gui`` parameter is set to 'kde' (default), installs [KDE Plasma](https://wiki.archlinux.org/index.php/KDE)
   and installs and runs [SDDM](https://wiki.archlinux.org/index.php/SDDM)
+* sets up my [personal (jantman) pacman repo](http://archrepo.jasonantman.com/)
 * installation of a number of different user applications (see ``archlinux_workstation::userapps::`` classes below)
 
 ##Requirements
@@ -262,12 +262,6 @@ Note - currently this just installs the default "xf86-video-vesa" driver.
 Need to write a fact to find video cards and choose the correct driver,
 per [Driver Installation](https://wiki.archlinux.org/index.php/Xorg#Driver_installation),
 or expose this option to the user as a parameter.
-
-### archlinux_workstation::yaourt
-
-Add the [archlinuxfr](http://archlinux.fr/yaourt-en) repo to pacman via an inisetting, install
-[yaourt](https://wiki.archlinux.org/index.php/Yaourt) so we can get packages from AUR.
-Also enable the [multilib](https://wiki.archlinux.org/index.php/Multilib) repository (also via inisetting).
 
 ##Limitations
 
