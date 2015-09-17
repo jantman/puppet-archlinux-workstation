@@ -53,7 +53,7 @@ describe 'archlinux_workstation::networkmanager' do
       it { should compile.with_all_deps }
 
       it { should contain_package('networkmanager') }
-      it { should_not contain_package('kdeplasma-applets-networkmanagement') }
+      it { should_not contain_package('plasma-nm') }
       it { should contain_service('NetworkManager')
                    .with({
                            'enable' => true,
@@ -94,7 +94,7 @@ describe 'archlinux_workstation::networkmanager' do
       it { should compile.with_all_deps }
 
       it { should contain_package('networkmanager') }
-      it { should contain_package('kdeplasma-applets-networkmanagement')\
+      it { should contain_package('plasma-nm')
         .that_requires('Package[networkmanager]') }
       it { should contain_service('NetworkManager')
                    .with({

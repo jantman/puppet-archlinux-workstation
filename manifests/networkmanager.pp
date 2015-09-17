@@ -23,7 +23,7 @@ class archlinux_workstation::networkmanager {
   }
 
   if defined(Class['archlinux_workstation::kde']) {
-    package {'kdeplasma-applets-networkmanagement':
+    package {'plasma-nm':
       ensure  => present,
       require => Package['networkmanager'],
     }
