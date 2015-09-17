@@ -22,7 +22,7 @@ class archlinux_workstation::networkmanager {
     ensure => present,
   }
 
-  if defined(Class['archlinux_workstation::kde']) {
+  if defined(Package['plasma-meta']) {
     package {'plasma-nm':
       ensure  => present,
       require => Package['networkmanager'],
