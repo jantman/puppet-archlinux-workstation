@@ -43,7 +43,6 @@ need to touch to take a base Arch Linux installation to a fully-usable, graphica
 This includes:
 
 * your login user, a primary group with the same name as the username, and their supplementary groups
-* add a Firewall rule to allow SSH access
 
 Optionally:
 
@@ -92,16 +91,14 @@ If you stick to one of these two usage methods (instead of forking this module a
 
 ### archlinux_workstation
 
-Declares your user and group, and sets a few variables used by other classes. Also adds a Firewall
-rule to allow SSH access.
+Declares your user and group, and sets a few variables used by other classes.
 
 #### Parameters
 
 * __username__ - (string) Your login username. Used to create
   your account, add you to certain groups, etc. Default: undef.
 * __user_home__ - Path to $username's home directory. Used for
-  classes that put files in the user's home directory, and to
-  create SSH keys for the user. Default: "/home/${username}.
+  classes that put files in the user's home directory. Default: "/home/${username}".
 
 ### archlinux_workstation::base_packages
 
@@ -201,8 +198,7 @@ and uses Augeas to add the swapfile to /etc/fstab.
 
 ### Define archlinux_workstation::user
 
-Defines a single user on the system, generates SSH keys,
-and adds them to the usual system groups.
+Defines a single user on the system and adds them to the usual system groups.
 
 #### Parameters
 

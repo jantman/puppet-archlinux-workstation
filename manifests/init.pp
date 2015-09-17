@@ -14,12 +14,11 @@
 #   your account, add you to certain groups, etc. Default: undef.
 #
 # * __user_home__ - Path to $username's home directory. Used for
-#   classes that put files in the user's home directory, and to
-#   create SSH keys for the user. Default: "/home/${username}.
+#   classes that put files in the user's home directory. Default: "/home/${username}".
 #
 class archlinux_workstation (
   $username    = undef,
-  $user_home   = "/home/${username}",
+  $user_home   = undef,
   $user_groups = ['sys'],
 ) {
 
@@ -28,12 +27,19 @@ class archlinux_workstation (
     fail("${::operatingsystem} not supported")
   }
 
+  # default uses another param
+  if ! $user_home {
+    $real_user_home = "/home/${username}"
+  } else {
+    $real_user_home = $user_home
+  }
+
   validate_re($username, '^.+$', 'Parameter username must be a string for class archlinux_workstation')
-  validate_absolute_path($user_home)
+  validate_absolute_path($real_user_home)
 
   archlinux_workstation::user { $username:
     username => $username,
-    homedir  => $user_home,
+    homedir  => $real_user_home,
     groups   => $user_groups,
   }
 
