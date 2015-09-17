@@ -22,6 +22,7 @@ describe 'archlinux_workstation::base_packages class' do
     packages_present = [
       'bind-tools',
       'dmidecode',
+      'dialog',
       'links',
       'lsb-release',
       'lsof',

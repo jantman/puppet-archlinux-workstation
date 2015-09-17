@@ -36,6 +36,7 @@ describe 'archlinux_workstation::base_packages' do
     packages = ['links',
                 'lsb-release',
                 'dmidecode',
+                'dialog',
                 'vim',
                 'ttf-dejavu',
                 'wget',
