@@ -6,6 +6,24 @@ describe 'archlinux_workstation::networkmanager' do
     :operatingsystem => 'Archlinux',
     :concat_basedir  => '/tmp',
     :interfaces      => 'eth0,eth1,lo',
+    # structured facts
+    :os              => { 'family' => 'Archlinux' },
+    :networking      => {
+      'interfaces' => {
+        'eth0' => {
+          'dhcp' => "192.168.0.1",
+          'ip' => "192.168.0.24",
+        },
+        'eth1' => {
+          'dhcp' => "192.168.0.1",
+          'ip' => "192.168.0.24",
+        },
+        'lo' => {
+          'ip' => "127.0.0.1",
+          'ip6' => "::1",
+        },
+      },
+    }
   }}
 
   context 'parent class' do

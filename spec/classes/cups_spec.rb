@@ -5,6 +5,8 @@ describe 'archlinux_workstation::cups' do
     let(:facts) {{
       :osfamily        => 'Archlinux',
       :operatingsystem => 'Archlinux',
+      # structured facts
+      :os              => { 'family' => 'Archlinux' },
     }}
 
     let(:params) {{ }}

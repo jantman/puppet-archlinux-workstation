@@ -4,6 +4,8 @@ describe 'archlinux_workstation' do
   let(:facts) {{
     :osfamily        => 'Archlinux',
     :operatingsystem => 'Archlinux',
+    # structured facts
+    :os              => { 'family' => 'Archlinux' },
   }}
 
   context 'supported operating systems' do
@@ -21,24 +23,30 @@ describe 'archlinux_workstation' do
   context 'unsupported operating system' do
     describe 'archlinux_workstation class without any parameters on Solaris/Nexenta' do
       let(:facts) {{
-        :osfamily        => 'Solaris',
-        :operatingsystem => 'Nexenta',
+                     :osfamily        => 'Solaris',
+                     :operatingsystem => 'Nexenta',
+                     # structured facts
+                     :os              => { 'family' => 'Solaris', 'name' => 'Nexenta', },
       }}
 
       it { expect { should contain_class('archlinux_workstation') }.to raise_error(Puppet::Error, /Nexenta not supported/) }
     end
     describe 'archlinux_workstation class without any parameters on CentOS' do
       let(:facts) {{
-        :osfamily        => 'RedHat',
-        :operatingsystem => 'CentOS',
+                     :osfamily        => 'RedHat',
+                     :operatingsystem => 'CentOS',
+                     # structured facts
+                     :os              => { 'family' => 'RedHat', 'name' => 'CentOS', },
       }}
 
       it { expect { should contain_class('archlinux_workstation') }.to raise_error(Puppet::Error, /CentOS not supported/) }
     end
     describe 'archlinux_workstation class without any parameters on Debian' do
       let(:facts) {{
-        :osfamily        => 'Debian',
-        :operatingsystem => 'debian',
+                     :osfamily        => 'Debian',
+                     :operatingsystem => 'debian',
+                     # structured facts
+                     :os              => { 'family' => 'Debian', 'name' => 'debian', },
       }}
 
       it { expect { should contain_class('archlinux_workstation') }.to raise_error(Puppet::Error, /debian not supported/) }

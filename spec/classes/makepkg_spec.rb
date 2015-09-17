@@ -6,6 +6,9 @@ describe 'archlinux_workstation::makepkg' do
     :operatingsystem => 'Archlinux',
     :concat_basedir  => '/tmp',
     :processorcount  => 8,
+    # structured facts
+    :os              => { 'family' => 'Archlinux' },
+    :processors      => { 'count' => 8 },
   }}
 
   context 'parent class' do

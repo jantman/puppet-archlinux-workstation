@@ -4,6 +4,8 @@ describe 'archlinux_workstation::sudo' do
   let(:facts) {{
     :osfamily        => 'Archlinux',
     :operatingsystem => 'Archlinux',
+    # structured facts
+    :os              => { 'family' => 'Archlinux' },
   }}
 
   context 'parent class' do
@@ -49,6 +51,8 @@ describe 'archlinux_workstation::sudo' do
                    :osfamily        => 'Archlinux',
                    :operatingsystem => 'Archlinux',
                    :virtual         => 'virtualbox',
+                   # structured facts
+                   :os              => { 'family' => 'Archlinux' },
                  }}
     describe 'includes all resources' do
       let(:pre_condition) { "class {'archlinux_workstation': username => 'myuser' }" }

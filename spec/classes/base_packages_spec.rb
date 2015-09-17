@@ -5,6 +5,8 @@ describe 'archlinux_workstation::base_packages' do
     :osfamily        => 'Archlinux',
     :operatingsystem => 'Archlinux',
     :concat_basedir  => '/tmp',
+    # structured facts
+    :os              => { 'family' => 'Archlinux' },
   }}
 
   context 'parent class' do

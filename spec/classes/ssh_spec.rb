@@ -5,6 +5,8 @@ describe 'archlinux_workstation::ssh' do
     :osfamily        => 'Archlinux',
     :operatingsystem => 'Archlinux',
     :concat_basedir  => '/tmp',
+    # structured facts
+    :os              => { 'family' => 'Archlinux' },
   }}
 
   context 'parent class' do
@@ -134,6 +136,8 @@ describe 'archlinux_workstation::ssh' do
                    :operatingsystem => 'Archlinux',
                    :concat_basedir  => '/tmp',
                    :virtual         => 'virtualbox',
+                   # structured facts
+                   :os              => { 'family' => 'Archlinux' },
                  }}
 
     describe 'without parameters' do

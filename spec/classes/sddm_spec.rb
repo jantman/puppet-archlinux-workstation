@@ -5,6 +5,8 @@ describe 'archlinux_workstation::sddm' do
     :osfamily        => 'Archlinux',
     :operatingsystem => 'Archlinux',
     :concat_basedir  => '/tmp',
+    # structured facts
+    :os              => { 'family' => 'Archlinux' },
   }}
 
   context 'parent class' do
@@ -29,6 +31,8 @@ describe 'archlinux_workstation::sddm' do
     let(:facts) {{
       :osfamily        => 'Archlinux',
       :operatingsystem => 'Archlinux',
+      # structured facts
+      :os              => { 'family' => 'Archlinux' },
     }}
     let(:pre_condition) { "class {'archlinux_workstation': username => 'myuser' }" }
     describe "default" do
