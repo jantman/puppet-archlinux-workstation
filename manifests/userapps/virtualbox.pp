@@ -9,12 +9,16 @@
 #
 class archlinux_workstation::userapps::virtualbox {
 
-  $packages = ['virtualbox',
+  if ! defined(Class['archlinux_workstation']) {
+    fail('You must include the base archlinux_workstation class before using any subclasses')
+  }
+
+  $packages = [
+              'virtualbox',
               'virtualbox-host-modules',
               'virtualbox-host-dkms',
               'virtualbox-guest-iso',
-              'virtualbox-ext-oracle',
-              'vagrant',
+              'virtualbox-ext-oracle', # AUR package
               ]
 
   package {$packages:

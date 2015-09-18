@@ -63,6 +63,7 @@ describe 'archlinux_workstation::all' do
       it { should contain_class('archlinux_workstation::sddm') }
 
       it { should contain_archlinux_workstation__userapps__rvm('myuser') }
+      it { should contain_class('archlinux_workstation::userapps::virtualbox') }
     end
   end
 

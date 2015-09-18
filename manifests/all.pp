@@ -36,4 +36,6 @@ class archlinux_workstation::all {
 
   # userapps
   archlinux_workstation::userapps::rvm { $archlinux_workstation::username : }
+  include archlinux_workstation::userapps::virtualbox
+
 }
