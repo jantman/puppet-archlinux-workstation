@@ -97,8 +97,14 @@ Declares your user and group, and sets a few variables used by other classes.
 
 * __username__ - (string) Your login username. Used to create
   your account, add you to certain groups, etc. Default: undef.
+* __realname__ - (string) The user's real name, to be used
+  in the passwd comment/GECOS field. Defaults to $username if not specified.
 * __user_home__ - Path to $username's home directory. Used for
-  classes that put files in the user's home directory. Default: "/home/${username}".
+classes that put files in the user's home directory. Default: "/home/${username}".
+* __shell__ - (string) the user's login shell.
+  Default: '/bin/bash'
+* __user_groups__ - (array) list of supplementary groups that
+  this user should be a member of. Default: ['sys']
 
 ### archlinux_workstation::base_packages
 
@@ -195,23 +201,6 @@ and uses Augeas to add the swapfile to /etc/fstab.
   for KiB, MiB, GiB, TiB, etc. Default: '4G'. NOTE that at this time, this module will
   *not* recreate swapfiles, so if you change this parameter, it will have no effect unless
   you swapoff and remove the old swapfile.
-
-### Define archlinux_workstation::user
-
-Defines a single user on the system and adds them to the usual system groups.
-
-#### Parameters
-
-* __username__ - (string) The user's username.
-  Defaults to the resource title.
-* __realname__ - (string) The user's real name, to be used
-  in the passwd comment/GECOS field.
-* __homedir__ - (string) Path to $username's home directory.
-  Will be created if it does not exist.
-* __shell__ - (string) the user's login shell.
-  Default: '/bin/bash'
-* __groups__ - (array) list of supplementary groups that
-  this user should be a member of. Default: undef.
 
 ### archlinux_workstation::userapps::emacs
 

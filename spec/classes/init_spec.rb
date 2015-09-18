@@ -66,44 +66,107 @@ describe 'archlinux_workstation' do
       }}
 
       it { should compile.with_all_deps }
-
-      it { should contain_archlinux_workstation__user('foouser').with({
-        'username' => 'foouser',
-        'homedir'  => '/home/foouser',
-        'groups'   => ['sys'],
-      }) }
     end
-
-    describe "username and user_groups are defined" do
-      let(:params) {{
-                      'username'    => 'foouser',
-                      'user_groups' => ['foo', 'bar'],
-      }}
-
-      it { should compile.with_all_deps }
-
-      it { should contain_archlinux_workstation__user('foouser').with({
-        'username' => 'foouser',
-        'homedir'  => '/home/foouser',
-        'groups'   => ['foo', 'bar'],
-      }) }
-    end
-
-    describe "username and user_home are defined" do
-      let(:params) {{
-        'username'  => 'foouser',
-        'user_home' => '/tmp/notmyhome',
-      }}
-
-      it { should compile.with_all_deps }
-
-      it { should contain_archlinux_workstation__user('foouser').with({
-        'username' => 'foouser',
-        'homedir'  => '/tmp/notmyhome',
-        'groups'   => ['sys'],
-      }) }
-    end
-
   end # context 'parameters'
+
+  context 'user management' do
+    describe "default parameters" do
+      let(:params) {{
+                      'username' => 'foouser',
+      }}
+
+      it { should compile.with_all_deps }
+
+      it { should contain_user('foouser').with({
+        'name'       => 'foouser',
+        'ensure'     => 'present',
+        'comment'    => 'foouser',
+        'gid'        => 'foouser',
+        'home'       => '/home/foouser',
+        'managehome' => true,
+        'groups'     => ['sys'],
+      }) }
+
+      it { should contain_group('foouser').with({
+        'ensure' => 'present',
+        'name'   => 'foouser',
+        'system' => 'false',
+      }) }
+
+      it { should contain_user('foouser').that_requires('Group[foouser]') }
+    end # describe "default parameters"
+
+    describe "realname specified" do
+      let(:params) {{
+                      'username' => 'foouser',
+                      'realname' => 'Foo User',
+      }}
+
+      it { should compile.with_all_deps }
+
+      it { should contain_user('foouser').with({
+        'name'       => 'foouser',
+        'ensure'     => 'present',
+        'comment'    => 'Foo User',
+        'gid'        => 'foouser',
+        'home'       => '/home/foouser',
+        'managehome' => true,
+        'groups'     => ['sys'],
+      }) }
+
+      it { should contain_group('foouser').with({
+        'ensure' => 'present',
+        'name'   => 'foouser',
+        'system' => 'false',
+      }) }
+
+      it { should contain_user('foouser').that_requires('Group[foouser]') }
+    end # describe "default parameters"
+
+    describe "shell specified" do
+      let(:params) {{
+                      'username' => 'foouser',
+                      :shell     => '/bin/zsh',
+      }}
+
+      it { should compile.with_all_deps }
+
+      it { should contain_user('foouser').with({
+        'shell'    => '/bin/zsh',
+      }) }
+    end # describe "shell specified"
+
+    describe "homedir specified" do
+      let(:params) {{
+                      'username' => 'foouser',
+                      :user_home => '/home/notfoo',
+      }}
+
+      it { should compile.with_all_deps }
+
+      it { should contain_user('foouser').with({
+        'home'    => '/home/notfoo',
+      }) }
+    end # describe "homedir specified"
+
+    describe "groups specified" do
+      let(:params) {{
+                      'username' => 'foouser',
+                      'user_groups'  => ['one', 'two', 'three'],
+      }}
+
+      it { should compile.with_all_deps }
+
+      it { should contain_user('foouser').with({
+        :groups    => ['one', 'two', 'three'],
+      }) }
+
+      it do
+        should contain_user('foouser').that_requires('Group[foouser]')
+      end
+
+    end # describe "groups specified"
+
+  end
 
 end
