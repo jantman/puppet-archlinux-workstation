@@ -26,13 +26,13 @@ class archlinux_workstation::all {
   include archlinux_workstation::cups
   include archlinux_workstation::dkms
   include archlinux_workstation::makepkg
-  include archlinux_workstation::networkmanager
   include archlinux_workstation::ssh
   include archlinux_workstation::sudo
 
   class {'archlinux_workstation::xorg': } ->
   class {'archlinux_workstation::kde': } ->
-  class {'archlinux_workstation::sddm': }
+  class {'archlinux_workstation::sddm': } ->
+  class {'archlinux_workstation::networkmanager': }
 
   # userapps
   archlinux_workstation::userapps::rvm { $archlinux_workstation::username : }
