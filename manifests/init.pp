@@ -55,7 +55,7 @@ class archlinux_workstation (
   validate_re($username, '^.+$', 'Parameter username must be a string for class archlinux_workstation')
   validate_absolute_path($real_user_home)
 
-  user { $username:
+  @user { $username:
     ensure     => present,
     name       => $username,
     comment    => $real_name,
@@ -66,6 +66,8 @@ class archlinux_workstation (
     groups     => $user_groups,
     require    => Group[$username],
   }
+
+  User <| title == $username |>
 
   group { $username:
     ensure => present,

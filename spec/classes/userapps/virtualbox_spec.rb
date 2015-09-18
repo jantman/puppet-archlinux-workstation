@@ -56,6 +56,13 @@ describe 'archlinux_workstation::userapps::virtualbox' do
 
     end
 
+    describe 'virtual user has group added' do
+      let(:pre_condition) { "class {'archlinux_workstation': username => 'myuser' }" }
+      let(:params) {{ }}
+
+      it { should compile.with_all_deps }
+      it { should contain_user('myuser').with_groups(['sys', 'vboxusers']) }
+    end
   end
 
 end

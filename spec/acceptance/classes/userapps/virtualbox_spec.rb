@@ -34,7 +34,16 @@ describe 'archlinux_workstation::userapps::virtualbox class' do
       it { should be_owned_by 'root' }
       it { should be_grouped_into 'root' }
       it { should be_mode 644 }
-      its(:content) { should eq "# managed by puppet module ${module_name}\nvboxdrv\nvboxnetadp\nvboxnetflt\nvboxpci" }
+      its(:content) { should eq "# managed by puppet module archlinux_workstation\nvboxdrv\nvboxnetadp\nvboxnetflt\nvboxpci" }
+    end
+
+    describe user('myuser') do
+      it { should exist }
+      it { should belong_to_group 'myuser' }
+      it { should belong_to_group 'sys' }
+      it { should belong_to_group 'vboxusers' }
+      it { should have_home_directory '/home/myuser' }
+      it { should have_login_shell '/bin/bash' }
     end
   end
 end

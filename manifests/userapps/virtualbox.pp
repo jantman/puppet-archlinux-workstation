@@ -33,4 +33,6 @@ class archlinux_workstation::userapps::virtualbox {
     content => "# managed by puppet module ${module_name}\nvboxdrv\nvboxnetadp\nvboxnetflt\nvboxpci",
   }
 
+  User <| title == $username |> { groups +> 'vboxusers' }
+
 }
