@@ -55,6 +55,8 @@ class archlinux_workstation (
   validate_re($username, '^.+$', 'Parameter username must be a string for class archlinux_workstation')
   validate_absolute_path($real_user_home)
 
+  # we make the user a virtual resource and then realize it so that other
+  # classes can append to the 'groups' attribute using plusignment
   @user { $username:
     ensure     => present,
     name       => $username,

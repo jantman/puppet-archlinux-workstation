@@ -3,15 +3,17 @@
 # Install and configure VirtualBox and Vagrant.
 #
 # === Actions:
-#   - Install virtualbox, virtualbox-host-modules, virtualbox-guest-iso, virtualbox-ext-oracle
-#   - Setup virtualbox modules-load.d file for required kernel modules
-#   - Install vagrant
+#   - Install virtualbox, virtualbox-host-modules, virtualbox-host-dkms, virtualbox-guest-iso, virtualbox-ext-oracle
+#   - Setup /etc/modules-load.d/virtualbox.conf file for required kernel modules
+#   - Add the $archlinux_workstation::username User to the 'vboxusers' group
 #
 class archlinux_workstation::userapps::virtualbox {
 
   if ! defined(Class['archlinux_workstation']) {
     fail('You must include the base archlinux_workstation class before using any subclasses')
   }
+
+  include archlinux_workstation
 
   $packages = [
               'virtualbox',
@@ -33,6 +35,7 @@ class archlinux_workstation::userapps::virtualbox {
     content => "# managed by puppet module ${module_name}\nvboxdrv\nvboxnetadp\nvboxnetflt\nvboxpci",
   }
 
-  User <| title == $username |> { groups +> 'vboxusers' }
+  # add the user defined in init.pp to vboxusers group with plusignment
+  User<| title == $archlinux_workstation::username |> { groups +> ['vboxusers'] }
 
 }
