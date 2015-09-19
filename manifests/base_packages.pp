@@ -18,18 +18,18 @@ class archlinux_workstation::base_packages {
                       ]
 
   $packages_present = [
-                       'bind-tools',
-                       'dialog',
-                       'dmidecode',
-                       'links',
-                       'lsb-release',
-                       'lsof',
-                       'lsscsi',
-                       'net-tools',
-                       'screen',
-                       'ttf-dejavu',
-                       'vim',
-                       'wget',
+                      'bind-tools',
+                      'dialog',
+                      'dmidecode',
+                      'links',
+                      'lsb-release',
+                      'lsof',
+                      'lsscsi',
+                      'net-tools',
+                      'screen',
+                      'ttf-dejavu',
+                      'vim',
+                      'wget',
                       ]
 
   package {$packages_present : ensure => present, }
