@@ -2,10 +2,7 @@ fixtures:
   repositories:
     stdlib: "git://github.com/puppetlabs/puppetlabs-stdlib.git"
     sudo: "https://github.com/saz/puppet-sudo.git"
-    # for https://github.com/saz/puppet-ssh/pull/149
-    ssh:
-      repo: "https://github.com/jantman/puppet-ssh.git"
-      ref: "arch_puppet4"
+    ssh: "https://github.com/saz/puppet-ssh.git"
     firewall: "https://github.com/puppetlabs/puppetlabs-firewall.git"
     inifile: "https://github.com/puppetlabs/puppetlabs-inifile.git"
     staging: "https://github.com/nanliu/puppet-staging.git"
