@@ -77,15 +77,18 @@ describe 'archlinux_workstation' do
 
       it { should compile.with_all_deps }
 
-      it { should contain_user('foouser').with({
-        'name'       => 'foouser',
-        'ensure'     => 'present',
-        'comment'    => 'foouser',
-        'gid'        => 'foouser',
-        'home'       => '/home/foouser',
-        'managehome' => true,
-        'groups'     => ['sys'],
-      }) }
+      it { should contain_user('foouser')
+                   .with({
+                           'name'       => 'foouser',
+                           'ensure'     => 'present',
+                           'comment'    => 'foouser',
+                           'gid'        => 'foouser',
+                           'home'       => '/home/foouser',
+                           'managehome' => true,
+                           'groups'     => ['sys'],
+                         })
+                   .that_requires('Group[foouser]')
+      }
 
       it { should contain_group('foouser').with({
         'ensure' => 'present',

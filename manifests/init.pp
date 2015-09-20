@@ -66,7 +66,7 @@ class archlinux_workstation (
     managehome => true,
     shell      => $shell,
     groups     => $user_groups,
-    require    => Group[$username],
+    require    => [ Group[$username] ],
   }
 
   User <| title == $username |>

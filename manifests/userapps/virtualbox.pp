@@ -36,6 +36,9 @@ class archlinux_workstation::userapps::virtualbox {
   }
 
   # add the user defined in init.pp to vboxusers group with plusignment
-  User<| title == $archlinux_workstation::username |> { groups +> ['vboxusers'] }
+  User<| title == $archlinux_workstation::username |> {
+    groups +> ['vboxusers'],
+    require +> [ Package['virtualbox'] ],
+  }
 
 }

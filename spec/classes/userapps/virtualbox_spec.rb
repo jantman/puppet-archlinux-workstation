@@ -61,7 +61,10 @@ describe 'archlinux_workstation::userapps::virtualbox' do
       let(:params) {{ }}
 
       it { should compile.with_all_deps }
-      it { should contain_user('myuser').with_groups(['sys', 'vboxusers']) }
+      it { should contain_user('myuser')
+                   .with_groups(['sys', 'vboxusers'])
+                   .that_requires(['Group[myuser]', 'Package[virtualbox]'])
+      }
     end
   end
 
