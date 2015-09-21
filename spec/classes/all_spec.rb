@@ -49,6 +49,7 @@ describe 'archlinux_workstation::all' do
     let(:pre_condition) { "class {'archlinux_workstation': username => 'myuser' }" }
     describe 'classes included in all' do
       it { should contain_class('archlinux_workstation::repos::jantman') }
+      it { should contain_class('archlinux_workstation::repos::multilib') }
       it { should contain_class('archlinux_workstation::base_packages') }
       it { should contain_class('archlinux_workstation::chrony') }
       it { should contain_class('archlinux_workstation::cronie') }

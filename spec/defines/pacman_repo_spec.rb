@@ -15,7 +15,7 @@ describe 'archlinux_workstation::pacman_repo', :type => :define  do
       let(:params) {{
       }}
 
-      it { expect { should compile.with_all_deps }.to raise_error(RSpec::Expectations::ExpectationNotMetError, /Parameter server \(URL\) must be specified on define archlinux_workstation::pacman_repo\[myrepo\]/) }
+      it { expect { should compile.with_all_deps }.to raise_error(RSpec::Expectations::ExpectationNotMetError, /Either server or include_file must be specified on define archlinux_workstation::pacman_repo\[myrepo\]/) }
     end
 
     describe "standard parameters" do
@@ -116,6 +116,29 @@ describe 'archlinux_workstation::pacman_repo', :type => :define  do
                                                                                                 'value'   => 'http://myserver',
                                                                                                 'notify'  => 'Exec[pacman_repo-Sy]',
                                                                                               })
+      }
+    end
+
+    describe "include_file" do
+      let(:params) {{
+                      :include_file => '/foo/bar',
+      }}
+
+      it { should compile.with_all_deps }
+
+      it { should contain_exec('pacman_repo-Sy').with({
+                                                        'command'     => '/usr/bin/pacman -Sy',
+                                                        'refreshonly' => 'true',
+                                                      }) }
+
+      it { should contain_ini_setting('archlinux_workstation-pacman_repo-myrepo-include').with({
+                                                                                                  'ensure'  => 'present',
+                                                                                                  'path'    => '/etc/pacman.conf',
+                                                                                                  'section' => 'myrepo',
+                                                                                                  'setting' => 'Include',
+                                                                                                  'value'   => '/foo/bar',
+                                                                                                  'notify'  => 'Exec[pacman_repo-Sy]',
+                                                                                                })
       }
     end
   end

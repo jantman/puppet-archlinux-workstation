@@ -18,6 +18,7 @@ class archlinux_workstation::all {
 
   # repos
   include archlinux_workstation::repos::jantman
+  include archlinux_workstation::repos::multilib
 
   # ALL classes in archlinux_workstation module
   include archlinux_workstation::base_packages

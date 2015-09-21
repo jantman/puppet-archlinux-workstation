@@ -62,7 +62,7 @@ Optionally:
   (note - this currently only installs the default vesa driver. See archlinux_workstation::xorg below for more information)
 * if the ``gui`` parameter is set to 'kde' (default), installs [KDE Plasma](https://wiki.archlinux.org/index.php/KDE)
   and installs and runs [SDDM](https://wiki.archlinux.org/index.php/SDDM)
-* sets up my [personal (jantman) pacman repo](http://archrepo.jasonantman.com/)
+* sets up my [personal (jantman) pacman repo](http://archrepo.jasonantman.com/) and the [Multilib](https://wiki.archlinux.org/index.php/Multilib) repo
 * installation of a number of different user applications (see ``archlinux_workstation::userapps::`` classes below)
 
 ##Requirements
@@ -166,6 +166,14 @@ processors/cores on the machine, as retrieved from the "processorcount" fact.
 Install and setup networkmanager its GUI components, and ensure dhcpcd is stopped and nm is running.
 If archlinux_workstation::kde is defined, install kdeplasma-applets-networkmanagement.
 
+### archlinux_workstation::repos::jantman
+
+Enable my [personal (jantman) pacman repo](http://archrepo.jasonantman.com/).
+
+### archlinux_workstation::repos::multilib
+
+Enable the [Multilib](https://wiki.archlinux.org/index.php/Multilib) repo.
+
 ### archlinux_workstation::sddm
 
 Install and run [SDDM](https://wiki.archlinux.org/index.php/SDDM) desktop manager.
@@ -202,35 +210,6 @@ and uses Augeas to add the swapfile to /etc/fstab.
   *not* recreate swapfiles, so if you change this parameter, it will have no effect unless
   you swapoff and remove the old swapfile.
 
-### archlinux_workstation::userapps::emacs
-
-Installs emacs-nox
-
-### archlinux_workstation::userapps::firefox
-
-Installs Firefox
-
-### archlinux_workstation::userapps::geppetto
-
-Installs [Geppetto](http://docs.puppetlabs.com/geppetto/latest/index.html) Eclipse-based Puppet IDE
-via AUR package, and [puppet-lint](http://puppet-lint.com/) via gem.
-
-### archlinux_workstation::userapps::googlechrome
-
-Install proprietary Google Chrome browser and Google TTF fonts from archlinuxfr repo.
-
-### archlinux_workstation::userapps::irssi
-
-Installs irssi
-
-### archlinux_workstation::userapps::libreoffice
-
-Installs libreoffice
-
-### archlinux_workstation::userapps::rsnapshot
-
-Install rsync and rsnapshot for backups.
-
 ### archlinux_workstation::userapps::rvm
 
 Define to install [rvm](https://rvm.io/) for a single user in their home directory.
@@ -250,9 +229,7 @@ or expose this option to the user as a parameter.
 
 ##Limitations
 
-This module is only usable with Arch Linux. Additionally, it's generally developed against whatever the current
-Puppet version is in [aur](https://aur.archlinux.org/packages/puppet), and whatever the current Ruby version is
-in the [Arch Extra repo](https://www.archlinux.org/packages/extra/x86_64/ruby/).
+This module is only usable with Arch Linux.
 
 It assumes that you have a relatively vanilla base install of Arch, such as the one I document in my [workstation-bootstrap module](https://github.com/jantman/workstation-bootstrap#arch-linux),
 pretty much the same as the [Arch Linux Installation Guide](https://wiki.archlinux.org/index.php/Installation_guide) documents.
