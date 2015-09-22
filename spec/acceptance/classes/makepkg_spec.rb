@@ -47,28 +47,12 @@ describe 'archlinux_workstation::makepkg class' do
       it { should be_mode 775 }
     end
 
-    describe file('/usr/local/bin/maketmpdirs.sh') do
-      it { should be_file }
-      it { should be_owned_by 'root' }
-      it { should be_grouped_into 'root' }
-      it { should be_mode 755 }
-      its(:content) { should match /ARCHUSER=myuser/ }
-      its(:content) { should match /for x in sources makepkg makepkglogs; do mkdir \/tmp\/\$x ; chown \${ARCHUSER}:wheel \/tmp\/\$x ; chmod 0775 \/tmp\/\$x; done/ }
-    end
-
-    describe file('/etc/systemd/system/maketmpdirs.service') do
+    describe file('/etc/tmpfiles.d/makepkg_puppet.conf') do
       it { should be_file }
       it { should be_owned_by 'root' }
       it { should be_grouped_into 'root' }
       it { should be_mode 644 }
-      its(:content) { should match %r"ExecStart=/usr/local/bin/maketmpdirs\.sh" }
-      its(:content) { should match %r"Type=oneshot" }
-      its(:content) { should match %r"Requires=tmp\.mount" }
-      its(:md5sum) { should match /b89edc223a7fba6c7b6ebe7faaefd534/ }
-    end
-
-    describe service('maketmpdirs') do
-      it { should be_enabled }
+      its(:content) { should eq "# managed by archlinux_workstation::makepkg puppet class\nD /tmp/sources 0775 myuser wheel\nD /tmp/makepkg 0775 myuser wheel\nD /tmp/makepkglogs 0775 myuser wheel" }
     end
   end
 end

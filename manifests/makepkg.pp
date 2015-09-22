@@ -3,7 +3,7 @@
 # makepkg configuration for Arch Linux.
 #
 # - Setup /etc/makepkg.conf for system-optimized compiling and compiling in /tmp tmpfs
-# - Setup systemd service and shell script to create tmpfs compile dir on boot
+# - systemd to create tmpfs compile dirs on boot
 #
 # === Parameters
 #
@@ -56,30 +56,12 @@ class archlinux_workstation::makepkg (
     mode   => '0775',
   }
 
-  # the following ensures that /tmp/sources is created at boot, even if puppet isnt run
-  # Template Uses:
-  # - $makepkg_user
-  file {'/usr/local/bin/maketmpdirs.sh':
-    ensure  => present,
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0755',
-    content => template('archlinux_workstation/maketmpdirs.sh.erb'),
-  }
-
-  file {'/etc/systemd/system/maketmpdirs.service':
+  file {'/etc/tmpfiles.d/makepkg_puppet.conf':
     ensure  => present,
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
-    source  => 'puppet:///modules/archlinux_workstation/maketmpdirs.service',
-    require => File['/usr/local/bin/maketmpdirs.sh'],
-  }
-
-  # this service runs at boot to create /tmp/sources
-  service {'maketmpdirs':
-    enable  => true,
-    require => File['/etc/systemd/system/maketmpdirs.service'],
+    content => "# managed by archlinux_workstation::makepkg puppet class\nD /tmp/sources 0775 ${archlinux_workstation::username} wheel\nD /tmp/makepkg 0775 ${archlinux_workstation::username} wheel\nD /tmp/makepkglogs 0775 ${archlinux_workstation::username} wheel",
   }
 
 }
