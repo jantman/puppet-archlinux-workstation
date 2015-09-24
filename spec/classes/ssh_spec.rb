@@ -55,6 +55,34 @@ describe 'archlinux_workstation::ssh' do
       }
     end
 
+    describe 'with extra_options specified' do
+      let(:params) {{
+                      :extra_options => {'foo' => 'bar'}
+                    }}
+      let(:pre_condition) { "class {'archlinux_workstation': username => 'myuser' }" }
+
+      it { should contain_class('ssh::server').with({
+                                                      :storeconfigs_enabled => false,
+                                                      :options              => {
+                                                        'AcceptEnv'              => ['LANG', 'LC_*', 'DISPLAY'],
+                                                        'AllowUsers'             => ['myuser'],
+                                                        'AuthorizedKeysFile'     => '.ssh/authorized_keys',
+                                                        'GSSAPIAuthentication'   => 'no',
+                                                        'KerberosAuthentication' => 'no',
+                                                        'PasswordAuthentication' => 'no',
+                                                        'PermitRootLogin'        => 'no',
+                                                        'Port'                   => [22],
+                                                        'PubkeyAuthentication'   => 'yes',
+                                                        'RSAAuthentication'      => 'yes',
+                                                        'SyslogFacility'         => 'AUTH',
+                                                        'UsePrivilegeSeparation' => 'sandbox',
+                                                        'X11Forwarding'          => 'yes',
+                                                        'foo'                    => 'bar',
+                                                      }
+                                                    })
+      }
+    end
+
     describe 'with specified allow_users' do
       let(:params) {{ :allow_users => ['foo', 'bar'] }}
       let(:pre_condition) { "class {'archlinux_workstation': username => 'myuser' }" }
