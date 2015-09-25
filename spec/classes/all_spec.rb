@@ -55,6 +55,7 @@ describe 'archlinux_workstation::all' do
       it { should contain_class('archlinux_workstation::cronie') }
       it { should contain_class('archlinux_workstation::cups') }
       it { should contain_class('archlinux_workstation::dkms') }
+      it { should contain_class('archlinux_workstation::docker') }
       it { should contain_class('archlinux_workstation::makepkg') }
       it { should contain_class('archlinux_workstation::networkmanager') }
       it { should contain_class('archlinux_workstation::ssh') }
