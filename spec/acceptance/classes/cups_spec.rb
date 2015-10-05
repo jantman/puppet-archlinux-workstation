@@ -19,13 +19,9 @@ describe 'archlinux_workstation::cups class' do
       'cups',
       'cups-filters',
       'cups-pdf',
-      'foomatic-db',
-      'foomatic-db-engine',
-      'foomatic-db-nonfree',
       'ghostscript',
       'gsfonts',
       'gutenprint',
-      'hplip',
       'libcups',
     ]
 
