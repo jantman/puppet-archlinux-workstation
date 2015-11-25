@@ -6,11 +6,17 @@
 #
 # === Parameters:
 #
+# * __mail_command__ - (string) If defined, will run `cronie`
+#   with "-m ${mail_command}" to send mail via this command.
+#   See `man 8 cron` for more information. Default: undef
+#
 # === Actions:
 #   - Install cronie
 #   - Run the cronie service
 #
-class archlinux_workstation::cronie {
+class archlinux_workstation::cronie (
+  $mail_command = undef,
+) {
 
   if ! defined(Class['archlinux_workstation']) {
     fail('You must include the base archlinux_workstation class before using any subclasses')
@@ -20,9 +26,47 @@ class archlinux_workstation::cronie {
     ensure => present,
   }
 
+  if $mail_command {
+    exec {'cronie-daemon-reload':
+      command     => '/usr/bin/systemctl daemon-reload',
+      refreshonly => true,
+    }
+
+    file {'cronie.service.d':
+      ensure  => directory,
+      path    => '/usr/lib/systemd/system/cronie.service.d',
+      owner   => 'root',
+      group   => 'root',
+      mode    => '0755',
+      require => Package['cronie'],
+    }
+
+    $mail_cmd_content = "# Managed by Puppet - archlinux_workstation::cronie class
+[Service]
+ExecStart=
+ExecStart=/usr/bin/crond -n -m ${mail_command}
+"
+
+    file {'cronie_mail_command.conf':
+      ensure  => present,
+      path    => '/usr/lib/systemd/system/cronie.service.d/cronie_mail_command.conf',
+      owner   => 'root',
+      group   => 'root',
+      mode    => '0644',
+      require => File['cronie.service.d'],
+      content => $mail_cmd_content,
+      notify  => Exec['cronie-daemon-reload'],
+    }
+
+    $svc_require = [Package['cronie'], File['cronie_mail_command.conf'], Exec['cronie-daemon-reload']]
+  } else {
+    $svc_require = [Package['cronie']]
+  }
+
   service {'cronie':
     ensure => running,
     enable => true,
+    require => $svc_require,
   }
 
 }
