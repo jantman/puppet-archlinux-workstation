@@ -55,7 +55,7 @@ ExecStart=/usr/bin/crond -n -m ${mail_command}
       mode    => '0644',
       require => File['cronie.service.d'],
       content => $mail_cmd_content,
-      notify  => Exec['cronie-daemon-reload'],
+      notify  => [Exec['cronie-daemon-reload'], Service['cronie']],
     }
 
     $svc_require = [Package['cronie'], File['cronie_mail_command.conf'], Exec['cronie-daemon-reload']]

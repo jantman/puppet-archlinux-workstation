@@ -30,7 +30,7 @@ describe 'archlinux_workstation::docker class' do
     end
 
     describe user('myuser') do
-      it { should be_grouped_into 'docker' }
+      it { should belong_to_group 'docker' }
     end
 
     describe command('docker info') do
