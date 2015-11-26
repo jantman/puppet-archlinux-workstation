@@ -1,3 +1,6 @@
+2015-11-25 Release 0.1.1
+- add support for a '-m' mail command for cronie
+
 2015-09-16 Release 0.1.0
 - major ground-up rewrite of module to be more reusable, and targeted at puppet4
 
