@@ -43,6 +43,7 @@ describe 'archlinux_workstation::makepkg' do
                    .with_group('root')
                    .with_mode('0644')
                    .with_content(/MAKEFLAGS="-j8"/)
+                   .without_content(/^PACKAGER/)
       }
 
       it { should contain_file('/tmp/sources')
@@ -85,6 +86,21 @@ describe 'archlinux_workstation::makepkg' do
       end
     end
 
-  end
+    context 'archlinux_workstation::makepkg_packager set' do
+      let(:pre_condition) {
+        "class {'archlinux_workstation': username => 'myuser', makepkg_packager => 'Foo Bar <foo@example.com>' }"
+      }
 
+      describe "make_flags explicitly defined" do
+        let(:params) {{ }}
+
+        it { should compile.with_all_deps }
+
+        it do
+          should contain_file('/etc/makepkg.conf') \
+                  .with_content(/PACKAGER='Foo Bar <foo@example.com>'/)
+        end
+      end
+    end
+  end
 end

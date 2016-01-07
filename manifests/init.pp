@@ -25,12 +25,18 @@
 # * __user_groups__ - (array) list of supplementary groups that
 #   this user should be a member of. Default: ['sys']
 #
+# * __makepkg_packager__ - (string) String to set as PACKAGER in makepkg.conf
+#   (see <https://wiki.archlinux.org/index.php/Makepkg#Packager_information>);
+#   if left blank, PACKAGER will be omitted and built packages will default to
+#   "Unknown Packager".
+#
 class archlinux_workstation (
-  $username    = undef,
-  $realname    = undef,
-  $user_home   = undef,
-  $shell       = '/bin/bash',
-  $user_groups = ['sys'],
+  $username         = undef,
+  $realname         = undef,
+  $user_home        = undef,
+  $shell            = '/bin/bash',
+  $user_groups      = ['sys'],
+  $makepkg_packager = undef,
 ) {
 
   # make sure we're on arch, otherwise fail

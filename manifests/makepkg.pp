@@ -11,7 +11,7 @@
 #  default: "-j${::processorcount}"
 #
 class archlinux_workstation::makepkg (
-  $make_flags = "-j${::processorcount}",
+  $make_flags       = "-j${::processorcount}",
 ){
 
   if ! defined(Class['archlinux_workstation']) {
@@ -22,6 +22,7 @@ class archlinux_workstation::makepkg (
   include archlinux_workstation
 
   $makepkg_user = $::archlinux_workstation::username
+  $makepkg_packager = $::archlinux_workstation::makepkg_packager
 
   # base config files
   # Template Uses:

@@ -128,6 +128,9 @@ SRCDEST=/tmp/sources
 LOGDEST=/tmp/makepkglogs
 #-- Packager: name/email of the person or organization building packages
 #PACKAGER="John Doe <john@doe.com>"
+<% if @makepkg_packager -%>
+PACKAGER='<%= @makepkg_packager %>'
+<% end -%>
 #-- Specify a key to use for package signing
 #GPGKEY=""
 
