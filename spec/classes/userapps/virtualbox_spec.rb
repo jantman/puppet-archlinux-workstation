@@ -35,7 +35,7 @@ describe 'archlinux_workstation::userapps::virtualbox' do
       it { should compile.with_all_deps }
 
       packages = ['virtualbox',
-                  'virtualbox-host-modules',
+                  'virtualbox-host-dkms',
                   'virtualbox-guest-iso',
                   'virtualbox-ext-oracle',
                  ]

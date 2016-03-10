@@ -3,7 +3,7 @@
 # Install and configure VirtualBox and Vagrant.
 #
 # === Actions:
-#   - Install virtualbox, virtualbox-host-modules, virtualbox-host-dkms, virtualbox-guest-iso, virtualbox-ext-oracle
+#   - Install virtualbox, virtualbox-host-dkms, virtualbox-guest-iso, virtualbox-ext-oracle
 #   - Setup /etc/modules-load.d/virtualbox.conf file for required kernel modules
 #   - Add the $archlinux_workstation::username User to the 'vboxusers' group
 #
@@ -17,7 +17,6 @@ class archlinux_workstation::userapps::virtualbox {
 
   $packages = [
               'virtualbox',
-              'virtualbox-host-modules',
               'virtualbox-host-dkms',
               'virtualbox-guest-iso',
               'virtualbox-ext-oracle', # AUR package
