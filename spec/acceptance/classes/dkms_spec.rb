@@ -18,10 +18,5 @@ describe 'archlinux_workstation::dkms class' do
     describe package('dkms') do
       it { should be_installed }
     end
-
-    describe service('dkms') do
-      it { should be_enabled }
-      it { should be_running }
-    end
   end
 end

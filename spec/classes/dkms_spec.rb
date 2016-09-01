@@ -36,11 +36,6 @@ describe 'archlinux_workstation::dkms' do
       it { should compile.with_all_deps }
 
       it { should contain_package('dkms') }
-      it { should contain_service('dkms').with({
-        'enable' => true,
-        'ensure' => 'running',
-      }) }
-
     end
 
   end
