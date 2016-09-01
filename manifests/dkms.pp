@@ -18,9 +18,4 @@ class archlinux_workstation::dkms {
     ensure => present,
   }
 
-  service {'dkms':
-    ensure => running,
-    enable => true,
-  }
-
 }
