@@ -4,7 +4,7 @@ spec/spec_helper_acceptance.rb:
 .travis.yml:
   script: "\"bundle exec rake validate lint spec SPEC_OPTS='--format documentation'\""
   includes:
-  - rvm: 2.1.5
-    env: PUPPET_GEM_VERSION="~> 3.8" FUTURE_PARSER="yes"
-  - rvm: 2.1.6
-    env: PUPPET_GEM_VERSION="~> 4.2.1" STRICT_VARIABLES="yes"
+  - rvm: 2.2.5
+    env: PUPPET_GEM_VERSION="~> 4.0"
+  - rvm: 2.3
+    env: PUPPET_GEM_VERSION="~> 4.0"
