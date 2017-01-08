@@ -9,4 +9,5 @@ ruby -v
 set -x
 
 bundle install --path vendor
+bundle exec rake spec_prep
 bundle exec rake beaker
