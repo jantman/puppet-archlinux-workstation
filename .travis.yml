@@ -1,5 +1,4 @@
 ---
-sudo: false
 language: ruby
 bundler_args: --without system_tests
 script: "bundle exec rake validate lint spec SPEC_OPTS='--format documentation'"
@@ -7,8 +6,8 @@ matrix:
   fast_finish: true
   include:
   - rvm: 2.2.5
-    env: PUPPET_GEM_VERSION="~> 4.2.1" STRICT_VARIABLES="yes"
-  - rvm: 2.3.3
-    env: STRICT_VARIABLES="yes"
+    env: PUPPET_GEM_VERSION="~> 4.0"
+  - rvm: 2.3
+    env: PUPPET_GEM_VERSION="~> 4.0"
 notifications:
   email: false
