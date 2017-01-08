@@ -60,7 +60,7 @@ GEM
       json
     excon (0.45.4)
     extlib (0.9.16)
-    facter (2.4.4)
+    facter (2.4.6)
       CFPropertyList (~> 2.2.6)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
@@ -184,15 +184,14 @@ GEM
       memoist (~> 0.12)
       multi_json (~> 1.11)
       signet (~> 0.6)
-    hiera (3.0.1)
-      json_pure
+    hiera (3.2.2)
     hocon (0.9.3)
     i18n (0.7.0)
     inflecto (0.0.2)
     inifile (2.0.2)
     ipaddress (0.8.0)
     json (1.8.3)
-    json_pure (1.8.2)
+    json_pure (1.8.3)
     jwt (1.5.1)
     launchy (2.4.3)
       addressable (~> 2.3)
@@ -219,10 +218,11 @@ GEM
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     open_uri_redirections (0.2.1)
-    puppet (4.2.1)
+    puppet (4.8.1)
+      CFPropertyList (~> 2.2.6)
       facter (> 2.0, < 4)
       hiera (>= 2.0, < 4)
-      json_pure
+      json_pure (~> 1.8)
     puppet-lint (1.1.0)
     puppet-syntax (2.0.0)
       rake
@@ -307,3 +307,6 @@ DEPENDENCIES
   rspec-core (= 3.1.7)
   serverspec
   simplecov
+
+BUNDLED WITH
+   1.13.6
