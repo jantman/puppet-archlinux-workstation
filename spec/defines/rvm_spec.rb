@@ -7,9 +7,7 @@ describe 'archlinux_workstation::userapps::rvm', :type => :define  do
   end
 
   context 'defined with' do
-    let(:facts) {{
-      :osfamily => 'Archlinux',
-    }}
+    let(:facts) { spec_facts }
 
     describe "default parameters" do
       let(:params) {{ }}

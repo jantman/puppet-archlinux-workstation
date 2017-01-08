@@ -1,30 +1,7 @@
 require 'spec_helper'
 
 describe 'archlinux_workstation::all' do
-  let(:facts) {{
-                 :osfamily        => 'Archlinux',
-                 :operatingsystem => 'Archlinux',
-                 :concat_basedir  => '/tmp',
-                 # for networkmanager
-                 :os              => { 'family' => 'Archlinux' },
-                 :interfaces      => 'eth0,eth1,lo',
-                 :networking      => {
-                   'interfaces' => {
-                     'eth0' => {
-                       'dhcp' => "192.168.0.1",
-                       'ip' => "192.168.0.24",
-                     },
-                     'eth1' => {
-                       'dhcp' => "192.168.0.1",
-                       'ip' => "192.168.0.24",
-                     },
-                     'lo' => {
-                       'ip' => "127.0.0.1",
-                       'ip6' => "::1",
-                     },
-                   },
-                 }
-               }}
+  let(:facts) { spec_facts }
 
   context 'parent class' do
     context 'without archlinux_workstation defined' do
@@ -38,9 +15,9 @@ describe 'archlinux_workstation::all' do
         let(:pre_condition) { "class {'archlinux_workstation': username => 'myuser' }" }
 
         it { should compile.with_all_deps }
-        
+
         it { should contain_class('archlinux_workstation') }
-        it { should contain_class('archlinux_workstation::all') } 
+        it { should contain_class('archlinux_workstation::all') }
       end
     end
   end # end context 'parent class'

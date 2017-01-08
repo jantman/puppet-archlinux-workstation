@@ -1,27 +1,7 @@
 require 'spec_helper'
 
 describe 'archlinux_workstation::networkmanager' do
-  let(:facts) do
-    spec_facts(
-      :interfaces      => 'eth0,eth1,lo',
-      :networking      => {
-        'interfaces' => {
-          'eth0' => {
-            'dhcp' => "192.168.0.1",
-            'ip' => "192.168.0.24",
-          },
-          'eth1' => {
-            'dhcp' => "192.168.0.1",
-            'ip' => "192.168.0.24",
-          },
-          'lo' => {
-            'ip' => "127.0.0.1",
-            'ip6' => "::1",
-          },
-        },
-      }
-    )
-  end
+  let(:facts) { spec_facts }
 
   context 'parent class' do
     context 'without archlinux_workstation defined' do
