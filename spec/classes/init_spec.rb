@@ -57,7 +57,7 @@ describe 'archlinux_workstation' do
     describe "username is undefined" do
       let(:params) {{ }}
 
-      it { expect { should contain_class('archlinux_workstation') }.to raise_error(Puppet::Error, /Parameter username must be a string/) }
+      it { expect { should contain_class('archlinux_workstation') }.to raise_error(/input needs to be a String/) }
     end
 
     describe "username is defined" do
