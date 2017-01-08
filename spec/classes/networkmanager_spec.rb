@@ -1,30 +1,27 @@
 require 'spec_helper'
 
 describe 'archlinux_workstation::networkmanager' do
-  let(:facts) {{
-    :osfamily        => 'Archlinux',
-    :operatingsystem => 'Archlinux',
-    :concat_basedir  => '/tmp',
-    :interfaces      => 'eth0,eth1,lo',
-    # structured facts
-    :os              => { 'family' => 'Archlinux' },
-    :networking      => {
-      'interfaces' => {
-        'eth0' => {
-          'dhcp' => "192.168.0.1",
-          'ip' => "192.168.0.24",
+  let(:facts) do
+    spec_facts(
+      :interfaces      => 'eth0,eth1,lo',
+      :networking      => {
+        'interfaces' => {
+          'eth0' => {
+            'dhcp' => "192.168.0.1",
+            'ip' => "192.168.0.24",
+          },
+          'eth1' => {
+            'dhcp' => "192.168.0.1",
+            'ip' => "192.168.0.24",
+          },
+          'lo' => {
+            'ip' => "127.0.0.1",
+            'ip6' => "::1",
+          },
         },
-        'eth1' => {
-          'dhcp' => "192.168.0.1",
-          'ip' => "192.168.0.24",
-        },
-        'lo' => {
-          'ip' => "127.0.0.1",
-          'ip6' => "::1",
-        },
-      },
-    }
-  }}
+      }
+    )
+  end
 
   context 'parent class' do
     context 'without archlinux_workstation defined' do
@@ -38,9 +35,9 @@ describe 'archlinux_workstation::networkmanager' do
         let(:pre_condition) { "class {'archlinux_workstation': username => 'myuser' }" }
 
         it { should compile.with_all_deps }
-        
+
         it { should contain_class('archlinux_workstation') }
-        it { should contain_class('archlinux_workstation::networkmanager') } 
+        it { should contain_class('archlinux_workstation::networkmanager') }
       end
     end
   end # end context 'parent class'
@@ -61,7 +58,7 @@ describe 'archlinux_workstation::networkmanager' do
                          })
                    .that_requires('Package[networkmanager]')
       }
-      
+
       it { should contain_service('dhcpcd@eth0')
                    .with({
                            'enable' => false,

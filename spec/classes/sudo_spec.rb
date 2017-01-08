@@ -1,12 +1,7 @@
 require 'spec_helper'
 
 describe 'archlinux_workstation::sudo' do
-  let(:facts) {{
-    :osfamily        => 'Archlinux',
-    :operatingsystem => 'Archlinux',
-    # structured facts
-    :os              => { 'family' => 'Archlinux' },
-  }}
+  let(:facts) { spec_facts }
 
   context 'parent class' do
     context 'without archlinux_workstation defined' do
@@ -20,9 +15,9 @@ describe 'archlinux_workstation::sudo' do
         let(:pre_condition) { "class {'archlinux_workstation': username => 'myuser' }" }
 
         it { should compile.with_all_deps }
-        
+
         it { should contain_class('archlinux_workstation') }
-        it { should contain_class('archlinux_workstation::sudo') } 
+        it { should contain_class('archlinux_workstation::sudo') }
       end
     end
   end # end context 'parent class'
@@ -47,13 +42,7 @@ describe 'archlinux_workstation::sudo' do
     end
   end
   context 'virtualbox' do
-    let(:facts) {{
-                   :osfamily        => 'Archlinux',
-                   :operatingsystem => 'Archlinux',
-                   :virtual         => 'virtualbox',
-                   # structured facts
-                   :os              => { 'family' => 'Archlinux' },
-                 }}
+    let(:facts) { spec_facts(:virtual => 'virtualbox') }
     describe 'includes all resources' do
       let(:pre_condition) { "class {'archlinux_workstation': username => 'myuser' }" }
 

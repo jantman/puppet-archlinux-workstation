@@ -2,12 +2,7 @@ require 'spec_helper'
 
 describe 'archlinux_workstation::cups' do
   context 'parameters' do
-    let(:facts) {{
-      :osfamily        => 'Archlinux',
-      :operatingsystem => 'Archlinux',
-      # structured facts
-      :os              => { 'family' => 'Archlinux' },
-    }}
+    let(:facts) { spec_facts }
 
     let(:params) {{ }}
 

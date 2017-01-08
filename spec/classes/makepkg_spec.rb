@@ -1,15 +1,7 @@
 require 'spec_helper'
 
 describe 'archlinux_workstation::makepkg' do
-  let(:facts) {{
-    :osfamily        => 'Archlinux',
-    :operatingsystem => 'Archlinux',
-    :concat_basedir  => '/tmp',
-    :processorcount  => 8,
-    # structured facts
-    :os              => { 'family' => 'Archlinux' },
-    :processors      => { 'count' => 8 },
-  }}
+  let(:facts) { spec_facts }
 
   context 'parent class' do
     context 'without archlinux_workstation defined' do
@@ -23,9 +15,9 @@ describe 'archlinux_workstation::makepkg' do
         let(:pre_condition) { "class {'archlinux_workstation': username => 'myuser' }" }
 
         it { should compile.with_all_deps }
-        
+
         it { should contain_class('archlinux_workstation') }
-        it { should contain_class('archlinux_workstation::makepkg') } 
+        it { should contain_class('archlinux_workstation::makepkg') }
       end
     end
   end # end context 'parent class'

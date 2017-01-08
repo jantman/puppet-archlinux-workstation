@@ -1,13 +1,7 @@
 require 'spec_helper'
 
 describe 'archlinux_workstation::kde' do
-  let(:facts) {{
-    :osfamily        => 'Archlinux',
-    :operatingsystem => 'Archlinux',
-    :concat_basedir  => '/tmp',
-    # structured facts
-    :os              => { 'family' => 'Archlinux' },
-  }}
+  let(:facts) { spec_facts }
 
   context 'parent class' do
     context 'without archlinux_workstation defined' do
@@ -21,9 +15,9 @@ describe 'archlinux_workstation::kde' do
         let(:pre_condition) { "class {'archlinux_workstation': username => 'myuser' }" }
 
         it { should compile.with_all_deps }
-        
+
         it { should contain_class('archlinux_workstation') }
-        it { should contain_class('archlinux_workstation::kde') } 
+        it { should contain_class('archlinux_workstation::kde') }
       end
     end
   end # end context 'parent class'
@@ -46,7 +40,7 @@ describe 'archlinux_workstation::kde' do
         'phonon-qt5-gstreamer',
         'phonon-qt5-vlc',
       ]
-      
+
       $phonon_packages.each do |pkgname|
         it { should contain_package(pkgname).with_ensure('present') }
       end

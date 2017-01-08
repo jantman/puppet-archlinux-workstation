@@ -1,12 +1,7 @@
 require 'spec_helper'
 
 describe 'archlinux_workstation' do
-  let(:facts) {{
-    :osfamily        => 'Archlinux',
-    :operatingsystem => 'Archlinux',
-    # structured facts
-    :os              => { 'family' => 'Archlinux' },
-  }}
+  let(:facts) { spec_facts }
 
   context 'supported operating systems' do
     describe "archlinux_workstation class with username parameter on Archlinux" do
