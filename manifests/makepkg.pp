@@ -62,7 +62,10 @@ class archlinux_workstation::makepkg (
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
-    content => "# managed by archlinux_workstation::makepkg puppet class\nD /tmp/sources 0775 ${archlinux_workstation::username} wheel\nD /tmp/makepkg 0775 ${archlinux_workstation::username} wheel\nD /tmp/makepkglogs 0775 ${archlinux_workstation::username} wheel",
+    content => "# managed by archlinux_workstation::makepkg puppet class
+D /tmp/sources 0775 ${archlinux_workstation::username} wheel
+D /tmp/makepkg 0775 ${archlinux_workstation::username} wheel
+D /tmp/makepkglogs 0775 ${archlinux_workstation::username} wheel",
   }
 
 }
