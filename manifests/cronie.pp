@@ -64,8 +64,8 @@ ExecStart=/usr/bin/crond -n -m ${mail_command}
   }
 
   service {'cronie':
-    ensure => running,
-    enable => true,
+    ensure  => running,
+    enable  => true,
     require => $svc_require,
   }
 
