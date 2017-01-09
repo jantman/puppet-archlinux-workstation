@@ -10,10 +10,16 @@ describe 'archlinux_workstation class' do
       EOS
 
       # Run it twice and test for idempotency
-      expect(apply_manifest(pp).exit_code).to_not eq(1)
-      expect(apply_manifest(pp).exit_code).to eq(0)
+      apply_manifest(pp, :catch_failures => true)
+      expect(
+        apply_manifest(
+          pp,
+          :catch_failures => true,
+          :catch_changes => true
+        ).exit_code
+      ).to eq(0)
     end
-    
+
     describe user('myuser') do
       it { should exist }
       it { should belong_to_group 'myuser' }

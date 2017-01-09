@@ -11,10 +11,16 @@ describe 'archlinux_workstation::sddm class' do
       EOS
 
       # Run it twice and test for idempotency
-      expect(apply_manifest(pp).exit_code).to_not eq(1)
-      expect(apply_manifest(pp).exit_code).to eq(0)
+      apply_manifest(pp, :catch_failures => true)
+      expect(
+        apply_manifest(
+          pp,
+          :catch_failures => true,
+          :catch_changes => true
+        ).exit_code
+      ).to eq(0)
     end
-    
+
     describe package('sddm') do
       it { should be_installed }
     end
@@ -23,7 +29,7 @@ describe 'archlinux_workstation::sddm class' do
     describe command('sleep 10') do
       its(:exit_status) { should eq 0 }
     end
-    
+
     describe service('sddm') do
       it { should be_enabled }
       it { should be_running }

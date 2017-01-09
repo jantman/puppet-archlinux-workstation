@@ -11,8 +11,14 @@ describe 'archlinux_workstation::userapps::rvm class' do
       EOS
 
       # Run it twice and test for idempotency
-      expect(apply_manifest(pp).exit_code).to_not eq(1)
-      expect(apply_manifest(pp).exit_code).to eq(0)
+      apply_manifest(pp, :catch_failures => true)
+      expect(
+        apply_manifest(
+          pp,
+          :catch_failures => true,
+          :catch_changes => true
+        ).exit_code
+      ).to eq(0)
     end
 
     describe file('/etc/gemrc') do
