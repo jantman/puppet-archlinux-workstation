@@ -12,13 +12,7 @@ describe 'archlinux_workstation::ssh class' do
 
       # Run it twice and test for idempotency
       apply_manifest(pp, :catch_failures => true)
-      expect(
-        apply_manifest(
-          pp,
-          :catch_failures => true,
-          :catch_changes => true
-        ).exit_code
-      ).to eq(0)
+      expect(apply_manifest(pp, :catch_changes => true).exit_code).to eq(0)
     end
 
     describe package('openssh') do
