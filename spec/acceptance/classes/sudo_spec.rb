@@ -12,7 +12,7 @@ describe 'archlinux_workstation::sudo class' do
 
       # Run it twice and test for idempotency
       apply_manifest(pp, :catch_failures => true)
-      expect(apply_manifest(pp, :catch_failures => true).exit_code).to eq(0)
+      expect(apply_manifest(pp, :catch_failures => true).exit_code).to eq(2)
     end
 
     describe package('sudo') do
