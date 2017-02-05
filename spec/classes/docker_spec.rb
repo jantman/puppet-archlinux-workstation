@@ -16,6 +16,16 @@ describe 'archlinux_workstation::docker' do
 
         it { should compile.with_all_deps }
 
+        it { should contain_file('/etc/conf.d')
+                     .with({
+                       :ensure => 'directory',
+                       :owner  => 'root',
+                       :group  => 'root',
+                       :mode   => '0755'
+                      })
+                     .that_comes_before('Class[docker]')
+        }
+
         it { should contain_class('archlinux_workstation') }
         it { should contain_class('archlinux_workstation::docker') }
       end
