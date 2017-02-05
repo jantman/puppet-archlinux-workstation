@@ -178,6 +178,8 @@ describe 'archlinux_workstation::ssh' do
                                                       }
                                                     })
       }
+
+      it { should contain_notify('adding vagrant to list of SSH allowed users, per $::virtual fact') }
     end
 
     describe 'with specified allow_users' do

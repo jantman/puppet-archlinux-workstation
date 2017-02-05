@@ -31,5 +31,7 @@ describe 'archlinux_workstation::repos::multilib' do
                                                                               :include_file => '/etc/pacman.d/mirrorlist',
                                                                            })
     }
+
+    it { should contain_ini_setting('archlinux_workstation-pacman_repo-multilib-include') }
   end
 end

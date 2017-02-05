@@ -38,6 +38,7 @@ describe 'archlinux_workstation::base_packages' do
                 'net-tools',
                 'lsof',
                 'screen',
+                'lsscsi'
                ]
 
     packages.each do |package|

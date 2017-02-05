@@ -61,6 +61,8 @@ describe 'archlinux_workstation::sudo' do
                    .with_priority(11)
                    .with_content('vagrant ALL=(ALL) NOPASSWD: ALL')
       }
+
+      it { should contain_notify('adding vagrant to sudoers users, per $::virtual fact') }
     end
   end
 

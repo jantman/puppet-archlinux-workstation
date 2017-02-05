@@ -31,5 +31,8 @@ describe 'archlinux_workstation::repos::jantman' do
                                                                              :server => 'http://archrepo.jasonantman.com/current',
                                                                            })
     }
+
+    it { should contain_ini_setting('archlinux_workstation-pacman_repo-jantman-server') }
+    it { should contain_ini_setting('archlinux_workstation-pacman_repo-jantman-siglevel') }
   end
 end
