@@ -1,6 +1,6 @@
 {
   "name": "jantman-archlinux_workstation",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "summary": "Configure an Arch Linux workstation/desktop/laptop",
   "author": "jantman",
   "description": "Provides many classes (and a sane default class/init.pp) for configuring an Arch Linux workstation/laptop/desktop for graphical use.",
@@ -11,7 +11,7 @@
     },
     {
       "name": "saz/sudo",
-      "version_requirement": ">=3.0.0 <4.0.0"
+      "version_requirement": ">=4.2.0 <5.0.0"
     },
     {
       "name": "saz/ssh",

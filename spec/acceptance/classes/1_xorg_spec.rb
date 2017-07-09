@@ -17,7 +17,6 @@ describe 'archlinux_workstation::xorg class' do
 
     packages = [
       'xorg-server',
-      'xorg-server-utils',
       'xorg-xinit',
       'mesa',
       'xf86-video-vesa',

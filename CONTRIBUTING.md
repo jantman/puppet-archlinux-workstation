@@ -159,7 +159,7 @@ If you already have those gems installed, make sure they are up-to-date:
 With all dependencies in place and up-to-date we can now run the tests:
 
 ```shell
-% bundle exec rake spec
+% bundle exec rake test
 ```
 
 This will execute all the [rspec tests](http://rspec-puppet.com/) tests
@@ -168,18 +168,12 @@ and so on. rspec tests may have the same kind of dependencies as the
 module they are testing. While the module defines in its [Modulefile](./Modulefile),
 rspec tests define them in [.fixtures.yml](./fixtures.yml).
 
-Some puppet modules also come with [beaker](https://github.com/puppetlabs/beaker)
-tests. These tests spin up a virtual machine under
-[VirtualBox](https://www.virtualbox.org/)) with, controlling it with
-[Vagrant](http://www.vagrantup.com/) to actually simulate scripted test
-scenarios. In order to run these, you will need both of those tools
-installed on your system.
-
-You can run them by issuing the following command
+To run the Beaker-based acceptance tests:
 
 ```shell
 % bundle exec rake spec_clean
-% bundle exec rspec spec/acceptance
+% bundle exec rake spec_prep
+% bundle exec rake beaker
 ```
 
 This will now download a pre-fabricated image configured in the [default node-set](./spec/acceptance/nodesets/default.yml),
