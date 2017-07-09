@@ -1,4 +1,7 @@
-2017-12-05 Release 0.1.5
+2017-07-09 Release 0.2.0
+- Bump saz/sudo requirement to 4.2.0+ for Arch Linux bug fix
+
+2016-12-05 Release 0.1.5
 - add management of /etc/conf.d to archlinux_workstation::docker class, as it may not already exist
 
 2016-09-01 Release 0.1.3
