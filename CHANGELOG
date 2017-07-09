@@ -1,5 +1,6 @@
 2017-07-09 Release 0.2.0
 - Bump saz/sudo requirement to 4.2.0+ for Arch Linux bug fix
+- Remove "xorg-server-utils" package, which has been removed from repos.
 
 2016-12-05 Release 0.1.5
 - add management of /etc/conf.d to archlinux_workstation::docker class, as it may not already exist
