@@ -41,7 +41,7 @@ describe 'archlinux_workstation::chrony class' do
       its(:content) { should match /1 d83ja72\.f83,8wHUW94/ }
     end
 
-    describe service('chrony') do
+    describe service('chronyd') do
       it { should be_enabled }
       it { should be_running }
     end

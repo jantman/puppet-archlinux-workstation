@@ -35,7 +35,7 @@ describe 'archlinux_workstation::chrony' do
                    .with({ 'ensure' => 'present' })
                    .that_requires('Class[archlinux_workstation::repos::jantman]')
       }
-      it { should contain_service('chrony').with({
+      it { should contain_service('chronyd').with({
         'enable' => true,
         'ensure' => 'running',
       }) }

@@ -15,7 +15,7 @@
 #   - Install networkmanager-dispatcher-chrony for nm to tell chrony when we're on/offline
 #   - Setup /etc/chrony.conf
 #   - Setup /etc/chrony.keys with a static password
-#   - Run the chrony service
+#   - Run the chronyd service
 #
 class archlinux_workstation::chrony (
   $chrony_password = 'd83ja72.f83,8wHUW94',
@@ -56,7 +56,7 @@ class archlinux_workstation::chrony (
     notify  => Service['chrony'],
   }
 
-  service {'chrony':
+  service {'chronyd':
     ensure => running,
     enable => true,
   }
