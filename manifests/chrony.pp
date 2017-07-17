@@ -43,7 +43,7 @@ class archlinux_workstation::chrony (
     mode    => '0644',
     source  => 'puppet:///modules/archlinux_workstation/chrony.conf',
     require => Package['chrony'],
-    notify  => Service['chrony'],
+    notify  => Service['chronyd'],
   }
 
   file {'/etc/chrony.keys':
@@ -53,7 +53,7 @@ class archlinux_workstation::chrony (
     mode    => '0640',
     content => "1 ${chrony_password}",
     require => Package['chrony'],
-    notify  => Service['chrony'],
+    notify  => Service['chronyd'],
   }
 
   service {'chronyd':
