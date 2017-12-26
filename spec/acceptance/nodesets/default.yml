@@ -1,10 +1,12 @@
 HOSTS:
-  ubuntu-1404-x64:
+  archlinux-2017.07.01-amd64:
     roles:
       - agent
       - default
-    platform: ubuntu-14.04-amd64
+    platform: archlinux-2017.07.01-amd64
+    box: ogarcia/archlinux-x64
+    box_version: 2017.07.01
     hypervisor: vagrant
-    box: puppetlabs/ubuntu-14.04-64-nocm
 CONFIG:
+  log_level: verbose
   type: foss
