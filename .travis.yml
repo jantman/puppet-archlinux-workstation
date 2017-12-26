@@ -24,9 +24,9 @@ matrix:
     sudo: required
   - rvm: 2.4.1
     bundler_args: --without system_tests
-    env: PUPPET_GEM_VERSION="~> 5.0"
+    env: PUPPET_GEM_VERSION="~> 5.0" CI_NODE_TOTAL=1 CI_NODE_INDEX=1
   - rvm: 2.1.9
     bundler_args: --without system_tests
-    env: PUPPET_GEM_VERSION="~> 4.0"
+    env: PUPPET_GEM_VERSION="~> 4.0" CI_NODE_TOTAL=1 CI_NODE_INDEX=1
 notifications:
   email: false
