@@ -29,4 +29,6 @@ matrix:
     bundler_args: --without system_tests
     env: PUPPET_GEM_VERSION="~> 4.0" CI_NODE_TOTAL=1 CI_NODE_INDEX=1
 notifications:
-  email: false
+  email:
+    on_success: change
+    on_failure: change
