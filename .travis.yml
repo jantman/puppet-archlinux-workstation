@@ -3,7 +3,7 @@
 sudo: false
 language: ruby
 cache: bundler
-script: "bundle exec rake release_checks"
+script: "bundle exec rake release_checks_nonparallel"
 matrix:
   fast_finish: true
   include:

@@ -35,3 +35,14 @@ task :gen_nodeset do
   end
   puts nodeset
 end
+
+desc "NON-PARALLEL version of release_checks"
+task :release_checks_nonparallel do
+  Rake::Task[:lint].invoke
+  Rake::Task[:validate].invoke
+  Rake::Task[:spec].invoke
+  Rake::Task["check:symlinks"].invoke
+  Rake::Task["check:test_file"].invoke
+  Rake::Task["check:dot_underscore"].invoke
+  Rake::Task["check:git_ignore"].invoke
+end
