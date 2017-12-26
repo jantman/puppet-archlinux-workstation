@@ -1,11 +1,11 @@
 HOSTS:
-  archlinux-2017.07.01-amd64:
+  archlinux-2017.12.01-amd64:
     roles:
       - agent
       - default
-    platform: archlinux-2017.07.01-amd64
+    platform: archlinux-2017.12.01-amd64
     box: ogarcia/archlinux-x64
-    box_version: 2017.07.01
+    box_version: 2017.12.01
     hypervisor: vagrant
 CONFIG:
   log_level: verbose
