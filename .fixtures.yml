@@ -8,5 +8,7 @@ fixtures:
     staging: "https://github.com/nanliu/puppet-staging.git"
     concat: "https://github.com/puppetlabs/puppetlabs-concat.git"
     docker: "https://github.com/garethr/garethr-docker.git"
+    apt: "https://github.com/puppetlabs/puppetlabs-apt.git"
+    epel: "https://github.com/stahnma/puppet-module-epel.git"
   symlinks:
     archlinux_workstation: "#{source_dir}"
