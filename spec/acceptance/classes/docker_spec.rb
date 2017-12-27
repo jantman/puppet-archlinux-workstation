@@ -7,7 +7,9 @@ describe 'archlinux_workstation::docker class' do
     it 'should work with no errors' do
       pp = <<-EOS
       class { 'archlinux_workstation': username => 'myuser',}
-      class { 'archlinux_workstation::docker': }
+      class { 'archlinux_workstation::docker':
+        service_state => 'stopped',
+      }
       EOS
 
       # Run it twice and test for idempotency
@@ -26,7 +28,7 @@ describe 'archlinux_workstation::docker class' do
 
     describe service('docker') do
       it { should be_enabled }
-      it { should be_running }
+      it { should_not be_running }
     end
 
     describe user('myuser') do
@@ -34,7 +36,10 @@ describe 'archlinux_workstation::docker class' do
     end
 
     describe command('docker info') do
-      its(:exit_status) { should eq 0 }
+      its(:exit_status) { should eq 1 }
+      its(:stderr) {
+        should contain('Cannot connect to the Docker daemon at unix:///var/run/docker.sock')
+      }
     end
   end
 end
