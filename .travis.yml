@@ -12,7 +12,7 @@ matrix:
   include:
   - rvm: 2.3.1
     dist: trusty
-    env: PUPPET_INSTALL_TYPE=agent BEAKER_debug=true
+    env: PUPPET_INSTALL_TYPE=foss BEAKER_debug=true
     script: bundle exec rake beaker
     services: docker
     sudo: required
