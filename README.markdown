@@ -65,12 +65,6 @@ Optionally:
 * sets up my [personal (jantman) pacman repo](http://archrepo.jasonantman.com/) and the [Multilib](https://wiki.archlinux.org/index.php/Multilib) repo
 * installation of a number of different user applications (see ``archlinux_workstation::userapps::`` classes below)
 
-##Requirements
-
-TODO - document other requirements
-
-* [my fork](https://github.com/jantman/puppet-ssh/tree/arch_puppet4) of [saz/ssh](https://github.com/saz/puppet-ssh) until [my pull request](https://github.com/saz/puppet-ssh/pull/149) is merged.
-
 ##Usage
 
 Classes are parameterized where that makes sense. Right now, there are two methods of usage:
@@ -80,7 +74,7 @@ Classes are parameterized where that makes sense. Right now, there are two metho
     class {'archlinux_workstation':
       foo => bar,
     }
-    
+
     class {'archlinux_workstation::all': }
 
 2. To pick and choose which parts you use, declare ``archlinux_workstation`` as shown above, and in place of ``archlinux_workstation::all``, declare the classes that you want.
