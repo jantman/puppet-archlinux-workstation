@@ -7,7 +7,9 @@
 # Actions:
 #   - Install sddm package
 #
-class archlinux_workstation::sddm {
+class archlinux_workstation::sddm(
+  $service_ensure = running,
+) {
 
   if ! defined(Class['archlinux_workstation']) {
     fail('You must include the base archlinux_workstation class before using any subclasses')
@@ -18,7 +20,7 @@ class archlinux_workstation::sddm {
   }
 
   service {'sddm':
-    ensure => running,
+    ensure => $service_ensure,
     enable => true,
   }
 
