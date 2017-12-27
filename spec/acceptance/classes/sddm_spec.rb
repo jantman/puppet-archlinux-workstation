@@ -7,7 +7,7 @@ describe 'archlinux_workstation::sddm class' do
     it 'should work with no errors' do
       pp = <<-EOS
       class { 'archlinux_workstation': username => 'myuser',}
-      class { 'archlinux_workstation::sddm': }
+      class { 'archlinux_workstation::sddm': service_ensure => 'stopped', }
       EOS
 
       # Run it twice and test for idempotency
@@ -20,26 +20,9 @@ describe 'archlinux_workstation::sddm class' do
       it { should be_installed }
     end
 
-    # we need to wait a bit before these processes are running
-    describe command('sleep 10') do
-      its(:exit_status) { should eq 0 }
-    end
-
     describe service('sddm') do
       it { should be_enabled }
-      it { should be_running }
-    end
-
-    describe process('sddm') do
-      it { should be_running }
-    end
-
-    describe process('Xorg') do
-      it { should be_running }
-    end
-
-    describe process('sddm-greeter') do
-      it { should be_running }
+      it { should_not be_running }
     end
   end
 end
