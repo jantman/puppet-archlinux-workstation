@@ -7,7 +7,8 @@ HOSTS:
     docker_cmd: '["/sbin/init"]'
     docker_cap_add: ['SYS_ADMIN']
     mount_folders:
-      - host_path: /sys/fs/cgroup
+      cgroup:
+        host_path: /sys/fs/cgroup
         container_path: /sys/fs/cgroup
         opts: ro
     docker_image_commands:
