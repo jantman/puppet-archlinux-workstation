@@ -1,4 +1,4 @@
-####Table of Contents
+#### Table of Contents
 
 1. [Overview](#overview)
 2. [Module Description - What the module does and why it is useful](#module-description)
@@ -11,13 +11,13 @@
 8. [Development - Guide for contributing to the module](#development)
     * [Adding Classes](#adding-classes)
 
-##Overview
+## Overview
 
 [![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/0.1.0/active.svg)](http://www.repostatus.org/#active)
 
 Provides many classes for configuring an Arch Linux workstation/laptop/desktop for graphical use and installing common software.
 
-##Module Description
+## Module Description
 
 This is one of the modules that I use to keep my personal desktop and work laptop, both running Arch Linux, in sync, up to date,
 and easily rebuild-able. It's intended to do three main things:
@@ -34,9 +34,9 @@ as well as a private module ("privatepuppet") on GitHub for my sensitive/persona
 __Note:__ this module is quite opinionated; it is how _I_ setup _my_ machines, and may not be exactly what you want. Pull requests are
 welcome to add parameters for more control over its behavior.
 
-##Setup
+## Setup
 
-###What archlinux_workstation affects
+### What archlinux_workstation affects
 
 See the [Reference](#reference) section below for details. In general, the goal is that it affects anything and everything you'd
 need to touch to take a base Arch Linux installation to a fully-usable, graphical workstation/laptop/desktop.
@@ -65,7 +65,7 @@ Optionally:
 * sets up my [personal (jantman) pacman repo](http://archrepo.jasonantman.com/) and the [Multilib](https://wiki.archlinux.org/index.php/Multilib) repo
 * installation of a number of different user applications (see ``archlinux_workstation::userapps::`` classes below)
 
-##Usage
+## Usage
 
 Classes are parameterized where that makes sense. Right now, there are two methods of usage:
 
@@ -81,7 +81,7 @@ Classes are parameterized where that makes sense. Right now, there are two metho
 
 If you stick to one of these two usage methods (instead of forking this module and hacking on the internals), you should be safe to pull in updates as they happen.
 
-##Reference
+## Reference
 
 ### archlinux_workstation
 
@@ -221,14 +221,14 @@ Need to write a fact to find video cards and choose the correct driver,
 per [Driver Installation](https://wiki.archlinux.org/index.php/Xorg#Driver_installation),
 or expose this option to the user as a parameter.
 
-##Limitations
+## Limitations
 
 This module is only usable with Arch Linux.
 
 It assumes that you have a relatively vanilla base install of Arch, such as the one I document in my [workstation-bootstrap module](https://github.com/jantman/workstation-bootstrap#arch-linux),
 pretty much the same as the [Arch Linux Installation Guide](https://wiki.archlinux.org/index.php/Installation_guide) documents.
 
-##Development
+## Development
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for information about development and contributing.
 
@@ -237,7 +237,7 @@ This module currently just has spec tests; run them with:
     bundle install --path vendor
     bundle exec rake spec
 
-###Adding Classes
+### Adding Classes
 
 To add a class:
 
