@@ -33,25 +33,36 @@ describe 'archlinux_workstation::docker' do
   end # end context 'parent class'
   context 'parameters' do
     let(:facts) { spec_facts }
-    let(:pre_condition) { "class {'archlinux_workstation': username => 'myuser' }" }
-    describe "default" do
+    context 'default' do
+      let(:pre_condition) { "class {'archlinux_workstation': username => 'myuser' }" }
       let(:params) {{ }}
-
-      it { should compile.with_all_deps }
-
-      it { should contain_class('docker') }
+      describe "docker_class" do
+        it { should compile.with_all_deps }
+        it { should contain_class('docker').with_service_state('running') }
+      end
+      describe 'virtual user has group added' do
+        it { should compile.with_all_deps }
+        it { should contain_user('myuser')
+                     .with_groups(['sys', 'docker'])
+                     .that_requires(['Group[myuser]', 'Class[docker]'])
+        }
+      end
     end
-
-    describe 'virtual user has group added' do
-      let(:params) {{ }}
-
-      it { should compile.with_all_deps }
-      it { should contain_user('myuser')
-                   .with_groups(['sys', 'docker'])
-                   .that_requires(['Group[myuser]', 'Class[docker]'])
-      }
+    context 'service_state stopped' do
+      let(:pre_condition) { "class {'archlinux_workstation': username => 'myuser' }" }
+      let(:params) {{ 'service_state' => 'stopped' }}
+      describe "docker_class" do
+        it { should compile.with_all_deps }
+        it { should contain_class('docker').with_service_state('stopped') }
+      end
+      describe 'virtual user has group added' do
+        it { should compile.with_all_deps }
+        it { should contain_user('myuser')
+                     .with_groups(['sys', 'docker'])
+                     .that_requires(['Group[myuser]', 'Class[docker]'])
+        }
+      end
     end
-
   end
 
 end

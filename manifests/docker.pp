@@ -4,11 +4,17 @@
 #
 # Parameters:
 #
+# [*service_state*]
+#   Whether you want to docker daemon to start up
+#   Defaults to running
+#
 # Actions:
 #   - Wrap instance of garethr/docker
 #   - Add $archlinux_workstation::user to 'docker' group
 #
-class archlinux_workstation::docker {
+class archlinux_workstation::docker(
+  $service_state = 'running',
+) {
 
   if ! defined(Class['archlinux_workstation']) {
     fail('You must include the base archlinux_workstation class before using any subclasses')
@@ -26,7 +32,9 @@ class archlinux_workstation::docker {
     }
   }
 
-  include docker
+  class {'docker':
+    service_state => $service_state,
+  }
 
   # add the user defined in init.pp to docker group with plusignment
   User<| title == $archlinux_workstation::username |> {

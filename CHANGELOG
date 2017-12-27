@@ -4,6 +4,7 @@
 - Update supported and tested Puppet versions to 4 and 5.
 - Many major puppet module dependency updates.
 - Pin puppetlabs-stdlib dependency to 4.12.0, as unfortunately saz/sudo still uses the deprecated ``validate_`` functions.
+- Add ``service_state`` parameter to Docker class, mainly for acceptance testing
 
 2017-07-17 Release 0.2.1
 - Handle upstream chrony service rename to chronyd
