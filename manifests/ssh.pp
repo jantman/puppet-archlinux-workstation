@@ -1,27 +1,17 @@
-# == Class: archlinux_workstation::ssh
 #
-# Configure SSH server via saz/ssh, and allow access only by your username.
+# Configure [SSH](https://wiki.archlinux.org/index.php/Secure_Shell) server via
+# [saz/ssh](https://forge.puppet.com/saz/ssh) and allow access only by your username.
 #
-# === Parameters:
-#
-# [*allow_users*]
-#
-#  Array of usernames to allow to login via SSH. If left default (undef),
-#  [$archlinux_workstation::username] will be used. If $::virtual == 'virtualbox',
-#  "vagrant" will be appended to the list.
-#
-# [*permit_root*]
-#
-#  Boolean; whether or not to permit root login. Defaults to false.
-#
-# [*extra_options*]
-#
-#  Hash; extra configuration options to include in sshd_config. Default: undef.
+# @param allow_users Usernames to allow to login via SSH. If left default (undef),
+#  ``$archlinux_workstation::username`` will be used. If ``$::virtual == 'virtualbox'``,
+#  ``vagrant`` will be appended to the list.
+# @param permit_root Whether or not to permit root login.
+# @param extra_options extra configuration options to include in sshd_config.
 #
 class archlinux_workstation::ssh (
-  $allow_users   = undef,
-  $permit_root   = false,
-  $extra_options = undef
+  Variant[Undef, Array[String]] $allow_users   = undef,
+  Boolean $permit_root                         = false,
+  Variant[Undef, Hash] $extra_options          = undef,
 ){
 
   if ! defined(Class['archlinux_workstation']) {

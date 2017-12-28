@@ -1,8 +1,8 @@
-# == Class: archlinux_workstation::sudo
 #
-# Sets up sudo, global defaults, and permissions for your user. This class
-# simply wraps saz/sudo. If $::virtual == 'virtualbox', "vagrant" will
-# also be given  sudo permissions.
+# Sets up [sudo](https://wiki.archlinux.org/index.php/Sudo), secure global
+# defaults, and permissions for your user. This class wraps the
+# [saz/sudo](https://forge.puppet.com/saz/sudo) module. If ``$::virtual == 'virtualbox'``,
+# ``vagrant`` will also be given sudo permissions.
 #
 class archlinux_workstation::sudo {
 

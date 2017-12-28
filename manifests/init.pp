@@ -1,42 +1,31 @@
-# == Class: archlinux_workstation
 #
 # Main class for archlinux_workstation.
 #
-# See README.markdown for advanced usage.
+# See {file:README.markdown README.markdown} for advanced usage.
 #
-# This class sets up your user and group, declares a Firewall
-# rule to allow SSH access, and provides variables for other
+# This class sets up your user and group and provides variables for other
 # classes in the module.
 #
-# === Parameters
-#
-# * __username__ - (string) Your login username. Used to create
-#   your account, add you to certain groups, etc. Default: undef.
-#
-# * __realname__ - (string) The user's real name, to be used
-#   in the passwd comment/GECOS field. Defaults to $username if not specified.
-#
-# * __user_home__ - Path to $username's home directory. Used for
-#   classes that put files in the user's home directory. Default: "/home/${username}".
-#
-# * __shell__ - (string) the user's login shell.
-#   Default: '/bin/bash'
-#
-# * __user_groups__ - (array) list of supplementary groups that
-#   this user should be a member of. Default: ['sys']
-#
-# * __makepkg_packager__ - (string) String to set as PACKAGER in makepkg.conf
+# @param username Your login username. Used to create your account, add you to
+#  certain groups, etc.
+# @param realname The user's real name, to be used in the passwd comment/GECOS
+#  field. Defaults to ``$username`` if not specified.
+# @param user_home Path to ``$username``'s home directory. Used for classes that put
+#  files in the user's home directory. Default: ``/home/${username}``.
+# @param shell the user's login shell.
+# @param user_groups list of supplementary groups that this user should be a member of.
+# @param makepkg_packager String to set as PACKAGER in makepkg.conf
 #   (see <https://wiki.archlinux.org/index.php/Makepkg#Packager_information>);
 #   if left blank, PACKAGER will be omitted and built packages will default to
 #   "Unknown Packager".
 #
 class archlinux_workstation (
-  $username         = undef,
-  $realname         = undef,
-  $user_home        = undef,
-  $shell            = '/bin/bash',
-  $user_groups      = ['sys'],
-  $makepkg_packager = undef,
+  String $username                         = undef,
+  String $realname                         = undef,
+  Variant[String, Undef] $user_home        = undef,
+  String $shell                            = '/bin/bash',
+  Array[String] $user_groups               = ['sys'],
+  Variant[String, Undev] $makepkg_packager = undef,
 ) {
 
   # make sure we're on arch, otherwise fail

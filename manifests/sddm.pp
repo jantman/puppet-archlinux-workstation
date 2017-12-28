@@ -1,14 +1,11 @@
-# Class: archlinux_workstation::sddm
 #
-# Install and run SDDM, the Simple Desktop Display Manager.
+# Install and run [SDDM](https://wiki.archlinux.org/index.php/SDDM),
+# the Simple Desktop Display Manager.
 #
-# Parameters:
-#
-# Actions:
-#   - Install sddm package
-#
+# @param service_ensure what state to ensure the SDDM service in. This is mainly
+#  useful for acceptance testing the module or building system images.
 class archlinux_workstation::sddm(
-  $service_ensure = running,
+  Enum['stopped', 'running'] $service_ensure = running,
 ) {
 
   if ! defined(Class['archlinux_workstation']) {

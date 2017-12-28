@@ -1,32 +1,22 @@
-# == Define: archlinux_workstation::pacman_repo
 #
-# Manage a repository configured in /etc/pacman.conf.
+# Manage a repository configured in ``/etc/pacman.conf``.
 #
-# This manages repos in /etc/pacman.conf via puppetlabs/inifile.
+# This manages repos in ``/etc/pacman.conf`` via the
+# [puppetlabs/inifile](https://forge.puppet.com/puppetlabs/inifile) module.
 #
-# === Parameters
-#
-# * __repo_name__ - (string) The name of the repository.
-#   Defaults to the resource title. For Pacman repos, this
-#   string is _not_ user-configurable; it must match the name of
-#   the database file in the repo.
-#
-# * __siglevel__ - (string) The signature verification level for this
-#   repository; see the [pacman man page](https://www.archlinux.org/pacman/pacman.conf.5.html#SC)
-#   for more information. The default is "Optional TrustedOnly".
-#
-# * __server__ - (string) URL to the pacman repository. Either this or include_file must be specified.
-#
-# *__include_file__ - (string) path to mirrorlist file to include. Either this or server must be specified.
-# === Actions
-#
-# * ensure that a repository exists in /etc/pacman.conf with the specified settings
+# @param repo_name The name of the repository. For Pacman repos, this string is
+#  __not__ user-configurable; it must match the name of the database file in the repo.
+# @param siglevel The signature verification level for this repository; see the
+#  [pacman man page](https://www.archlinux.org/pacman/pacman.conf.5.html#SC) for
+#  more information.
+# @param server URL to the pacman repository. Either this or include_file must be specified.
+# @param include_file path to mirrorlist file to include. Either this or server must be specified.
 #
 define archlinux_workstation::pacman_repo (
-  $repo_name    = $title,
-  $siglevel     = 'Optional TrustedOnly',
-  $server       = undef,
-  $include_file = undef,
+  String $repo_name                    = $title,
+  String $siglevel                     = 'Optional TrustedOnly',
+  Variant[String, Undef] $server       = undef,
+  Variant[String, Undef] $include_file = undef,
 ) {
 
   if (! $server and ! $include_file) {

@@ -1,11 +1,6 @@
-# Class: archlinux_workstation::base_packages
 #
-# Collection of base packages that we want installed on every system.
-#
-# Actions:
-#   - ensure Packages are absent: lynx
-#   - ensure Packages are present: links, lsb-release, dmidecode, ttf-dejavu,
-#     vim, wget, bind-tools, net-tools, lsof, screen
+# Collection of base packages that we want installed on every system, and some
+# packages to never be installed. See source for current package lists.
 #
 class archlinux_workstation::base_packages {
 

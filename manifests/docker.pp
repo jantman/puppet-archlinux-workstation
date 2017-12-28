@@ -1,19 +1,14 @@
-# Class: archlinux_workstation::docker
 #
-# Install and run Docker.
+# Install and run [Docker](https://wiki.archlinux.org/index.php/Docker); add
+# ``$archlinux_workstation::username`` to the ``docker`` group. This class wraps
+# an instance of the [garethr/docker](https://forge.puppet.com/garethr/docker)
+# module.
 #
-# Parameters:
-#
-# [*service_state*]
-#   Whether you want to docker daemon to start up
-#   Defaults to running
-#
-# Actions:
-#   - Wrap instance of garethr/docker
-#   - Add $archlinux_workstation::user to 'docker' group
+# @param service_state what state to ensure the Docker service in. This is mainly
+#  useful for acceptance testing the module or building system images.
 #
 class archlinux_workstation::docker(
-  $service_state = 'running',
+  Enum['stopped', 'running'] $service_state = 'running',
 ) {
 
   if ! defined(Class['archlinux_workstation']) {

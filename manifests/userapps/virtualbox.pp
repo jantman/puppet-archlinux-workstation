@@ -1,11 +1,7 @@
-# == Class: archlinux_workstation::userapps::virtualbox
 #
-# Install and configure VirtualBox and Vagrant.
-#
-# === Actions:
-#   - Install virtualbox, virtualbox-host-dkms, virtualbox-guest-iso, virtualbox-ext-oracle
-#   - Setup /etc/modules-load.d/virtualbox.conf file for required kernel modules
-#   - Add the $archlinux_workstation::username User to the 'vboxusers' group
+# Install and configure VirtualBox, host DKMS, guest ISO and Oracle extensions.
+# Setup kernel module loading. Add ``$archlinux_workstation::username`` to
+# the ``vboxusers`` group.
 #
 class archlinux_workstation::userapps::virtualbox {
 

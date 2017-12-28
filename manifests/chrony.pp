@@ -1,24 +1,15 @@
-# == Class: archlinux_workstation::chrony
 #
-# Install and configure chrony, a roaming/laptop friendly NTP client,
-# as well as the networkmanager-dispatcher-chrony script for it.
+# Install and configure [Chrony](https://wiki.archlinux.org/index.php/Chrony),
+# a roaming/laptop friendly NTP client, as well as the
+# [networkmanager-dispatcher-chrony](https://aur.archlinux.org/packages/networkmanager-dispatcher-chrony/)
+# script for it.
 #
-# === Parameters:
-#
-# * __chrony_password__ - The password that other clients will use to
+# @param chrony_password The password that other clients will use to
 #   connect to chrony. Our configuration only has chrony listening on
 #   localhost/127.0.0.1, so this shouldn't be important.
-#   Default: 'd83ja72.f83,8wHUW94'
-#
-# === Actions:
-#   - Install chrony
-#   - Install networkmanager-dispatcher-chrony for nm to tell chrony when we're on/offline
-#   - Setup /etc/chrony.conf
-#   - Setup /etc/chrony.keys with a static password
-#   - Run the chronyd service
 #
 class archlinux_workstation::chrony (
-  $chrony_password = 'd83ja72.f83,8wHUW94',
+  String $chrony_password = 'd83ja72.f83,8wHUW94',
 ) {
 
   if ! defined(Class['archlinux_workstation']) {

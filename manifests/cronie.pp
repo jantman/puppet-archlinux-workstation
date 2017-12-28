@@ -1,21 +1,14 @@
-# == Class: archlinux_workstation::cronie
 #
 # Install and run the [cronie](https://fedorahosted.org/cronie/) cron daemon.
 # Per the [Arch wiki cron entry](https://wiki.archlinux.org/index.php/cron),
 # no cron daemon comes default with Arch.
 #
-# === Parameters:
-#
-# * __mail_command__ - (string) If defined, will run `cronie`
-#   with "-m ${mail_command}" to send mail via this command.
-#   See `man 8 cron` for more information. Default: undef
-#
-# === Actions:
-#   - Install cronie
-#   - Run the cronie service
+# @param mail_command If defined, will run `cronie`
+#   with ``-m ${mail_command}`` to send mail via this command.
+#   See `man 8 cron` for more information.
 #
 class archlinux_workstation::cronie (
-  $mail_command = undef,
+  String $mail_command = undef,
 ) {
 
   if ! defined(Class['archlinux_workstation']) {

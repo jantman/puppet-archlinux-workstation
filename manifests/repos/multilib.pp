@@ -1,6 +1,6 @@
-# == Class: archlinux_workstation::repos::multilib
 #
-# Sets up the Multilib repo.
+# Sets up the [Multilib](https://wiki.archlinux.org/index.php/Multilib)
+# pacman repository.
 #
 class archlinux_workstation::repos::multilib {
 

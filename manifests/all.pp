@@ -1,11 +1,9 @@
-# == Class: archlinux_workstation::all
 #
 # Include ALL other archlinux_workstation classes.
 #
-# WARNING - except on a brand new system, this is probably NOT
-# what you want to do!
+# **WARNING - except on a brand new system, this is probably NOT what you want to do!**
 #
-# See README.markdown for advanced usage.
+# See {file:README.markdown README.markdown} for advanced usage.
 #
 class archlinux_workstation::all {
 

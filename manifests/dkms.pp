@@ -1,12 +1,5 @@
-# Class: archlinux_workstation::dkms
 #
-# Install and run DKMS
-#
-# Parameters:
-#
-# Actions:
-#   - Install dkms package
-#   - Enable and run the dkms service
+# Install [DKMS](https://wiki.archlinux.org/index.php/Dynamic_Kernel_Module_Support)
 #
 class archlinux_workstation::dkms {
 
