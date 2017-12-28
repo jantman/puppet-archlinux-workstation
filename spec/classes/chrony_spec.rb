@@ -47,7 +47,7 @@ describe 'archlinux_workstation::chrony' do
         'mode'    => '0640',
         }) \
         .that_requires('Package[chrony]') \
-        .that_notifies('Service[chrony]') \
+        .that_notifies('Service[chronyd]') \
         .with_content('1 d83ja72.f83,8wHUW94')
       }
 
@@ -58,7 +58,7 @@ describe 'archlinux_workstation::chrony' do
         'mode'    => '0644',
         }) \
         .that_requires('Package[chrony]') \
-        .that_notifies('Service[chrony]') \
+        .that_notifies('Service[chronyd]') \
         .with_source('puppet:///modules/archlinux_workstation/chrony.conf')
       }
 

@@ -23,6 +23,9 @@ describe 'archlinux_workstation' do
                      # structured facts
                      :os              => { 'family' => 'Solaris', 'name' => 'Nexenta', },
       }}
+      let(:params) {{
+        'username' => 'foouser',
+      }}
 
       it { expect { should contain_class('archlinux_workstation') }.to raise_error(Puppet::Error, /Nexenta not supported/) }
     end
@@ -32,6 +35,9 @@ describe 'archlinux_workstation' do
                      :operatingsystem => 'CentOS',
                      # structured facts
                      :os              => { 'family' => 'RedHat', 'name' => 'CentOS', },
+      }}
+      let(:params) {{
+        'username' => 'foouser',
       }}
 
       it { expect { should contain_class('archlinux_workstation') }.to raise_error(Puppet::Error, /CentOS not supported/) }
@@ -43,7 +49,10 @@ describe 'archlinux_workstation' do
                      # structured facts
                      :os              => { 'family' => 'Debian', 'name' => 'debian', },
       }}
-
+      let(:params) {{
+        'username' => 'foouser',
+      }}
+      
       it { expect { should contain_class('archlinux_workstation') }.to raise_error(Puppet::Error, /debian not supported/) }
     end
   end
@@ -52,7 +61,7 @@ describe 'archlinux_workstation' do
     describe "username is undefined" do
       let(:params) {{ }}
 
-      it { expect { should contain_class('archlinux_workstation') }.to raise_error(/input needs to be a String/) }
+      it { expect { should contain_class('archlinux_workstation') }.to raise_error(/parameter 'username' expects a String value, got Undef/) }
     end
 
     describe "username is defined" do

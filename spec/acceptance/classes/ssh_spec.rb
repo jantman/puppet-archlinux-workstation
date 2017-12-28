@@ -12,7 +12,7 @@ describe 'archlinux_workstation::ssh class' do
 
       # Run it twice and test for idempotency
       apply_manifest(pp, :catch_failures => true)
-      expect(apply_manifest(pp, :catch_failures => true).exit_code).to eq(2)
+      expect(apply_manifest(pp, :catch_failures => true).exit_code).to eq(0)
     end
 
     describe package('openssh') do
@@ -31,7 +31,6 @@ describe 'archlinux_workstation::ssh class' do
     describe file('/etc/ssh/sshd_config') do
       it { should be_file }
       its(:content) { should match /AllowUsers myuser/ }
-      its(:content) { should match /AllowUsers vagrant/ }
       its(:content) { should match /AllowUsers root/ }
       its(:content) { should match /GSSAPIAuthentication no/ }
       its(:content) { should match /KerberosAuthentication no/ }

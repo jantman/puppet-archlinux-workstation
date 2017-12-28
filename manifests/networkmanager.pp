@@ -1,16 +1,7 @@
-# == Class: archlinux_workstation::networkmanager
 #
-# Install and setup networkmanager its GUI components, and ensure dhcpcd is stopped and nm is running.
-#
-# === Parameters:
-#
-# * __gui__ - the $gui value from archlinux_workstation. See that class for docs.
-#
-# === Actions:
-#   - Install networkmanager
-#   - if archlinux_workstation::kde is defined, install kdeplasma-applets-networkmanagement
-#   - Ensure NetworkManager service is running and enabled
-#   - Ensure dhcpcd service is stopped and disabled
+# Install and setup [networkmanager](https://wiki.archlinux.org/index.php/NetworkManager),
+# ensure dhcpcd is stopped and nm is running. If ``archlinux_workstation::kde`` is defined, also
+# install ``kdeplasma-applets-networkmanagement``.
 #
 class archlinux_workstation::networkmanager {
 

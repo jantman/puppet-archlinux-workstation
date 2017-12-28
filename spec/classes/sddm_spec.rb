@@ -36,7 +36,17 @@ describe 'archlinux_workstation::sddm' do
       }) }
 
     end
+    describe "service_ensure stopped" do
+      let(:params) {{ 'service_ensure' => 'stopped' }}
 
+      it { should compile.with_all_deps }
+      it { should contain_package('sddm') }
+      it { should contain_service('sddm').with({
+                                                 'ensure' => 'stopped',
+                                                 'enable' => true,
+      }) }
+
+    end
   end
 
 end

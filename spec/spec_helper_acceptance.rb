@@ -1,7 +1,6 @@
 require 'beaker-rspec'
 require 'beaker/puppet_install_helper'
-
-run_puppet_install_helper(type_arg='foss') unless ENV['BEAKER_provision'] == 'no'
+require 'beaker/module_install_helper'
 
 RSpec.configure do |c|
   # Project root
@@ -14,19 +13,12 @@ RSpec.configure do |c|
   c.before :suite do
     # pacman update
     hosts.each do |h|
-      on h, 'pacman -Syu --noconfirm'
-    end
-    # Install module and dependencies
-    puppet_module_install(:source => proj_root, :module_name => 'archlinux_workstation', :target_module_path => '/etc/puppetlabs/code/modules')
-    moddir = 'spec/fixtures/modules/*'
-    if not File.exist?(File.join(proj_root, 'spec/fixtures/modules/stdlib'))
-      puts "ERROR: please run 'rake spec_prep' first"
-      exit!(1)
-    end
-    Dir.glob(moddir).select {|f| File.directory?(f) and not File.symlink?(f)}.each do |dirname|
-      dirpath = File.join(proj_root, dirname)
-      modname = File.basename(dirname)
-      puppet_module_install(:source => dirpath, :module_name => modname, :target_module_path => '/etc/puppetlabs/code/modules')
+      on h, 'pacman -Syu --noconfirm' unless ENV['BEAKER_provision'] == 'no'
+      run_puppet_install_helper unless ENV['BEAKER_provision'] == 'no'
+      install_module_dependencies_on(h)
+      # on ArchLinux, install_module_on(hosts) installs in /etc/puppet/modules
+      # instead of /etc/puppetlabs/code/modules
+      copy_module_to(h, source: proj_root, module_name: 'archlinux_workstation', target_module_path: '/etc/puppetlabs/code/modules')
     end
     # helper for spec/acceptance/classes/userapps/rvm_spec.rb
     scp_to(hosts, File.join(proj_root, 'spec', 'test_rvm.sh'), '/tmp/test_rvm.sh')

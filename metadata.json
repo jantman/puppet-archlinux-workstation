@@ -1,13 +1,13 @@
 {
   "name": "jantman-archlinux_workstation",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "summary": "Configure an Arch Linux workstation/desktop/laptop",
   "author": "jantman",
   "description": "Provides many classes (and a sane default class/init.pp) for configuring an Arch Linux workstation/laptop/desktop for graphical use.",
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
-      "version_requirement": ">=4.1.0 <5.0.0"
+      "version_requirement": ">=4.1.0 <4.13.0"
     },
     {
       "name": "saz/sudo",
@@ -15,15 +15,15 @@
     },
     {
       "name": "saz/ssh",
-      "version_requirement": "2.8.9999"
+      "version_requirement": "3.0.1"
     },
     {
       "name": "puppetlabs/concat",
-      "version_requirement": ">= 1.0.0 <2.0.0"
+      "version_requirement": ">= 1.2.5 <3.0.0"
     },
     {
       "name": "puppetlabs/inifile",
-      "version_requirement": ">= 1.0.0 <2.0.0"
+      "version_requirement": ">= 1.0.0 <3.0.0"
     },
     {
       "name": "nanliu/staging",
@@ -46,7 +46,7 @@
   "requirements": [
     {
       "name": "puppet",
-      "version_requirement": ">= 4.0.0 < 5.0.0"
+      "version_requirement": ">= 4.0.0 < 6.0.0"
     }
   ],
   "checksums": {},

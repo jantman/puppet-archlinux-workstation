@@ -1,17 +1,15 @@
-# == Class: archlinux_workstation::makepkg
 #
-# makepkg configuration for Arch Linux.
+# Sets up [makepkg](https://wiki.archlinux.org/index.php/Makepkg) configuration
+# for Arch Linux (``/etc/makepkg.conf``) for system-optimized compiling and
+# compiling in /tmp tmpfs, and configures systemd to create tmpfs compile
+# directories on boot.
 #
-# - Setup /etc/makepkg.conf for system-optimized compiling and compiling in /tmp tmpfs
-# - systemd to create tmpfs compile dirs on boot
-#
-# === Parameters
-#
-# * __make_flags__ - (string) additional flags to pass to make via makepkg.conf
-#  default: "-j${::processorcount}"
+# @param make_flags additional flags to pass to make via ``makepkg.conf``.
+#  Defaults to setting ``-j`` (number of available processors for parallelization)
+#  to the system's number of processors.
 #
 class archlinux_workstation::makepkg (
-  $make_flags       = "-j${::processorcount}",
+  String $make_flags = "-j${facts['processors']['count']}",
 ){
 
   if ! defined(Class['archlinux_workstation']) {

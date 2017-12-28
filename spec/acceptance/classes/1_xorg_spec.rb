@@ -32,9 +32,5 @@ describe 'archlinux_workstation::xorg class' do
         it { should be_installed }
       end
     end
-
-    describe command('timeout 10 startx') do
-      its(:exit_status) { should eq 124 }
-    end
   end
 end

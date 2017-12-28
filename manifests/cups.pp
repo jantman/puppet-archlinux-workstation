@@ -1,10 +1,6 @@
-# == Class: archlinux_workstation::cups
 #
-# Install CUPS printing
-#
-# === Actions:
-#   - Install cups and required/related packages
-#   - Run cups service
+# Install [CUPS](https://wiki.archlinux.org/index.php/CUPS) printing and related
+# packages; run cupsd service.
 #
 class archlinux_workstation::cups {
 
@@ -29,4 +25,3 @@ class archlinux_workstation::cups {
   }
 
 }
-

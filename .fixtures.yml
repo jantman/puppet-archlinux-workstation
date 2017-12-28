@@ -1,12 +1,20 @@
 fixtures:
   repositories:
-    stdlib: "git://github.com/puppetlabs/puppetlabs-stdlib.git"
+    stdlib:
+      repo: "https://github.com/puppetlabs/puppetlabs-stdlib.git"
+      ref: "4.12.0"
     sudo: "https://github.com/saz/puppet-sudo.git"
     ssh: "https://github.com/saz/puppet-ssh.git"
     firewall: "https://github.com/puppetlabs/puppetlabs-firewall.git"
     inifile: "https://github.com/puppetlabs/puppetlabs-inifile.git"
     staging: "https://github.com/nanliu/puppet-staging.git"
-    concat: "https://github.com/puppetlabs/puppetlabs-concat.git"
+    concat:
+      repo: "https://github.com/puppetlabs/puppetlabs-concat.git"
+      ref: "2.2.1"
     docker: "https://github.com/garethr/garethr-docker.git"
+    apt:
+      repo: "https://github.com/puppetlabs/puppetlabs-apt.git"
+      ref: "2.3.0"
+    epel: "https://github.com/stahnma/puppet-module-epel.git"
   symlinks:
     archlinux_workstation: "#{source_dir}"

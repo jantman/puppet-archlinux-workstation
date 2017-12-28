@@ -1,6 +1,6 @@
-# == Class: archlinux_workstation::repos::jantman
 #
-# Sets up my personal pacman repo for some required packages.
+# Sets up jantman's personal pacman repository
+# (http://archrepo.jasonantman.com/current). See that URL for a package index.
 #
 class archlinux_workstation::repos::jantman {
 

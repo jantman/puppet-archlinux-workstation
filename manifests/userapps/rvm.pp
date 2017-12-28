@@ -1,4 +1,3 @@
-# == Class: archlinux_workstation::userapps::rvm
 #
 # Install [rvm](https://rvm.io/) for the specified user, in their
 # home directory.
@@ -6,18 +5,12 @@
 # When RVM is installed, it specifies the option to *not* modify the user's
 # shell rc scripts.
 #
-# === Actions:
-#   - Install rvm
-#
-# === Parameters
-#
-# * __username__ - (string) User to install rvm for.
-#
-# * __userhome__ - Path to $username's home directory. Default: "/home/${username}.
+# @param user User to install rvm for.
+# @param userhome Path to ``$user``'s home directory. Default: ``/home/${username}``.
 #
 define archlinux_workstation::userapps::rvm (
-  $user = $title,
-  $userhome = undef,
+  String $user                     = $title,
+  Variant[String, Undef] $userhome = undef,
 ) {
 
   if ! $userhome {
