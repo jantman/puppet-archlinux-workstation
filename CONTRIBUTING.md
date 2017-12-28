@@ -178,6 +178,12 @@ This executes all the [rspec tests](http://rspec-puppet.com/) in the directories
 rspec tests may have the same kind of dependencies as the module they are testing. Although the module defines these dependencies in its [metadata.json](./metadata.json),
 rspec tests define them in [.fixtures.yml](./fixtures.yml).
 
+Before submitting a pull request, you should run the full pre-release check Rake task:
+
+```shell
+% bundle exec rake release_checks
+```
+
 ### Acceptance Tests
 
 Some Puppet modules also come with acceptance tests, which use [beaker][]. These tests spin up a virtual machine under
@@ -188,7 +194,7 @@ Run the tests by issuing the following command
 
 ```shell
 % bundle exec rake spec_clean
-% bundle exec rspec spec/acceptance
+% bundle exec rake beaker
 ```
 
 This will now download a pre-fabricated image configured in the [default node-set](./spec/acceptance/nodesets/default.yml),

@@ -13,7 +13,9 @@
 
 ## Overview
 
-[![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/0.1.0/active.svg)](http://www.repostatus.org/#active)
+[![TravisCI Build Status Badge](https://travis-ci.org/jantman/puppet-archlinux-workstation.svg)](https://travis-ci.org/jantman/puppet-archlinux-workstation.svg)
+[![PuppetForge version badge](https://img.shields.io/puppetforge/v/jantman/archlinux_workstation.svg)](https://forge.puppet.com/jantman/archlinux_workstation/)
+[![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 
 Provides many classes for configuring an Arch Linux workstation/laptop/desktop for graphical use and installing common software.
 
@@ -55,9 +57,7 @@ Optionally:
 * use of the [puppetlabs/firewall](http://forge.puppetlabs.com/puppetlabs/firewall) module to manage iptables (note that
   it's expected you setup the module elsewhere, as I do in [workstation_bootstrap](https://github.com/jantman/workstation-bootstrap) -
   this module just adds rules for its services using the Firewall type).
-* enable dkms support by installing the package and enabling the service
-* creates and uses a swapfile at a configurable path and of configurable size (by defaylt, 4G at ``/swapfile``),
-  via an instance of ``archlinux_workstation::swapfile``.
+* enable dkms support by installing the dkms package
 * sets up [CUPS](https://wiki.archlinux.org/index.php/Cups) printing
 * sets up the [Chrony](https://wiki.archlinux.org/index.php/Chrony) alternative NTP daemon
 * installs [Xorg](https://wiki.archlinux.org/index.php/Xorg) Xserver as well as related required and recommended/optional packages
@@ -73,11 +73,13 @@ Classes are parameterized where that makes sense. Right now, there are two metho
 
 1. To install and setup _everything_ this module is capable of, declare an instance of ``archlinux_workstation`` passing the ``username`` parameter for the name of your user, and an instance of ``archlinux_workstation::all`` to do _everything_.
 
-    class {'archlinux_workstation':
-      foo => bar,
-    }
+```puppet
+class {'archlinux_workstation':
+  username => 'myname',
+}
 
-    class {'archlinux_workstation::all': }
+class {'archlinux_workstation::all': }
+```
 
 2. To pick and choose which parts you use, declare ``archlinux_workstation`` as shown above, and in place of ``archlinux_workstation::all``, declare the classes that you want.
 
@@ -97,11 +99,6 @@ pretty much the same as the [Arch Linux Installation Guide](https://wiki.archlin
 ## Development
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for information about development and contributing.
-
-This module currently just has spec tests; run them with:
-
-    bundle install --path vendor
-    bundle exec rake spec
 
 ### Adding Classes
 
