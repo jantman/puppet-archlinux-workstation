@@ -1,7 +1,8 @@
 require 'puppetlabs_spec_helper/rake_tasks'
 require 'puppet-lint/tasks/puppet-lint'
 require 'puppet_blacksmith/rake_tasks' if Bundler.rubygems.find_name('puppet-blacksmith').any?
-require 'puppet-strings/tasks' if Bundler.rubygems.find_name('puppet-strings').any?
+require 'puppet-strings' if Bundler.rubygems.find_name('puppet-strings').any?
+require 'json'
 
 PuppetLint.configuration.fail_on_warnings = true
 PuppetLint.configuration.send('relative')
@@ -46,4 +47,24 @@ task :release_checks_nonparallel do
   Rake::Task["check:test_file"].invoke
   Rake::Task["check:dot_underscore"].invoke
   Rake::Task["check:git_ignore"].invoke
+end
+
+require 'puppet-strings'
+
+if Bundler.rubygems.find_name('puppet-strings').any?
+  # Reimplement puppet-strings "strings:generate" task with custom params
+  desc 'Generate Puppet documentation with YARD.'
+  task :docs do
+    patterns = PuppetStrings::DEFAULT_SEARCH_PATTERNS
+
+    meta = JSON.parse(File.read('metadata.json'))
+    options = {
+      debug: false,
+      backtrace: true,
+      markup: 'markdown',
+      yard_args: ['--title', "Puppet module jantman/archlinux_workstation #{meta['version']}"],
+    }
+
+    PuppetStrings.generate(patterns, options)
+  end
 end
