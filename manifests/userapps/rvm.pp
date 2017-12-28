@@ -9,8 +9,8 @@
 # @param userhome Path to ``$user``'s home directory. Default: ``/home/${username}``.
 #
 define archlinux_workstation::userapps::rvm (
-  String $user = $title,
-  String $userhome = undef,
+  String $user                     = $title,
+  Variant[String, Undef] $userhome = undef,
 ) {
 
   if ! $userhome {

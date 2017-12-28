@@ -21,11 +21,11 @@
 #
 class archlinux_workstation (
   String $username                         = undef,
-  String $realname                         = undef,
+  Variant[String, Undef] $realname         = undef,
   Variant[String, Undef] $user_home        = undef,
   String $shell                            = '/bin/bash',
   Array[String] $user_groups               = ['sys'],
-  Variant[String, Undev] $makepkg_packager = undef,
+  Variant[String, Undef] $makepkg_packager = undef,
 ) {
 
   # make sure we're on arch, otherwise fail

@@ -8,7 +8,7 @@
 #   See `man 8 cron` for more information.
 #
 class archlinux_workstation::cronie (
-  String $mail_command = undef,
+  Variant[String, Undef] $mail_command = undef,
 ) {
 
   if ! defined(Class['archlinux_workstation']) {
