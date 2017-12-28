@@ -1,10 +1,14 @@
-2017-12-26 Release 0.3.0
+2017-12-28 Release 0.3.0
 
+- Switch to new-style typed parameters.
 - Modernize module layout and testing.
 - Update supported and tested Puppet versions to 4 and 5.
 - Many major puppet module dependency updates.
 - Pin puppetlabs-stdlib dependency to 4.12.0, as unfortunately saz/sudo still uses the deprecated ``validate_`` functions.
-- Add ``service_state`` parameter to Docker class, mainly for acceptance testing
+- Add ``service_state`` parameter to docker class, mainly for acceptance testing
+- Add ``service_ensure`` parameter to ``sddm`` class, mainly for acceptance testing
+- Use puppet-strings for documentation
+- Automate deployment through TravisCI
 
 2017-07-17 Release 0.2.1
 - Handle upstream chrony service rename to chronyd
