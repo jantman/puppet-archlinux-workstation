@@ -28,6 +28,8 @@ matrix:
 deploy:
   provider: script
   script: deploytest.sh
+  on:
+    rvm: 2.4.1
 notifications:
   email:
     on_success: change
