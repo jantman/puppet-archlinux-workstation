@@ -26,9 +26,11 @@ matrix:
     bundler_args: --without system_tests
     env: PUPPET_GEM_VERSION="~> 4.0"
 deploy:
+  provider: pages
   skip_cleanup: true
-  provider: script
-  script: deploytest.sh
+  github_token:
+    secure: "A5/0NyMA2TTMEglGEUyDbcATdNTRyu4w4XNXfrlG8Pmg5vSKHM8F1rotUllwAGkhaSia6ZWdY6c0apQNH9FcOvG+Jt66mDjLhhOk5p0uwNuaYyD3GwV61pP2wyMa81XZ9jMhFythfusLgpKUCy+Cpb1cicR0iesO4VZZDMuyxvg="
+  local_dir: doc
   on:
     repo: jantman/puppet-archlinux-workstation
     rvm: 2.4.1
