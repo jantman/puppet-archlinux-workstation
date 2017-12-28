@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  File: README
+  
+    &mdash; Puppet module jantman/archlinux_workstation 0.3.2
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="puppet_class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="puppet_class_list_link"
+        href="puppet_class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><div id='filecontents'>
+<h4 id="label-Table+of+Contents">Table of Contents</h4>
+<ol><li>
+<p><a href="#overview">Overview</a></p>
+</li><li>
+<p><a href="#module-description">Module Description - What the module does and
+why it is useful</a></p>
+</li><li>
+<p><a href="#setup">Setup - The basics of getting started with
+archlinux_workstation</a></p>
+<ul><li>
+<p><a href="#what-archlinux_workstation-affects">What archlinux_workstation
+affects</a></p>
+</li></ul>
+</li><li>
+<p><a href="#requirements">Requirements</a></p>
+</li><li>
+<p><a href="#usage">Usage - Configuration options and additional
+functionality</a></p>
+</li><li>
+<p><a href="#reference">Reference - An under-the-hood peek at what the module
+is doing and how</a></p>
+</li><li>
+<p><a href="#limitations">Limitations - OS compatibility, etc.</a></p>
+</li><li>
+<p><a href="#development">Development - Guide for contributing to the
+module</a></p>
+<ul><li>
+<p><a href="#adding-classes">Adding Classes</a></p>
+</li></ul>
+</li></ol>
+
+<h2 id="label-Overview">Overview</h2>
+
+<p><a
+href="https://travis-ci.org/jantman/puppet-archlinux-workstation.svg"><img
+src="https://travis-ci.org/jantman/puppet-archlinux-workstation.svg"></a>
+<a href="https://forge.puppet.com/jantman/archlinux_workstation/"><img
+src="https://img.shields.io/puppetforge/v/jantman/archlinux_workstation.svg"></a>
+<a href="http://www.repostatus.org/#active"><img
+src="http://www.repostatus.org/badges/latest/active.svg"></a></p>
+
+<p>Provides many classes for configuring an Arch Linux
+workstation/laptop/desktop for graphical use and installing common
+software.</p>
+<ul><li>
+<p>Generated Documentation: <a
+href="http://jantman.github.io/puppet-archlinux-workstation">jantman.github.io/puppet-archlinux-workstation</a>/</p>
+</li></ul>
+
+<h2 id="label-Module+Description">Module Description</h2>
+
+<p>This is one of the modules that I use to keep my personal desktop and work
+laptop, both running Arch Linux, in sync, up to date, and easily
+rebuild-able. It&#39;s intended to do three main things:</p>
+<ol><li>
+<p>Manage all installed packages, and all configuration outside of
+<code>/home</code>, so I don&#39;t need to back up anything outside
+<code>/home</code>.</p>
+</li><li>
+<p>Keep my desktop and laptop perfectly in sync in terms of packages and
+global (non-user-specific) configuration.</p>
+</li><li>
+<p>Allow me to quickly rebuild one of these machines if needed, to minimize
+downtime.</p>
+</li></ol>
+
+<p>This module is intended to be part of a whole. For me, that includes my
+workstation-bootstrap module (<a
+href="https://github.com/jantman/workstation-bootstrap">GitHub</a>) that
+uses <a href="https://github.com/adrienthebo/r10k">r10k</a>, a Puppetfile,
+and a few manifests to actually manage what&#39;s applied to my machines
+and install modules, as well as a private module (“privatepuppet”) on
+GitHub for my sensitive/personal configuration, and a specific module for
+Arch Linux on my <a
+href="https://github.com/jantman/puppet-archlinux-macbookretina">MacBook
+Pro Retina</a> that handles some things specific to that platform.</p>
+
+<p><strong>Note:</strong> this module is quite opinionated; it is how
+<em>I</em> setup <em>my</em> machines, and may not be exactly what you
+want. Pull requests are welcome to add parameters for more control over its
+behavior.</p>
+
+<h2 id="label-Setup">Setup</h2>
+
+<h3 id="label-What+archlinux_workstation+affects">What archlinux_workstation affects</h3>
+
+<p>See the <a href="#reference">Reference</a> section below for details. In
+general, the goal is that it affects anything and everything you&#39;d need
+to touch to take a base Arch Linux installation to a fully-usable,
+graphical workstation/laptop/desktop. This includes:</p>
+<ul><li>
+<p>your login user, a primary group with the same name as the username, and
+their supplementary groups</p>
+</li></ul>
+
+<p>Optionally:</p>
+<ul><li>
+<p>sudoers file and sudoers.d entries for your user</p>
+</li><li>
+<p>sshd_config, including AllowUsers (your user only) and auth methods
+(pubkey/RSA only)</p>
+</li><li>
+<p><code>/etc/makepkg.conf</code>, set to compile and cache sources under
+<code>/tmp</code> (tmpfs), and specify -j$processorcount make flag.</p>
+</li><li>
+<p>installation of some common base packages (see
+<code>archlinux_workstation::base_packages</code> below)</p>
+</li><li>
+<p>use of the <a
+href="http://forge.puppetlabs.com/puppetlabs/firewall">puppetlabs/firewall</a>
+module to manage iptables (note that  it&#39;s expected you setup the
+module elsewhere, as I do in <a
+href="https://github.com/jantman/workstation-bootstrap">workstation_bootstrap</a>
+-  this module just adds rules for its services using the Firewall type).</p>
+</li><li>
+<p>enable dkms support by installing the dkms package</p>
+</li><li>
+<p>sets up <a href="https://wiki.archlinux.org/index.php/Cups">CUPS</a>
+printing</p>
+</li><li>
+<p>sets up the <a
+href="https://wiki.archlinux.org/index.php/Chrony">Chrony</a> alternative
+NTP daemon</p>
+</li><li>
+<p>installs <a href="https://wiki.archlinux.org/index.php/Xorg">Xorg</a>
+Xserver as well as related required and recommended/optional packages 
+(note - this currently only installs the default vesa driver. See
+archlinux_workstation::xorg below for more information)</p>
+</li><li>
+<p>if the <code>gui</code> parameter is set to &#39;kde&#39; (default),
+installs <a href="https://wiki.archlinux.org/index.php/KDE">KDE Plasma</a> 
+and installs and runs <a
+href="https://wiki.archlinux.org/index.php/SDDM">SDDM</a></p>
+</li><li>
+<p>sets up my <a href="http://archrepo.jasonantman.com/">personal (jantman)
+pacman repo</a> and the <a
+href="https://wiki.archlinux.org/index.php/Multilib">Multilib</a> repo</p>
+</li><li>
+<p>installation of a number of different user applications (see
+<code>archlinux_workstation::userapps::</code> classes below)</p>
+</li></ul>
+
+<h2 id="label-Usage">Usage</h2>
+
+<p>Classes are parameterized where that makes sense. Right now, there are two
+methods of usage:</p>
+<ol><li>
+<p>To install and setup <em>everything</em> this module is capable of, declare
+an instance of <code>archlinux_workstation</code> passing the
+<code>username</code> parameter for the name of your user, and an instance
+of <code>archlinux_workstation::all</code> to do <em>everything</em>.</p>
+</li></ol>
+
+<pre class="code ruby"><code class="ruby">class {&#39;archlinux_workstation&#39;:
+  username =&gt; &#39;myname&#39;,
+}
+
+class {&#39;archlinux_workstation::all&#39;: }</code></pre>
+<ol><li>
+<p>To pick and choose which parts you use, declare
+<code>archlinux_workstation</code> as shown above, and in place of
+<code>archlinux_workstation::all</code>, declare the classes that you want.</p>
+</li></ol>
+
+<p>If you stick to one of these two usage methods (instead of forking this
+module and hacking on the internals), you should be safe to pull in updates
+as they happen.</p>
+
+<h2 id="label-Reference">Reference</h2>
+
+<p>For full automatically-generated documentation see: <a
+href="http://jantman.github.io/puppet-archlinux-workstation/">jantman.github.io/puppet-archlinux-workstation/</a></p>
+
+<h2 id="label-Limitations">Limitations</h2>
+
+<p>This module is only usable with Arch Linux.</p>
+
+<p>It assumes that you have a relatively vanilla base install of Arch, such as
+the one I document in my <a
+href="https://github.com/jantman/workstation-bootstrap#arch-linux">workstation-bootstrap
+module</a>, pretty much the same as the <a
+href="https://wiki.archlinux.org/index.php/Installation_guide">Arch Linux
+Installation Guide</a> documents.</p>
+
+<h2 id="label-Development">Development</h2>
+
+<p>See <a href="CONTRIBUTING.md">CONTRIBUTING.md</a> for information about
+development and contributing.</p>
+
+<h3 id="label-Adding+Classes">Adding Classes</h3>
+
+<p>To add a class:</p>
+<ol><li>
+<p>Add the class itself, using the template: <code>sed
+&#39;s/CLASSNAME/name_of_class/g&#39; manifests/template.txt &gt;
+manifests/name_of_class.pp</code></p>
+</li><li>
+<p>Add spec tests, using the template: <code>sed
+&#39;s/CLASSNAME/name_of_class/g&#39; spec/classes/template.txt &gt;
+spec/classes/name_of_class.pp</code></p>
+</li><li>
+<p>Add acceptance tests.</p>
+</li><li>
+<p>Add the class to the <a href="#reference">Reference</a> section above</p>
+</li><li>
+<p>Add the class to the <code>archlinux_workstation::all</code>
+(<code>manifests/all.pp</code>) class.</p>
+</li></ol>
+</div></div>
+
+      <div id="footer">
+     Generated by <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>.
+</div>
+
+    </div>
+  </body>
+</html>
