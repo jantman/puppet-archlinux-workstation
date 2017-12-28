@@ -268,17 +268,17 @@ The record of someone performing the merge is the record that they performed the
 * [General GitHub documentation](http://help.github.com/)
 * [GitHub pull request documentation](http://help.github.com/send-pull-requests/)
 
+# Release Process
+
+1. Ensure all changes were merged to master via PRs.
+2. Ensure a [CHANGELOG.md](CHANGELOG.md) entry exists for every change.
+3. Use ``bundle exec rake module:bump`` to bump the module version.
+4. Update ``CHANGELOG.md`` with the new version, and ensure a link exists for the diff from the last release.
+5. Commit those changes (``CHANGELOG.md`` and ``metadata.json``) and push. Wait for the TravisCI build to pass.
+6. Use ``bundle exec rake github_release`` to tag the version, push that tag, and create a GitHub Release.
+7. TravisCI will build the module and push to the forge, and build docs and push them to github pages.
 
 [rspec-puppet]: http://rspec-puppet.com/
 [rspec-puppet_docs]: http://rspec-puppet.com/documentation/
 [beaker]: https://github.com/puppetlabs/beaker
 [beaker-rspec]: https://github.com/puppetlabs/beaker-rspec
-
-# Release Process
-
-1. Ensure all changes were merged to master via PRs.
-2. Ensure a Changelog entry exists for every change.
-3. Use ``bundle exec rake module:bump_commit`` to bump the module version and commit.
-4. Push that to master.
-5. Use ``bundle exec rake module:tag`` to tag the version, and push that tag.
-6. TravisCI will build the module and push to the forge, and build docs and push them to github pages.

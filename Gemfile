@@ -62,6 +62,8 @@ group :system_tests do
   gem "beaker-hostgenerator", *location_for(ENV['BEAKER_HOSTGENERATOR_VERSION'])
   gem "beaker-abs", *location_for(ENV['BEAKER_ABS_VERSION'] || '~> 0.1')
   gem "puppet-blacksmith", '>= 4.1.1',                                           :require => false
+  gem 'vandamme',                                                                :require => false
+  gem 'octokit', "~> 4.0",                                                       :require => false
 end
 
 gem 'puppet', *location_for(ENV['PUPPET_GEM_VERSION'])
