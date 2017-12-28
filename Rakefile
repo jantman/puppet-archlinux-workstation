@@ -49,7 +49,12 @@ task :release_checks_nonparallel do
   Rake::Task["check:git_ignore"].invoke
 end
 
-require 'puppet-strings'
+if Bundler.rubygems.find_name('puppet-blacksmith').any?
+  Blacksmith::RakeTask.new do |t|
+    t.tag_message_pattern = "Version %s" # Signed tags must have a message
+    t.tag_sign = true # enable GPG signing
+  end
+end
 
 if Bundler.rubygems.find_name('puppet-strings').any?
   # Reimplement puppet-strings "strings:generate" task with custom params
