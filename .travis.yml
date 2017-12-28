@@ -29,7 +29,9 @@ deploy:
   provider: script
   script: deploytest.sh
   on:
+    repo: jantman/puppet-archlinux-workstation
     rvm: 2.4.1
+    branch: testing-update
 notifications:
   email:
     on_success: change
