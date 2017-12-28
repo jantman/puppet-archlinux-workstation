@@ -1,6 +1,6 @@
 {
   "name": "jantman-archlinux_workstation",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "summary": "Configure an Arch Linux workstation/desktop/laptop",
   "author": "jantman",
   "description": "Provides many classes (and a sane default class/init.pp) for configuring an Arch Linux workstation/laptop/desktop for graphical use.",
@@ -40,7 +40,7 @@
   ],
   "operatingsystem_support": [
     {
-        "operatingsystem": "ArchLinux"
+      "operatingsystem": "ArchLinux"
     }
   ],
   "requirements": [
@@ -49,7 +49,8 @@
       "version_requirement": ">= 4.0.0 < 6.0.0"
     }
   ],
-  "checksums": {},
+  "checksums": {
+  },
   "source": "https://github.com/jantman/puppet-archlinux-workstation",
   "project_page": "https://github.com/jantman/puppet-archlinux-workstation",
   "license": "GPL-3.0"
