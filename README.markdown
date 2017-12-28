@@ -17,6 +17,8 @@
 
 Provides many classes for configuring an Arch Linux workstation/laptop/desktop for graphical use and installing common software.
 
+* Generated Documentation: http://jantman.github.io/puppet-archlinux-workstation/
+
 ## Module Description
 
 This is one of the modules that I use to keep my personal desktop and work laptop, both running Arch Linux, in sync, up to date,
@@ -83,7 +85,7 @@ If you stick to one of these two usage methods (instead of forking this module a
 
 ## Reference
 
-See upcoming docs.
+For full automatically-generated documentation see: [http://jantman.github.io/puppet-archlinux-workstation/](http://jantman.github.io/puppet-archlinux-workstation/)
 
 ## Limitations
 

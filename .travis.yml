@@ -21,20 +21,34 @@ matrix:
     env: PUPPET_GEM_VERSION="~> 5.0"
     script:
       - "bundle exec rake release_checks_nonparallel"
+      - "bundle exec rake clean"
+      - "bundle exec rake build"
       - "bundle exec rake docs"
   - rvm: 2.1.9
     bundler_args: --without system_tests
     env: PUPPET_GEM_VERSION="~> 4.0"
 deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token:
-    secure: "A5/0NyMA2TTMEglGEUyDbcATdNTRyu4w4XNXfrlG8Pmg5vSKHM8F1rotUllwAGkhaSia6ZWdY6c0apQNH9FcOvG+Jt66mDjLhhOk5p0uwNuaYyD3GwV61pP2wyMa81XZ9jMhFythfusLgpKUCy+Cpb1cicR0iesO4VZZDMuyxvg="
-  local_dir: doc
-  on:
-    repo: jantman/puppet-archlinux-workstation
-    rvm: 2.4.1
-    branch: testing-update
+  - provider: pages
+    skip_cleanup: true
+    github_token:
+      secure: "A5/0NyMA2TTMEglGEUyDbcATdNTRyu4w4XNXfrlG8Pmg5vSKHM8F1rotUllwAGkhaSia6ZWdY6c0apQNH9FcOvG+Jt66mDjLhhOk5p0uwNuaYyD3GwV61pP2wyMa81XZ9jMhFythfusLgpKUCy+Cpb1cicR0iesO4VZZDMuyxvg="
+    local_dir: doc
+    on:
+      repo: jantman/puppet-archlinux-workstation
+      rvm: 2.4.1
+      # all_branches is required to use tags
+      all_branches: true
+      tags: true
+  - provider: puppetforge
+    user: "jantman"
+    password:
+      secure: "VOQbMtzQJjepLvohWA/vxd9yx3VCZfEaQLMTSiVRBR8APHjGXg2YByCI3T70V/oVBXvVuQxvR8fm52TwB+2sCGLB1vWJ/lOGwJZl6R0Q78CO5EJ7ixmxmOVjZD+jscAhxL0hcXy8AoEHLXY2BZFH2OMxL3683HFN/ntUmi0YOQY="
+    on:
+      repo: jantman/puppet-archlinux-workstation
+      rvm: 2.4.1
+      # all_branches is required to use tags
+      all_branches: true
+      tags: true
 notifications:
   email:
     on_success: change
