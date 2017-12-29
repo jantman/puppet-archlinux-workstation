@@ -1,5 +1,5 @@
 ---
-:global:
+.travis.yml:
   # NOTE: these values are repository-specific, created with ` travis encrypt <value>`
   github_token: "A5/0NyMA2TTMEglGEUyDbcATdNTRyu4w4XNXfrlG8Pmg5vSKHM8F1rotUllwAGkhaSia6ZWdY6c0apQNH9FcOvG+Jt66mDjLhhOk5p0uwNuaYyD3GwV61pP2wyMa81XZ9jMhFythfusLgpKUCy+Cpb1cicR0iesO4VZZDMuyxvg="
   puppetforge_password: "VOQbMtzQJjepLvohWA/vxd9yx3VCZfEaQLMTSiVRBR8APHjGXg2YByCI3T70V/oVBXvVuQxvR8fm52TwB+2sCGLB1vWJ/lOGwJZl6R0Q78CO5EJ7ixmxmOVjZD+jscAhxL0hcXy8AoEHLXY2BZFH2OMxL3683HFN/ntUmi0YOQY="
