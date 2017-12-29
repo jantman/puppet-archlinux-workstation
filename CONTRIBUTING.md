@@ -58,12 +58,6 @@ process as easy as possible.
 
 ## Submission
 
-### Pre-requisites
-
-- Make sure you have a [GitHub account](https://github.com/join)
-
-- [Create a ticket](https://tickets.puppet.com/secure/CreateIssue!default.jspa), or [watch the ticket](https://tickets.puppet.com/browse/) you are patching for.
-
 ### Push and PR
 
 - Push your changes to your fork
@@ -239,6 +233,7 @@ it 'does an end-to-end thing' do
       path    => "/etc/sample",
       content => "test string",
     }
+  EOF
 
   apply_manifest(pp, :catch_failures => true)
   apply_manifest(pp, :catch_changes => true)
