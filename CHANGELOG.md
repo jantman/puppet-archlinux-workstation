@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+- Add ``.sync.yml`` for my [modulesync_configs](https://github.com/jantman/modulesync_configs)
+
 ## [0.3.2] Released 2017-12-28
 
 - Add automated ``github_release`` Rake task.

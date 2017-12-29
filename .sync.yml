@@ -1,0 +1,9 @@
+---
+:global:
+  # NOTE: these values are repository-specific, created with ` travis encrypt <value>`
+  github_token: "A5/0NyMA2TTMEglGEUyDbcATdNTRyu4w4XNXfrlG8Pmg5vSKHM8F1rotUllwAGkhaSia6ZWdY6c0apQNH9FcOvG+Jt66mDjLhhOk5p0uwNuaYyD3GwV61pP2wyMa81XZ9jMhFythfusLgpKUCy+Cpb1cicR0iesO4VZZDMuyxvg="
+  puppetforge_password: "VOQbMtzQJjepLvohWA/vxd9yx3VCZfEaQLMTSiVRBR8APHjGXg2YByCI3T70V/oVBXvVuQxvR8fm52TwB+2sCGLB1vWJ/lOGwJZl6R0Q78CO5EJ7ixmxmOVjZD+jscAhxL0hcXy8AoEHLXY2BZFH2OMxL3683HFN/ntUmi0YOQY="
+  pushover:
+    users:
+      - "XDBBs4rSrvbVSUckhcTSpnqamquz4Qp7J8gEnWppns195U/8bveR7BRUurxomNEB89ZGnoZldUJnc+s0/NFMwa4ssq75ie0Zz2oV9ZgD3MRcImMfu6C5ghtKZvMzKMxzjzXkdHAwmNh/sx854AXu7Jbj8lHpn7gXsnR2JvFfQPU="
+    api_key: "VWeNtjcN64AyxadabU9QZTDb73D9d/ZXEOiueSI2SFolXlngot5VHb6T4DC+VxQSkNdjjOcSV99TNjexFNGoe9x2Q2zsg+1PlyvtEy1QLJtMtx55l8YQ5O5//liiuJfFMmnppUoUKVtrbl4YqW1nQyvk602HQoum1t863CdCn+w="
