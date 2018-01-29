@@ -53,7 +53,7 @@ group :development do
 end
 
 group :system_tests do
-  gem "beaker-docker",                                                           :require => false, :git => 'https://github.com/jantman/beaker-docker.git', :branch => 'archlinux'
+  gem "beaker-docker", '>= 0.3.0',                                               :require => false
   gem "puppet-module-posix-system-r#{minor_version}",                            :require => false, :platforms => "ruby"
   gem "puppet-module-win-system-r#{minor_version}",                              :require => false, :platforms => ["mswin", "mingw", "x64_mingw"]
   gem "beaker", *location_for(ENV['BEAKER_VERSION'] || '>= 3')                  
