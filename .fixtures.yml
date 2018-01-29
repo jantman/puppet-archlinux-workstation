@@ -3,7 +3,9 @@ fixtures:
     stdlib:
       repo: "https://github.com/puppetlabs/puppetlabs-stdlib.git"
       ref: "4.12.0"
-    sudo: "https://github.com/saz/puppet-sudo.git"
+    sudo:
+      repo: "https://github.com/saz/puppet-sudo.git"
+      ref: "v4.2.0"
     ssh: "https://github.com/saz/puppet-ssh.git"
     firewall: "https://github.com/puppetlabs/puppetlabs-firewall.git"
     inifile: "https://github.com/puppetlabs/puppetlabs-inifile.git"
