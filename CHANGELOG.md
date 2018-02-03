@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Add ``.sync.yml`` for my [modulesync_configs](https://github.com/jantman/modulesync_configs)
 - Update ``.travis.yml``, ``Gemfile`` and some documentation via modulesync.
+- Fix ``metadata.json`` casing of supported operatingsystem name.
 
 ## [0.3.2] Released 2017-12-28
 
