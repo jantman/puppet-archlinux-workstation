@@ -14,9 +14,6 @@ class archlinux_workstation::kde {
 
   # phonon/vlc audio; we install both backends
   $phonon_packages = [
-                      'phonon-qt4',
-                      'phonon-qt4-gstreamer',
-                      'phonon-qt4-vlc',
                       'phonon-qt5',
                       'phonon-qt5-gstreamer',
                       'phonon-qt5-vlc',
