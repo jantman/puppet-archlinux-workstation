@@ -12,7 +12,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Pin some dependencies in ``.fixtures.yml`` to fix tests
 - Switch acceptance tests from deprecated ``archimg/base-devel:latest`` Docker image to ``archlinux/base:latest``
 - Fix Puppet4 unit tests by pinning ``puppet-module-posix-dev-r2.1`` version to 0.3.2
-- Relax puppetlabs-concat module version dependency
 - Add ``.sync.yml`` for my [modulesync_configs](https://github.com/jantman/modulesync_configs)
 - Update ``.travis.yml``, ``Gemfile`` and some documentation via modulesync.
 - Fix ``metadata.json`` casing of supported operatingsystem name.
