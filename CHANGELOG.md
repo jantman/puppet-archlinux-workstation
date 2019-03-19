@@ -7,11 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 [comment]: # IMPORTANT: Remember to update the links at the bottom of the file!
 
-## [Unreleased]
+## [0.4.0] Released 2019-03-19
 
 - Pin some dependencies in ``.fixtures.yml`` to fix tests
 - Switch acceptance tests from deprecated ``archimg/base-devel:latest`` Docker image to ``archlinux/base:latest``
 - Fix Puppet4 unit tests by pinning ``puppet-module-posix-dev-r2.1`` version to 0.3.2
+- ``kde`` class - stop managing ``phonon-qt4`` packages as they've been removed from the repos
 - Add ``.sync.yml`` for my [modulesync_configs](https://github.com/jantman/modulesync_configs)
 - Update ``.travis.yml``, ``Gemfile`` and some documentation via modulesync.
 - Fix ``metadata.json`` casing of supported operatingsystem name.
@@ -73,7 +74,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - initial module creation
 - migration of a bunch of stuff from https://github.com/jantman/puppet-archlinux-macbookretina
 
-[Unreleased]: https://github.com/jantman/puppet-archlinux-workstation/compare/0.3.2...master
+[0.4.0]: https://github.com/jantman/puppet-archlinux-workstation/compare/0.3.2...0.4.0
 [0.3.2]: https://github.com/jantman/puppet-archlinux-workstation/compare/0.3.1...0.3.2
 [0.3.1]: https://github.com/jantman/puppet-archlinux-workstation/compare/0.3.0...0.3.1
 [0.3.0]: https://github.com/jantman/puppet-archlinux-workstation/compare/0.2.1...0.3.0

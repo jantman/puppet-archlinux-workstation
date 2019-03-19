@@ -33,9 +33,6 @@ describe 'archlinux_workstation::kde' do
       it { should contain_package('kde-applications-meta').with_ensure('present') }
 
       $phonon_packages = [
-        'phonon-qt4',
-        'phonon-qt4-gstreamer',
-        'phonon-qt4-vlc',
         'phonon-qt5',
         'phonon-qt5-gstreamer',
         'phonon-qt5-vlc',
