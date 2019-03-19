@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 
 - Pin some dependencies in ``.fixtures.yml`` to fix tests
+- Switch acceptance tests from deprecated ``archimg/base-devel:latest`` Docker image to ``archlinux/base:latest``
 - Add ``.sync.yml`` for my [modulesync_configs](https://github.com/jantman/modulesync_configs)
 - Update ``.travis.yml``, ``Gemfile`` and some documentation via modulesync.
 - Fix ``metadata.json`` casing of supported operatingsystem name.
