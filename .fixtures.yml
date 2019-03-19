@@ -6,8 +6,12 @@ fixtures:
     sudo:
       repo: "https://github.com/saz/puppet-sudo.git"
       ref: "v4.2.0"
-    ssh: "https://github.com/saz/puppet-ssh.git"
-    firewall: "https://github.com/puppetlabs/puppetlabs-firewall.git"
+    ssh:
+      repo: "https://github.com/saz/puppet-ssh.git"
+      ref: "v3.0.1"
+    firewall:
+      repo: "https://github.com/puppetlabs/puppetlabs-firewall.git"
+      ref: "1.8.0"
     inifile: "https://github.com/puppetlabs/puppetlabs-inifile.git"
     staging: "https://github.com/nanliu/puppet-staging.git"
     concat:
