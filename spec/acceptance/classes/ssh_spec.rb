@@ -37,8 +37,6 @@ describe 'archlinux_workstation::ssh class' do
       its(:content) { should match /PasswordAuthentication no/ }
       its(:content) { should match /PermitRootLogin yes/ }
       its(:content) { should match /PubkeyAuthentication yes/ }
-      its(:content) { should match /RSAAuthentication yes/ }
-      its(:content) { should match /UsePrivilegeSeparation sandbox/ }
       its(:content) { should match /X11Forwarding yes/ }
     end
   end
