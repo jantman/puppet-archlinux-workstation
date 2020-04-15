@@ -53,9 +53,7 @@ class archlinux_workstation::ssh (
     'PermitRootLogin'        => $allow_root,
     'Port'                   => [22],
     'PubkeyAuthentication'   => 'yes',
-    'RSAAuthentication'      => 'yes',
     'SyslogFacility'         => 'AUTH',
-    'UsePrivilegeSeparation' => 'sandbox', # "Default for new installations."
     'X11Forwarding'          => 'yes',
   }
 

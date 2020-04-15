@@ -40,9 +40,7 @@ describe 'archlinux_workstation::ssh' do
                                                         'PermitRootLogin'        => 'no',
                                                         'Port'                   => [22],
                                                         'PubkeyAuthentication'   => 'yes',
-                                                        'RSAAuthentication'      => 'yes',
                                                         'SyslogFacility'         => 'AUTH',
-                                                        'UsePrivilegeSeparation' => 'sandbox',
                                                         'X11Forwarding'          => 'yes',
                                                       }
                                                     })
@@ -67,9 +65,7 @@ describe 'archlinux_workstation::ssh' do
                                                         'PermitRootLogin'        => 'no',
                                                         'Port'                   => [22],
                                                         'PubkeyAuthentication'   => 'yes',
-                                                        'RSAAuthentication'      => 'yes',
                                                         'SyslogFacility'         => 'AUTH',
-                                                        'UsePrivilegeSeparation' => 'sandbox',
                                                         'X11Forwarding'          => 'yes',
                                                         'foo'                    => 'bar',
                                                       }
@@ -93,9 +89,7 @@ describe 'archlinux_workstation::ssh' do
                                                         'PermitRootLogin'        => 'no',
                                                         'Port'                   => [22],
                                                         'PubkeyAuthentication'   => 'yes',
-                                                        'RSAAuthentication'      => 'yes',
                                                         'SyslogFacility'         => 'AUTH',
-                                                        'UsePrivilegeSeparation' => 'sandbox',
                                                         'X11Forwarding'          => 'yes',
                                                       }
                                                     })
@@ -117,9 +111,7 @@ describe 'archlinux_workstation::ssh' do
                                                         'PermitRootLogin'        => 'yes',
                                                         'Port'                   => [22],
                                                         'PubkeyAuthentication'   => 'yes',
-                                                        'RSAAuthentication'      => 'yes',
                                                         'SyslogFacility'         => 'AUTH',
-                                                        'UsePrivilegeSeparation' => 'sandbox',
                                                         'X11Forwarding'          => 'yes',
                                                       }
                                                     })
@@ -142,9 +134,7 @@ describe 'archlinux_workstation::ssh' do
                                                         'PermitRootLogin'        => 'yes',
                                                         'Port'                   => [22],
                                                         'PubkeyAuthentication'   => 'yes',
-                                                        'RSAAuthentication'      => 'yes',
                                                         'SyslogFacility'         => 'AUTH',
-                                                        'UsePrivilegeSeparation' => 'sandbox',
                                                         'X11Forwarding'          => 'yes',
                                                       }
                                                     })
@@ -171,9 +161,7 @@ describe 'archlinux_workstation::ssh' do
                                                         'PermitRootLogin'        => 'no',
                                                         'Port'                   => [22],
                                                         'PubkeyAuthentication'   => 'yes',
-                                                        'RSAAuthentication'      => 'yes',
                                                         'SyslogFacility'         => 'AUTH',
-                                                        'UsePrivilegeSeparation' => 'sandbox',
                                                         'X11Forwarding'          => 'yes',
                                                       }
                                                     })
@@ -198,9 +186,7 @@ describe 'archlinux_workstation::ssh' do
                                                         'PermitRootLogin'        => 'no',
                                                         'Port'                   => [22],
                                                         'PubkeyAuthentication'   => 'yes',
-                                                        'RSAAuthentication'      => 'yes',
                                                         'SyslogFacility'         => 'AUTH',
-                                                        'UsePrivilegeSeparation' => 'sandbox',
                                                         'X11Forwarding'          => 'yes',
                                                       }
                                                     })
@@ -222,9 +208,7 @@ describe 'archlinux_workstation::ssh' do
                                                         'PermitRootLogin'        => 'yes',
                                                         'Port'                   => [22],
                                                         'PubkeyAuthentication'   => 'yes',
-                                                        'RSAAuthentication'      => 'yes',
                                                         'SyslogFacility'         => 'AUTH',
-                                                        'UsePrivilegeSeparation' => 'sandbox',
                                                         'X11Forwarding'          => 'yes',
                                                       }
                                                     })
