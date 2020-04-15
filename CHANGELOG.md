@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 [comment]: # IMPORTANT: Remember to update the links at the bottom of the file!
 
-## Unreleased Changes
+## [0.5.0] Released 2020-04-14
 
 - ``sshd_config`` - Remove deprecated ``RSAAuthentication`` and ``UsePrivilegeSeparation`` options
 
@@ -78,6 +78,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - initial module creation
 - migration of a bunch of stuff from https://github.com/jantman/puppet-archlinux-macbookretina
 
+[0.5.0]: https://github.com/jantman/puppet-archlinux-workstation/compare/0.4.0...0.5.0
 [0.4.0]: https://github.com/jantman/puppet-archlinux-workstation/compare/0.3.2...0.4.0
 [0.3.2]: https://github.com/jantman/puppet-archlinux-workstation/compare/0.3.1...0.3.2
 [0.3.1]: https://github.com/jantman/puppet-archlinux-workstation/compare/0.3.0...0.3.1
