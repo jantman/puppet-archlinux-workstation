@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 [comment]: # IMPORTANT: Remember to update the links at the bottom of the file!
 
+## Unreleased Changes
+
+- ``sshd_config`` - Remove deprecated ``RSAAuthentication`` and ``UsePrivilegeSeparation`` options
+
 ## [0.4.0] Released 2019-03-19
 
 - Pin some dependencies in ``.fixtures.yml`` to fix tests
