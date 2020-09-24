@@ -20,7 +20,7 @@ describe 'archlinux_workstation::base_packages class' do
     ]
 
     packages_present = [
-      'bind-tools',
+      'bind',
       'dmidecode',
       'dialog',
       'links',

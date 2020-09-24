@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 [comment]: # IMPORTANT: Remember to update the links at the bottom of the file!
 
+## [0.5.1] Released 2020-09-24
+
+- Update for ``bind-tools`` Arch package removed, rolled into ``bind`` package
+
 ## [0.5.0] Released 2020-04-14
 
 - ``sshd_config`` - Remove deprecated ``RSAAuthentication`` and ``UsePrivilegeSeparation`` options

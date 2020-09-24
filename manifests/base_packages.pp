@@ -13,7 +13,7 @@ class archlinux_workstation::base_packages {
                       ]
 
   $packages_present = [
-                      'bind-tools',
+                      'bind',
                       'dialog',
                       'dmidecode',
                       'links',
