@@ -34,7 +34,7 @@ describe 'archlinux_workstation::base_packages' do
                 'vim',
                 'ttf-dejavu',
                 'wget',
-                'bind-tools',
+                'bind',
                 'net-tools',
                 'lsof',
                 'screen',
