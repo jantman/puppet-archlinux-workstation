@@ -24,7 +24,7 @@ describe 'archlinux_workstation::cups' do
       end
     end
 
-    it { should contain_service('org.cups.cupsd').with({
+    it { should contain_service('cups').with({
       'enable' => true,
       'ensure' => 'running',
     }).that_requires('Package[cups]') }

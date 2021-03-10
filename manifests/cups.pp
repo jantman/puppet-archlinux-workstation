@@ -1,6 +1,6 @@
 #
 # Install [CUPS](https://wiki.archlinux.org/index.php/CUPS) printing and related
-# packages; run cupsd service.
+# packages; run cups service.
 #
 class archlinux_workstation::cups {
 
@@ -18,7 +18,7 @@ class archlinux_workstation::cups {
     ensure => present,
   }
 
-  service {'org.cups.cupsd':
+  service {'cups':
     ensure  => running,
     enable  => true,
     require => Package['cups'],

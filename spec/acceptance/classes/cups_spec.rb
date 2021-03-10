@@ -31,7 +31,7 @@ describe 'archlinux_workstation::cups class' do
       end
     end
 
-    describe service('org.cups.cupsd') do
+    describe service('cups') do
       it { should be_enabled }
       it { should be_running }
     end
