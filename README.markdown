@@ -1,3 +1,7 @@
+## DEPRECATED - DO NOT USE
+
+As of December 2022, this project is deprecated. It's sufficiently different from how I want to manage my new machines that it's not worth keeping up to date, and therefore I'm abandoning it.
+
 #### Table of Contents
 
 1. [Overview](#overview)
@@ -13,9 +17,8 @@
 
 ## Overview
 
-[![TravisCI Build Status Badge](https://travis-ci.org/jantman/puppet-archlinux-workstation.svg)](https://travis-ci.org/jantman/puppet-archlinux-workstation.svg)
 [![PuppetForge version badge](https://img.shields.io/puppetforge/v/jantman/archlinux_workstation.svg)](https://forge.puppet.com/jantman/archlinux_workstation/)
-[![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
+[![Project Status: Unsupported – The project has reached a stable, usable state but the author(s) have ceased all work on it. A new maintainer may be desired.](https://www.repostatus.org/badges/latest/unsupported.svg)](https://www.repostatus.org/#unsupported)
 
 Provides many classes for configuring an Arch Linux workstation/laptop/desktop for graphical use and installing common software.
 
